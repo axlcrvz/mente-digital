@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Services Landing Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+    <style>
+        :root {
+            --background-color: #000; /* Black background */
+            --text-color: #fff; /* White text */
+            --service-bg: #222; /* Dark grey for service boxes */
+            --service-border: #444; /* Light grey border */
+            --hover-bg: rgba(255, 255, 255, 0.1); /* Light hover effect */
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: 400;
+            margin: 15px 0 30px;
+            color: var(--text-color);
+        }
+
+        .services {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            gap: 15px;
+        }
+
+        .service {
+            background-color: var(--service-bg);
+            border: 1px solid var(--service-border);
+            border-radius: 10px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, background-color 0.3s;
+            position: relative;
+        }
+
+        .service:hover {
+            transform: translateY(-3px);
+            background-color: var(--hover-bg);
+        }
+
+        .service h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 10px 0;
+            color: var(--text-color);
+        }
+
+        .brands {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+        }
+
+        .brands h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .brand-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .brand-logos img {
+            max-width: 150px; /* Adjust size as needed */
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .brand-logos img:hover {
+            opacity: 1; /* Highlight on hover */
+        }
+
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+            padding: 10px;
+            border-top: 1px solid var(--service-border);
+        }
+
+        .cta h2 {
+            font-size: 2em;
+            margin: 15px 0;
+        }
+
+        .cta p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .cta button {
+            background-color: var(--text-color);
+            color: var(--background-color);
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .cta button:hover {
+            background-color: #444; /* Dark grey on hover */
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Elevate Your Business</h1>
+    <h2>Crafting Tailored Solutions for Your Success</h2>
+</header>
+
+<section class="services">
+    <div class="service">
+        <h3>Strategic Planning</h3>
+        <p>Clarify your vision, set ambitious goals, and create a roadmap for sustainable growth.</p>
+    </div>
+    <div class="service">
+        <h3>Marketing Optimization</h3>
+        <p>Refine your brand, enhance your online presence, and implement targeted campaigns.</p>
+    </div>
+    <div class="service">
+        <h3>Process Improvement</h3>
+        <p>Streamline operations, boost efficiency, and free up resources for high-impact initiatives.</p>
+    </div>
+    <div class="service">
+        <h3>Leadership Development</h3>
+        <p>Empower your team and foster a positive culture for long-term success.</p>
+    </div>
+</section>
+
+<section class="brands">
+    <h2>Satisfied Brands</h2>
+    <div class="brand-logos">
+        <img src="logo1.png" alt="Brand 1">
+        <img src="logo2.png" alt="Brand 2">
+        <img src="logo3.png" alt="Brand 3">
+        <img src="logo4.png" alt="Brand 4">
+        <img src="logo5.png" alt="Brand 5">
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Get Started Today</h2>
+    <p>Ready to take your business to new heights? Contact us for a complimentary consultation.</p>
+    <button onclick="window.location.href='mailto:your-email@example.com'">Book Your Consultation</button>
+</section>
+
+</body>
+</html>
