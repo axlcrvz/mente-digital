@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Beats</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+    <style>
+        :root {
+            --background-color: #000; /* Black background */
+            --text-color: #fff; /* White text */
+            --section-bg: #222; /* Dark grey for sections */
+            --button-bg: #444; /* Dark grey for buttons */
+            --button-hover-bg: #555; /* Lighter grey on hover */
+            --link-bg: rgba(255, 255, 255, 0.1); /* Light hover effect */
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        header {
+            padding: 40px 20px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 400;
+            margin: 10px 0 30px;
+            color: var(--text-color);
+        }
+
+        .beat-player, .spotify-player {
+            background-color: var(--section-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .cta {
+            margin: 40px 0;
+            padding: 10px;
+        }
+
+        .cta button {
+            background-color: var(--button-bg);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .cta button:hover {
+            background-color: var(--button-hover-bg);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>My Beats</h1>
+    <h2>Explore my latest beats and production credits</h2>
+</header>
+
+<section class="beat-player">
+    <h2>Listen to My Beats</h2>
+    <!-- Replace with your BeatStars embed code -->
+    <iframe src="https://www.beatstars.com/beat-player/your-beat-id" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+</section>
+
+<section class="spotify-player">
+    <h2>My Spotify Playlist</h2>
+    <!-- Replace with your Spotify playlist embed code -->
+    <iframe src="https://open.spotify.com/embed/playlist/your-playlist-id" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</section>
+
+<section class="cta">
+    <h2>Contact Me</h2>
+    <p>If you're interested in collaborating or licensing my beats, feel free to reach out!</p>
+    <button onclick="window.location.href='mailto:your-email@example.com'">Contact Me</button>
+</section>
+
+</body>
+</html>
