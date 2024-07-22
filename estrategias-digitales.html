@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategias Digitales a tu Medida</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+    <style>
+        :root {
+            --background-color: #000;
+            --text-color: #fff;
+            --service-bg: #222;
+            --service-border: #444;
+            --hover-bg: rgba(255, 255, 255, 0.1);
+            --button-bg: #444;
+            --button-hover-bg: #666;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        header {
+            padding: 40px 20px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: 400;
+            margin: 10px 0 30px;
+            color: var(--text-color);
+        }
+
+        .services {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            gap: 15px;
+        }
+
+        .service {
+            background-color: var(--service-bg);
+            border: 1px solid var(--service-border);
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, background-color 0.3s;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .service:hover {
+            transform: translateY(-3px);
+            background-color: var(--hover-bg);
+        }
+
+        .service h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 10px 0;
+            color: var(--text-color);
+        }
+
+        .service p {
+            font-size: 1em;
+            margin: 10px 0;
+            color: var(--text-color);
+        }
+
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+            padding: 10px;
+            border-top: 1px solid var(--service-border);
+        }
+
+        .cta button {
+            background-color: var(--button-bg);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        .cta button:hover {
+            background-color: var(--button-hover-bg);
+            transform: translateY(-1px);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a class="" style="color: lightgrey" href="https://www.axlcrvz.com" target="_blank">@axlcrvz</a>
+    <br>
+    <br>
+    <h1>Estrategias Digitales a tu Medida</h1>
+    <br>
+    <h2>Impulsa tu negocio con estrategias de marketing digital y redes sociales personalizadas.</h2>
+</header>
+
+<section class="services">
+    <div class="service">
+        <h3>Nivel Básico</h3>
+        <p>Consulta inicial y recomendaciones básicas.</p>
+        <p><strong>$350</strong></p>
+    </div>
+    <div class="service">
+        <h3>Nivel Intermedio</h3>
+        <p>Plan de marketing digital personalizado.</p>
+        <p><strong>$600</strong></p>
+    </div>
+    <div class="service">
+        <h3>Nivel Avanzado</h3>
+        <p>Implementación de estrategias, seguimiento mensual y optimización.</p>
+        <p><strong>$900</strong></p>
+    </div>
+    <div class="service">
+        <h3>Nivel Premium</h3>
+        <p>Estrategias avanzadas y campañas pagadas, análisis y optimización.</p>
+        <p><strong>$2,000</strong></p>
+    </div>
+</section>
+
+<div class="cta">
+    <button onclick="window.location.href='https://wa.me/yourwhatsapplink'">¡EMPIEZA HOY!</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 @axlcrvz. <a href="https://www.axlcrvz.com" target="_blank">axlcrvz.com</a></p>
+</footer>
+
+</body>
+</html>
