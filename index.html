@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Services Landing Page</title>
+    <title>My Links</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
     <style>
         :root {
-            --background-color: #000; /* Black background */
-            --text-color: #fff; /* White text */
-            --service-bg: #222; /* Dark grey for service boxes */
-            --service-border: #444; /* Light grey border */
-            --hover-bg: rgba(255, 255, 255, 0.1); /* Light hover effect */
+            --background-color: #000;
+            --text-color: #fff;
+            --service-bg: #222;
+            --service-border: #444;
+            --hover-bg: rgba(255, 255, 255, 0.1);
+            --button-bg: #222;
+            --button-hover-bg: #444;
         }
 
         body {
@@ -21,11 +23,11 @@
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.5;
+            text-align: center;
         }
 
         header {
             padding: 40px 20px;
-            text-align: center;
             box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
         }
 
@@ -41,7 +43,6 @@
             font-size: 2em;
             font-weight: 400;
             margin: 15px 0 30px;
-            color: var(--text-color);
         }
 
         .services {
@@ -60,7 +61,6 @@
             width: 280px;
             box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
             transition: transform 0.3s, background-color 0.3s;
-            position: relative;
         }
 
         .service:hover {
@@ -72,7 +72,30 @@
             font-size: 1.5em;
             font-weight: 600;
             margin: 10px 0;
+        }
+
+        .link-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .link {
+            background-color: var(--button-bg);
+            border-radius: 10px;
+            padding: 15px 30px;
+            margin: 10px 0;
+            width: 80%;
+            text-decoration: none;
             color: var(--text-color);
+            font-size: 1.2em;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .link:hover {
+            background-color: var(--button-hover-bg);
+            transform: translateY(-2px);
         }
 
         .brands {
@@ -95,79 +118,65 @@
         }
 
         .brand-logos img {
-            max-width: 150px; /* Adjust size as needed */
+            max-width: 150px;
             opacity: 0.8;
             transition: opacity 0.3s;
         }
 
         .brand-logos img:hover {
-            opacity: 1; /* Highlight on hover */
+            opacity: 1;
         }
 
-        .cta {
-            text-align: center;
-            margin: 40px 0;
-            padding: 10px;
-            border-top: 1px solid var(--service-border);
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .cta h2 {
-            font-size: 2em;
-            margin: 15px 0;
-        }
-
-        .cta p {
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
-
-        .cta button {
-            background-color: var(--text-color);
-            color: var(--background-color);
-            border: none;
-            padding: 10px 25px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 20px;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
-        }
-
-        .cta button:hover {
-            background-color: #444; /* Dark grey on hover */
-            transform: translateY(-1px);
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Elevate Your Business</h1>
-    <h2>Crafting Tailored Solutions for Your Success</h2>
+    <a style="color: lightgrey" href="https://www.axlcrvz.com" target="_blank">@axlcrvz</a>
+    <h1>Soluciones Digitales</h1>
+    <h2>Impulsa Tu Negocio con Estrategias Personalizadas.</h2>
 </header>
 
 <section class="services">
     <div class="service">
-        <h3>Strategic Planning</h3>
-        <p>Clarify your vision, set ambitious goals, and create a roadmap for sustainable growth.</p>
+        <h3>Estrategias Personalizadas</h3>
+        <p>Cada plan está hecho a la medida de las necesidades únicas de tu negocio.</p>
     </div>
     <div class="service">
-        <h3>Marketing Optimization</h3>
-        <p>Refine your brand, enhance your online presence, and implement targeted campaigns.</p>
+        <h3>Soporte Continuo</h3>
+        <p>Te acompaño en cada paso del camino para asegurar tu éxito.</p>
     </div>
     <div class="service">
-        <h3>Process Improvement</h3>
-        <p>Streamline operations, boost efficiency, and free up resources for high-impact initiatives.</p>
+        <h3>Optimización de Marketing</h3>
+        <p>Refina tu marca, mejora tu presencia en línea e implementa campañas dirigidas.</p>
     </div>
     <div class="service">
-        <h3>Leadership Development</h3>
-        <p>Empower your team and foster a positive culture for long-term success.</p>
+        <h3>Plan de Marketing</h3>
+        <p>Aclara tu visión, establece objetivos ambiciosos y crea una hoja de ruta para un crecimiento sostenible.</p>
     </div>
 </section>
 
+<h2>Soluciones que impulsan tu marca:</h2>
+
+<div class="link-container">
+    <a class="link" href="https://www.yourwebsite.com" target="_blank">Estrategias Digitales a tu Medida</a>
+    <a class="link" href="https://www.instagram.com/yourprofile" target="_blank">Desarrollo Web</a>
+    <a class="link" href="https://www.twitter.com/yourprofile" target="_blank">Beats de Uso Libre</a>
+    <a class="link" href="https://www.linkedin.com/in/yourprofile" target="_blank">Como Vender Lo Que Sea: Los 7 Secretos No Tan Secretos</a>
+</div>
+
 <section class="brands">
-    <h2>Satisfied Brands</h2>
+    <h2>Marcas Satisfechas</h2>
     <div class="brand-logos">
         <img src="logo1.png" alt="Brand 1">
         <img src="logo2.png" alt="Brand 2">
@@ -177,11 +186,21 @@
     </div>
 </section>
 
-<section class="cta">
-    <h2>Get Started Today</h2>
-    <p>Ready to take your business to new heights? Contact us for a complimentary consultation.</p>
-    <button onclick="window.location.href='mailto:your-email@example.com'">Book Your Consultation</button>
+<section id="contact">
+    <div class="link-container">
+        <h2>Contacto</h2>
+        <a class="link" href="https://www.facebook.com/yourprofile" target="_blank">WhatsApp</a>
+        <a class="link" href="https://www.yourservice.com" target="_blank">Instagram</a>
+        <a class="link" href="mailto:your-email@example.com">Telegram</a>
+        <a class="link" href="mailto:your-email@example.com">Threads</a>
+        <a class="link" href="mailto:your-email@example.com">X</a>
+        <a class="link" href="mailto:your-email@example.com">Email</a>
+    </div>
 </section>
+
+<footer>
+    <p>&copy; 2024 @axlcrvz |  <a style="color: white" href="https://www.axlcrvz.com" target="_blank">axlcrvz.com</a></p>
+</footer>
 
 </body>
 </html>
