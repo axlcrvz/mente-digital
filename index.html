@@ -9,11 +9,12 @@
         :root {
             --background-color: #000;
             --text-color: #fff;
-            --service-bg: #222;
-            --service-border: #444;
-            --hover-bg: rgba(255, 255, 255, 0.1);
+            --service-bg: #333;
+            --service-border: #555;
+            --hover-bg: rgba(255, 215, 0, 0.1); /* Gold hover background */
             --button-bg: #222;
-            --button-hover-bg: #444;
+            --button-hover-bg: #555;
+            --accent-color: #ffd700; /* Gold */
         }
 
         body {
@@ -41,17 +42,19 @@
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2.1em;
             font-weight: 700;
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: var(--accent-color); /* Gold color */
         }
 
         h2 {
             font-size: 2em;
             font-weight: 400;
             margin: 15px 0 30px;
+            color: var(--accent-color); /* Gold color */
         }
 
         nav {
@@ -72,7 +75,7 @@
 
         .nav-menu {
             list-style: none;
-            padding: 0;
+            padding-right: 25px;
             display: flex;
         }
 
@@ -83,6 +86,12 @@
         .nav-menu a {
             color: var(--text-color);
             text-decoration: none;
+            font-weight: 600; /* Bold font for menu items */
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color); /* Gold color on hover */
         }
 
         @media (max-width: 768px) {
@@ -111,48 +120,52 @@
             }
         }
 
-        .hero {
-            background: linear-gradient(135deg, #d4af37, #c0c0c0); /* Gold to Silver gradient */
-            padding: 120px 20px; /* Increased padding for more space */
-            color: var(--text-color);
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
-            border-radius: 10px; /* Rounded corners */
-            position: relative; /* Ensure proper stacking context */
-            overflow: hidden; /* Prevent overflow */
-        }
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2dd4bf); /* Deep Blue to Soft Teal gradient */
+    padding: 120px 20px; /* Increased padding for more space */
+    color: var(--text-color);
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
+    border-radius: 10px; /* Rounded corners */
+    position: relative; /* Ensure proper stacking context */
+    overflow: hidden; /* Prevent overflow */
+}
+
 
         .hero .content {
-            max-width: 800px; /* Limit the width of the content */
-            margin: 0 auto; /* Center the content */
-            padding: 0 20px; /* Add padding to prevent overflow */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .hero h2 {
-            font-size: 3em; /* Adjusted font size for the hero heading */
-            margin: 0 0 20px; /* Margin adjustments */
-            text-transform: uppercase; /* Uppercase for a more elegant look */
-            letter-spacing: 3px; /* Increased letter spacing */
+            font-size: 3em;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         .hero p {
-            font-size: 1.8em; /* Increased font size for the hero paragraph */
+            font-size: 1.8em;
             margin: 0;
-            font-weight: 400; /* Slightly bolder for more impact */
-            line-height: 1.4; /* Adjusted line height for readability */
-            letter-spacing: 1px; /* Added letter spacing for emphasis */
+            font-weight: 400;
+            line-height: 1.4;
+            letter-spacing: 1px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero h2 {
-                font-size: 2.5em; /* Smaller font size for mobile */
+                font-size: 2.5em;
             }
 
             .hero p {
-                font-size: 1.5em; /* Increased font size for mobile */
+                font-size: 1.5em;
             }
         }
+        main {
+    padding-top: 90px; /* Adjust the value as needed */
+}
+
 
         .services {
             display: flex;
@@ -181,6 +194,7 @@
             font-size: 1.5em;
             font-weight: 600;
             margin: 10px 0;
+            color: var(--accent-color); /* Gold color */
         }
 
         .link-container {
@@ -223,6 +237,7 @@
         .brands h2 {
             font-size: 2em;
             margin-bottom: 20px;
+            color: var(--accent-color); /* Gold color */
         }
 
         .brand-logos {
@@ -256,8 +271,18 @@
             font-size: 0.9em;
         }
 
+        footer a {
+            color: var(--accent-color); /* Gold color */
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         #home {
-            padding-top: 80px; /* Space above the section */
+            padding-top: 80px;
         }
     </style>
 </head>
@@ -274,11 +299,10 @@
             </ul>
         </nav>
     </header>
-
     <main>
         <section id="home" class="hero">
             <div class="content">
-                <h2>Soluciones Digitales</h2>
+                <h2>Soluciones Digitales a tu medida</h2>
                 <p>Impulsa Tu Negocio con Estrategias Personalizadas.</p>
             </div>
         </section>
@@ -293,7 +317,7 @@
                     <h3>Soporte Continuo</h3>
                     <p>Te acompaño en cada paso del camino para asegurar tu éxito.</p>
                 </div>
-                <div class="service">
+                                <div class="service">
                     <h3>Optimización de Marketing</h3>
                     <p>Refina tu marca, mejora tu presencia en línea e implementa campañas dirigidas.</p>
                 </div>
@@ -347,3 +371,4 @@
     </script>
 </body>
 </html>
+
