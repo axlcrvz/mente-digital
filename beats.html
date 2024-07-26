@@ -1,108 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Beats</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
-    <style>
-        :root {
-            --background-color: #000; /* Black background */
-            --text-color: #fff; /* White text */
-            --section-bg: #222; /* Dark grey for sections */
-            --button-bg: #444; /* Dark grey for buttons */
-            --button-hover-bg: #555; /* Lighter grey on hover */
-            --link-bg: rgba(255, 255, 255, 0.1); /* Light hover effect */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@axlcrvz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      --background-color: #1c1b29;
+      --text-color: #f0f0f0;
+      --service-bg: #29283e;
+      --service-border: #3a3957;
+      --hover-bg: rgba(255, 255, 255, 0.2);
+      --button-bg: #29283e;
+      --button-hover-bg: #3a3957;
+      --accent-color: #f0f0f0; /* Add accent color variable */
+    }
 
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.5;
-            text-align: center;
-        }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.5;
+      text-align: center;
+    }
 
-        header {
-            padding: 40px 20px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-        }
+    header {
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: var(--background-color);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-        h1 {
-            font-size: 3em;
-            font-weight: 700;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    h1, h2 {
+      color: var(--accent-color);
+      margin: 0;
+    }
 
-        h2 {
-            font-size: 1.5em;
-            font-weight: 400;
-            margin: 10px 0 30px;
-            color: var(--text-color);
-        }
+    h1 {
+      font-size: 2.1em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-        .beat-player, .spotify-player {
-            background-color: var(--section-bg);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 600px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-        }
+    h2 {
+      font-size: 2em;
+      font-weight: 400;
+      margin: 15px 0 30px;
+    }
 
-        .cta {
-            margin: 40px 0;
-            padding: 10px;
-        }
+    nav {
+      display: flex;
+      align-items: center;
+    }
 
-        .cta button {
-            background-color: var(--button-bg);
-            color: var(--text-color);
-            border: none;
-            padding: 10px 25px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 20px;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
-        }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 15px;
+      margin-right: 20px;
+    }
 
-        .cta button:hover {
-            background-color: var(--button-hover-bg);
-            transform: translateY(-1px);
-        }
-    </style>
+    .nav-menu {
+      list-style: none;
+      padding-right: 25px;
+      display: flex;
+    }
+
+    .nav-menu li {
+      margin: 0 15px;
+    }
+
+    .nav-menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-menu.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background-color: var(--background-color);
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-menu.show li {
+        margin: 10px 0;
+      }
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #071739, #4b6382);
+      padding: 120px 20px;
+      color: var(--text-color);
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero h2 {
+      font-size: 3em;
+      margin: 0 0 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .hero p {
+      font-size: 1.8em;
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2.5em;
+      }
+
+      .hero p {
+        font-size: 1.5em;
+      }
+    }
+
+    main {
+      padding-top: 90px;
+    }
+
+    .services {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      gap: 15px;
+    }
+
+    .service {
+      background-color: var(--service-bg);
+      border: 1px solid var(--service-border);
+      border-radius: 10px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .service:hover {
+      transform: translateY(-3px);
+      background-color: var(--hover-bg);
+    }
+
+    .service h3 {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+
+    .link-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .link {
+      background-color: var(--button-bg);
+      border-radius: 10px;
+      padding: 15px 30px;
+      margin: 10px 0;
+      width: 80%;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 1.2em;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .link:hover {
+      background-color: var(--button-hover-bg);
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      padding-right: 8px;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+    }
+
+    .brands {
+      text-align: center;
+      margin: 40px 0;
+      padding: 20px;
+    }
+
+    .brands h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .brand-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .brand-logos img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .brand-logos img:hover {
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    #home {
+      padding-top: 80px;
+    }
+    iframe {
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  width: 100%; /* Full width */
+  height: 50%; /* Fixed height */
+  max-width: 100%; /* Ensure responsiveness */
+}
+
+/* Container for responsive iframe */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+iframe {
+  border: none; /* Removes default border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+iframe:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+}
+
+
+  </style>
 </head>
 <body>
-
-<header>
-    <a class="" style="color: lightgrey" href="https://www.axlcrvz.com" target="_blank">@axlcrvz</a>
-    <h1>My Beats</h1>
-    <h2>Explore my latest beats and production credits</h2>
-</header>
-
-<section class="beat-player">
-    <h2>Beats</h2>
-    <!-- Replace with your BeatStars embed code -->
-    <iframe src="https://www.beatstars.com/beat-player/your-beat-id" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
-</section>
-
-<section class="spotify-player">
-    <h2>Creditos</h2>
-    <!-- Replace with your Spotify playlist embed code -->
-    <iframe src="https://open.spotify.com/embed/playlist/your-playlist-id" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-</section>
-
-<section class="cta">
-    <h2>Contacto</h2>
-    <p></p>
-    <button onclick="window.location.href='mailto:your-email@example.com'">WhatsApp</button>
-</section>
-
+  <header>
+    <h1>@axlcrvz</h1>
+    <nav>
+      <button class="nav-toggle">&#9776;</button>
+      <ul class="nav-menu">
+        <li><a href="https://www.axlcrvz.com">Inicio</a></li>
+        <li><a href="https://www.axlcrvz.com/estrategias-digitales">Estrategias Digitales</a></li>
+        <li><a href="https://www.axlcrvz.com/presencia-digital">Desarrollo Web</a></li>
+        <li><a href="https://www.axlcrvz.com/beats">Beats Comerciales</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="hero">
+      <div class="content">
+        <h2>beats comerciales</h2>
+                  <p>Ritmos perfectos, libres de regalías.</p>
+        <div class="link-container">
+            <a class="link" href="https://wa.me/" target="_blank">
+              <img class="icon" src="icons/whatsapp.svg">Mas Informacion
+            </a>
+          </div>
+<iframe src="//www.beatstars.com/embed/track?id=15662438"
+                    width="100%"
+                    height=""></iframe>
+                    <iframe src="//www.beatstars.com/embed/track?id=15662379"
+                    width="100%"
+                    height="140"></iframe>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contacto</h2>
+      <div class="link-container">
+        <a class="link" href="https://wa.me/" target="_blank">
+          <img class="icon" src="icons/whatsapp.svg">WhatsApp
+        </a>
+        <a class="link" href="https://www.instagram.com/axlcrvz" target="_blank">
+          <img class="icon" src="icons/instagram.svg">Instagram
+        </a>
+        <a class="link" href="https://t.me/axlcrvz">
+          <img class="icon" src="icons/telegram.svg">Telegram
+        </a>
+        <a class="link" href="mailto:axlcrvz@proton.me">
+          <img class="icon" src="icons/generic-email.svg">Email
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 @axlcrvz | <a href="https://www.axlcrvz.com" target="_blank">axlcrvz.com</a></p>
+  </footer>
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-menu').classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
