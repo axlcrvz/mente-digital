@@ -1,174 +1,369 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Presencia Online Elevada</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
-    <style>
-        :root {
-            --background-color: #000;
-            --text-color: #fff;
-            --service-bg: #222;
-            --service-border: #444;
-            --hover-bg: rgba(255, 255, 255, 0.1);
-            --button-bg: #444;
-            --button-hover-bg: #666;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@axlcrvz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      --background-color: #1c1b29;
+      --text-color: #f0f0f0;
+      --service-bg: #29283e;
+      --service-border: #3a3957;
+      --hover-bg: rgba(255, 255, 255, 0.2);
+      --button-bg: #29283e;
+      --button-hover-bg: #3a3957;
+      --accent-color: #f0f0f0; /* Add accent color variable */
+    }
 
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.5;
-            text-align: center;
-        }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.5;
+      text-align: center;
+    }
 
-        header {
-            padding: 40px 20px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-        }
+    header {
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: var(--background-color);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-        h1 {
-            font-size: 3em;
-            font-weight: 700;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    h1, h2 {
+      color: var(--accent-color);
+      margin: 0;
+    }
 
-        h2 {
-            font-size: 2em;
-            font-weight: 400;
-            margin: 10px 0 30px;
-            color: var(--text-color);
-        }
+    h1 {
+      font-size: 2.1em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-        .services {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px 0;
-            gap: 15px;
-        }
+    h2 {
+      font-size: 2em;
+      font-weight: 400;
+      margin: 15px 0 30px;
+    }
 
-        .service {
-            background-color: var(--service-bg);
-            border: 1px solid var(--service-border);
-            border-radius: 10px;
-            padding: 20px;
-            width: 80%;
-            max-width: 400px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, background-color 0.3s;
-            position: relative;
-            margin: 10px 0;
-        }
+    nav {
+      display: flex;
+      align-items: center;
+    }
 
-        .service:hover {
-            transform: translateY(-3px);
-            background-color: var(--hover-bg);
-        }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 15px;
+      margin-right: 20px;
+    }
 
-        .service h3 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 10px 0;
-            color: var(--text-color);
-        }
+    .nav-menu {
+      list-style: none;
+      padding-right: 25px;
+      display: flex;
+    }
 
-        .service p {
-            font-size: 1em;
-            margin: 10px 0;
-            color: var(--text-color);
-        }
+    .nav-menu li {
+      margin: 0 15px;
+    }
 
-        .cta {
-            text-align: center;
-            margin: 40px 0;
-            padding: 10px;
-            border-top: 1px solid var(--service-border);
-        }
+    .nav-menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
 
-        .cta button {
-            background-color: var(--button-bg);
-            color: var(--text-color);
-            border: none;
-            padding: 10px 25px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 20px;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
-            margin-top: 20px;
-        }
+    .nav-menu a:hover {
+      color: var(--accent-color);
+    }
 
-        .cta button:hover {
-            background-color: var(--button-hover-bg);
-            transform: translateY(-1px);
-        }
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
 
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
+      .nav-toggle {
+        display: block;
+      }
 
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
-        }
+      .nav-menu.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background-color: var(--background-color);
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      }
 
-        footer a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
+      .nav-menu.show li {
+        margin: 10px 0;
+      }
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .hero {
+      background: linear-gradient(135deg, #071739, #4b6382);
+      padding: 120px 20px;
+      color: var(--text-color);
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero h2 {
+      font-size: 3em;
+      margin: 0 0 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .hero p {
+      font-size: 1.8em;
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2.5em;
+      }
+
+      .hero p {
+        font-size: 1.5em;
+      }
+    }
+
+    main {
+      padding-top: 90px;
+    }
+
+    .services {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      gap: 15px;
+    }
+
+    .service {
+      background-color: var(--service-bg);
+      border: 1px solid var(--service-border);
+      border-radius: 10px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .service:hover {
+      transform: translateY(-3px);
+      background-color: var(--hover-bg);
+    }
+
+    .service h3 {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+
+    .link-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .link {
+      background-color: var(--button-bg);
+      border-radius: 10px;
+      padding: 15px 30px;
+      margin: 10px 0;
+      width: 80%;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 1.2em;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .link:hover {
+      background-color: var(--button-hover-bg);
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      padding-right: 8px;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+    }
+
+    .brands {
+      text-align: center;
+      margin: 40px 0;
+      padding: 20px;
+    }
+
+    .brands h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .brand-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .brand-logos img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .brand-logos img:hover {
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    #home {
+      padding-top: 80px;
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <a class="" style="color: lightgrey" href="https://www.axlcrvz.com" target="_blank">@axlcrvz</a>
-    <br>
-    <br>
-    <h1>Tu Presencia Online Simplificada</h1>
-    <br>
-    <h2>Transforma tu presencia digital con soluciones diseñadas a medida.</h2>
-</header>
-
-<section class="services">
-    <div class="service">
-        <h3>Nivel Básico</h3>
-        <p>Creación de una página web funcional y atractiva.</p>
-        <p><strong>$950</strong></p>
-    </div>
-    <div class="service">
-        <h3>Nivel Intermedio</h3>
-        <p>Diseño web personalizado, adaptado a tu marca.</p>
-        <p><strong>$1200</strong></p>
-    </div>
-    <div class="service">
-        <h3>Nivel Avanzado</h3>
-        <p>Integración con herramientas avanzadas de análisis y seguimiento.</p>
-        <p><strong>$1,500</strong></p>
-    </div>
-
-</section>
-
-<div class="cta">
-    <button onclick="window.location.href='https://wa.me/yourwhatsapplink'">¡EMPIEZA HOY!</button>
-</div>
-
-<footer>
-    <p>&copy; 2024 @axlcrvz |  <a href="https://www.axlcrvz.com" target="_blank">axlcrvz.com</a></p>
-</footer>
-
+  <header>
+    <h1>@axlcrvz</h1>
+    <nav>
+      <button class="nav-toggle">&#9776;</button>
+      <ul class="nav-menu">
+        <li><a href="https://www.axlcrvz.com/">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="hero">
+      <div class="content">
+        <h2>desarrollo web</h2>
+                  <p>Tu Presencia Online Simplificada.</p>
+        <div class="link-container">
+            <a class="link" href="https://wa.me/" target="_blank">
+              <img class="icon" src="icons/whatsapp.svg">Mas Informacion
+            </a>
+          </div>
+      </div>
+    </section>
+    <section id="services">
+      <div class="services">
+        <div class="service">
+          <h3>Nivel Basico</h3>
+          <p>Creación de una página web estatica, funcional y atractiva.</p>
+          <div class="link-container">
+            <a class="link" href="https://wa.me/" target="_blank">
+              <img class="icon" src="icons/whatsapp.svg">$900
+            </a>
+          </div>
+        </div>
+        <div class="service">
+          <h3>Nivel Avanzado</h3>
+          <p>Diseño web personalizado, adaptado a tu marca.</p>
+          <div class="link-container">
+            <a class="link" href="https://wa.me/" target="_blank">
+              <img class="icon" src="icons/whatsapp.svg">$1,500
+            </a>
+          </div>
+        </div>
+        <div class="service">
+          <h3>Nivel Premium</h3>
+          <p>Sitio web completo con secciones detalladas y navegación intuitiva para una presencia en línea robusta y efectiva.</p>
+          <div class="link-container">
+            <a class="link" href="https://wa.me/" target="_blank">
+              <img class="icon" src="icons/whatsapp.svg">$2,000
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact">
+      <h2>Contacto</h2>
+      <div class="link-container">
+        <a class="link" href="https://wa.me/" target="_blank">
+          <img class="icon" src="icons/whatsapp.svg">WhatsApp
+        </a>
+        <a class="link" href="https://www.instagram.com/axlcrvz" target="_blank">
+          <img class="icon" src="icons/instagram.svg">Instagram
+        </a>
+        <a class="link" href="https://t.me/axlcrvz">
+          <img class="icon" src="icons/telegram.svg">Telegram
+        </a>
+        <a class="link" href="mailto:axlcrvz@proton.me">
+          <img class="icon" src="icons/generic-email.svg">Email
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 @axlcrvz | <a href="https://www.axlcrvz.com" target="_blank">axlcrvz.com</a></p>
+  </footer>
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-menu').classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
