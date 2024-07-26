@@ -1,398 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@axlcrvz</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
-    <style>
-      :root {
-        --background-color: #1c1b29;
-        /* Deep purple background */
-        --text-color: #f0f0f0;
-        /* Light text color */
-        --service-bg: #29283e;
-        /* Slightly lighter purple for service background */
-        --service-border: #3a3957;
-        /* Even lighter purple for service border */
-        --hover-bg: rgba(255, 255, 255, 0.2);
-        /* Slightly brighter hover background */
-        --button-bg: #29283e;
-        /* Matching service background for buttons */
-        --button-hover-bg: #3a3957;
-        /* Matching service border for button hover */
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@axlcrvz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      --background-color: #1c1b29;
+      --text-color: #f0f0f0;
+      --service-bg: #29283e;
+      --service-border: #3a3957;
+      --hover-bg: rgba(255, 255, 255, 0.2);
+      --button-bg: #29283e;
+      --button-hover-bg: #3a3957;
+      --accent-color: #f0f0f0; /* Add accent color variable */
+    }
 
-      body {
-        font-family: 'Montserrat', Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        line-height: 1.5;
-        text-align: center;
-      }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.5;
+      text-align: center;
+    }
 
-      header {
-        padding: 20px;
-        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        background-color: var(--background-color);
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-      }
+    header {
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: var(--background-color);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-      h1 {
-        font-size: 2.1em;
-        font-weight: 700;
-        margin: 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--accent-color);
-        /* Gold color */
-      }
+    h1, h2 {
+      color: var(--accent-color);
+      margin: 0;
+    }
 
-      h2 {
-        font-size: 2em;
-        font-weight: 400;
-        margin: 15px 0 30px;
-        color: var(--accent-color);
-        /* Gold color */
-      }
+    h1 {
+      font-size: 2.1em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-      nav {
-        display: flex;
-        align-items: center;
+    h2 {
+      font-size: 2em;
+      font-weight: 400;
+      margin: 15px 0 30px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 15px;
+      margin-right: 20px;
+    }
+
+    .nav-menu {
+      list-style: none;
+      padding-right: 25px;
+      display: flex;
+    }
+
+    .nav-menu li {
+      margin: 0 15px;
+    }
+
+    .nav-menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
       }
 
       .nav-toggle {
-        display: none;
-        background: none;
-        border: none;
-        color: var(--text-color);
-        font-size: 1.5em;
-        cursor: pointer;
-        margin-left: 15px;
-        margin-right: 20px;
+        display: block;
       }
 
-      .nav-menu {
-        list-style: none;
-        padding-right: 25px;
+      .nav-menu.show {
         display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background-color: var(--background-color);
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
       }
 
-      .nav-menu li {
-        margin: 0 15px;
+      .nav-menu.show li {
+        margin: 10px 0;
       }
+    }
 
-      .nav-menu a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 600;
-        /* Bold font for menu items */
-        transition: color 0.3s;
-      }
+    .hero {
+      background: linear-gradient(135deg, #071739, #4b6382);
+      padding: 120px 20px;
+      color: var(--text-color);
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
 
-      .nav-menu a:hover {
-        color: var(--accent-color);
-        /* Gold color on hover */
-      }
+    .hero .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-      @media (max-width: 768px) {
-        .nav-menu {
-          display: none;
-        }
+    .hero h2 {
+      font-size: 3em;
+      margin: 0 0 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
 
-        .nav-toggle {
-          display: block;
-        }
+    .hero p {
+      font-size: 1.8em;
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 1px;
+    }
 
-        .nav-menu.show {
-          display: flex;
-          flex-direction: column;
-          position: absolute;
-          top: 80px;
-          right: 0;
-          width: 100%;
-          background-color: var(--background-color);
-          padding: 20px 0;
-          box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-menu.show li {
-          margin: 10px 0;
-        }
-      }
-
-      .hero {
-        background: linear-gradient(135deg, #071739, #4b6382);
-        /* Deep Blue to Soft Teal gradient */
-        padding: 120px 20px;
-        /* Increased padding for more space */
-        color: var(--text-color);
-        text-align: center;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-        /* More pronounced shadow for depth */
-        border-radius: 10px;
-        /* Rounded corners */
-        position: relative;
-        /* Ensure proper stacking context */
-        overflow: hidden;
-        /* Prevent overflow */
-      }
-
-      .hero .content {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
+    @media (max-width: 768px) {
       .hero h2 {
-        font-size: 3em;
-        margin: 0 0 20px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
+        font-size: 2.5em;
       }
 
       .hero p {
-        font-size: 1.8em;
-        margin: 0;
-        font-weight: 400;
-        line-height: 1.4;
-        letter-spacing: 1px;
-      }
-
-      @media (max-width: 768px) {
-        .hero h2 {
-          font-size: 2.5em;
-        }
-
-        .hero p {
-          font-size: 1.5em;
-        }
-      }
-
-      main {
-        padding-top: 90px;
-        /* Adjust the value as needed */
-      }
-
-      .services {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin: 20px 0;
-        gap: 15px;
-      }
-
-      .service {
-        background-color: var(--service-bg);
-        border: 1px solid var(--service-border);
-        border-radius: 10px;
-        padding: 20px;
-        width: 280px;
-        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-        transition: transform 0.3s, background-color 0.3s;
-      }
-
-      .service:hover {
-        transform: translateY(-3px);
-        background-color: var(--hover-bg);
-      }
-
-      .service h3 {
         font-size: 1.5em;
-        font-weight: 600;
-        margin: 10px 0;
-        color: var(--accent-color);
-        /* Gold color */
       }
+    }
 
-      .link-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 20px 0;
-      }
+    main {
+      padding-top: 90px;
+    }
 
-      .link {
-        background-color: var(--button-bg);
-        border-radius: 10px;
-        padding: 15px 30px;
-        margin: 10px 0;
-        width: 80%;
-        text-decoration: none;
-        color: var(--text-color);
-        font-size: 1.2em;
-        transition: background-color 0.3s, transform 0.3s;
-      }
+    .services {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      gap: 15px;
+    }
 
-      .link:hover {
-        background-color: var(--button-hover-bg);
-        transform: translateY(-2px);
-      }
+    .service {
+      background-color: var(--service-bg);
+      border: 1px solid var(--service-border);
+      border-radius: 10px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, background-color 0.3s;
+    }
 
-      .icon {
-        padding: 0px 8px 3.5px 0px;
-        vertical-align: middle;
-        width: 20px;
-        height: 20px;
-      }
+    .service:hover {
+      transform: translateY(-3px);
+      background-color: var(--hover-bg);
+    }
 
-      .brands {
-        text-align: center;
-        margin: 40px 0;
-        padding: 20px;
-      }
+    .service h3 {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin: 10px 0;
+    }
 
-      .brands h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-        color: var(--accent-color);
-        /* Gold color */
-      }
+    .link-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
 
-      .brand-logos {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 30px;
-        margin-top: 20px;
-      }
+    .link {
+      background-color: var(--button-bg);
+      border-radius: 10px;
+      padding: 15px 30px;
+      margin: 10px 0;
+      width: 80%;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 1.2em;
+      transition: background-color 0.3s, transform 0.3s;
+    }
 
-      .brand-logos img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        opacity: 0.8;
-        transition: opacity 0.3s;
-      }
+    .link:hover {
+      background-color: var(--button-hover-bg);
+      transform: translateY(-2px);
+    }
 
-      .brand-logos img:hover {
-        opacity: 1;
-      }
+    .icon {
+      padding-right: 8px;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+    }
 
-      footer {
-        margin-top: 40px;
-        padding: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-      }
+    .brands {
+      text-align: center;
+      margin: 40px 0;
+      padding: 20px;
+    }
 
-      footer p {
-        margin: 0;
-        font-size: 0.9em;
-      }
+    .brands h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
 
-      footer a {
-        color: var(--accent-color);
-        /* Gold color */
-        text-decoration: none;
-        font-weight: 600;
-      }
+    .brand-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
 
-      footer a:hover {
-        text-decoration: underline;
-      }
+    .brand-logos img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
 
-      #home {
-        padding-top: 80px;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>@axlcrvz</h1>
-      <nav>
-        <button class="nav-toggle">&#9776;</button>
-        <ul class="nav-menu">
-          <li>
-            <a href="#home">Inicio</a>
-          </li>
-          <li>
-            <a href="#services">Soluciones</a>
-          </li>
-          <li>
-            <a href="#brands">Marcas Satisfechas</a>
-          </li>
-          <li>
-            <a href="#contact">Contacto</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="home" class="hero">
-        <div class="content">
-          <h2>Soluciones Digitales a tu medida</h2>
-          <p>Impulsa Tu Negocio con Estrategias Personalizadas.</p>
-        </div>
-      </section>
-      <br>
-      <section id="services">
-        <div class="services">
-          <div class="service">
-            <h3>Estrategias Digitales</h3>
-            <p>Estrategias personalizadas para todas las necesidades de tu negocio.</p>
-            <div class="link-container">
-              <a class="link" href="https://www.axlcrvz.com/estrategias-digitales" target="_blank">
-                <img class="icon" src="icons/generic-website.svg">Mas Informacion</a>
-            </div>
-          </div>
-          <div class="service">
-            <h3>Desarrollo Web</h3>
-            <p>Tu presencia online simplificada.</p>
-            <div class="link-container">
-              <a class="link" href="https://www.axlcrvz.com/presencia-digital" target="_blank">
-                <img class="icon" src="icons/generic-website.svg">Mas Informacin</a>
-            </div>
-          </div>
-          <div class="service">
-            <h3>Beats Comerciales</h3>
-            <p>Acceso a una selección de beats libre de regalías.</p>
-                        <div class="link-container">
-              <a class="link" href="https://www.axlcrvz.com/presencia-digital" target="_blank">
-                <img class="icon" src="icons/generic-website.svg">Mas Informacin</a>
-            </div>
-          </div>
-          
-        </div>
-        <section id="brands">
-          <h2>Marcas Satisfechas</h2>
-          <div class="brand-logos">
-            <img src="images/mrtaco.PNG" alt="Brand 1">
-            <img src="images/milkshake.JPG" alt="Brand 2">
-          </div>
-        </section>
-        <section id="contact">
-          <h2>Contacto</h2>
+    .brand-logos img:hover {
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    #home {
+      padding-top: 80px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>@axlcrvz</h1>
+    <nav>
+      <button class="nav-toggle">&#9776;</button>
+      <ul class="nav-menu">
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#services">Soluciones</a></li>
+        <li><a href="#brands">Marcas Satisfechas</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="hero">
+      <div class="content">
+        <h2>Soluciones Digitales a tu medida</h2>
+        <p>Impulsa Tu Negocio con Estrategias Personalizadas.</p>
+      </div>
+    </section>
+    <section id="services">
+      <div class="services">
+        <div class="service">
+          <h3>Estrategias Digitales</h3>
+          <p>Estrategias personalizadas para todas las necesidades de tu negocio.</p>
           <div class="link-container">
-            <a class="link" href="https://wa.me/" target="_blank">
-              <img class="icon" src="icons/whatsapp.svg">WhatsApp </a>
-            <a class="link" href="https://www.instagram.com/axlcrvz" target="_blank">
-              <img class="icon" src="icons/instagram.svg">Instagram </a>
-            <a class="link" href="https://t.me/axlcrvz">
-              <img class="icon" src="icons/telegram.svg">Telegram </a>
-            <a class="link" href="mailto:your-email@example.com">
-              <img class="icon" src="icons/generic-email.svg">Email </a>
+            <a class="link" href="https://www.axlcrvz.com/estrategias-digitales" target="_blank">
+              <img class="icon" src="icons/generic-website.svg">Mas Informacion
+            </a>
           </div>
-        </section>
-    </main>
-    <footer>
-      <p>&copy; 2024 @axlcrvz | <a href="https://www.axlcrvz.com" target="_blank">axlcrvz.com</a>
-      </p>
-    </footer>
-    <script>
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.querySelector('.nav-menu');
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('show');
-      });
-    </script>
-  </body>
+        </div>
+        <div class="service">
+          <h3>Desarrollo Web</h3>
+          <p>Tu presencia online simplificada.</p>
+          <div class="link-container">
+            <a class="link" href="https://www.axlcrvz.com/presencia-digital" target="_blank">
+              <img class="icon" src="icons/generic-website.svg">Mas Informacion
+            </a>
+          </div>
+        </div>
+        <div class="service">
+          <h3>Beats Comerciales</h3>
+          <p>Acceso a una selección de beats libre de regalías.</p>
+          <div class="link-container">
+            <a class="link" href="https://www.axlcrvz.com/presencia-digital" target="_blank">
+              <img class="icon" src="icons/generic-website.svg">Mas Informacion
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="brands">
+      <h2>Marcas Satisfechas</h2>
+      <div class="brand-logos">
+        <img src="images/mrtaco.PNG" alt="Brand 1">
+        <img src="images/milkshake.JPG" alt="Brand 2">
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contacto</h2>
+      <div class="link-container">
+        <a class="link" href="https://wa.me/" target="_blank">
+          <img class="icon" src="icons/whatsapp.svg">WhatsApp
+        </a>
+        <a class="link" href="https://www.instagram.com/axlcrvz" target="_blank">
+          <img class="icon" src="icons/instagram.svg">Instagram
+        </a>
+        <a class="link" href="https://t.me/axlcrvz">
+          <img class="icon" src="icons/telegram.svg">Telegram
+        </a>
+        <a class="link" href="mailto:your-email@example.com">
+          <img class="icon" src="icons/generic-email.svg">Email
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 @axlcrvz | <a href="https://www.axlcrvz.com" target="_blank">axlcrvz.com</a></p>
+  </footer>
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-menu').classList.toggle('show');
+    });
+  </script>
+</body>
 </html>
