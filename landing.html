@@ -90,7 +90,26 @@ header nav a:hover {
             margin: 0;
             letter-spacing: 1px;
         }
-
+        @media (max-width: 375px) {
+ .hero h1 {
+    font-size: 2.5em; /* Smaller size for screens 600px and below */
+  }
+  .hero {
+      height: 150vh;
+  }
+  .whatsapp-btn {
+      font-size: 0.8rem;
+      padding: 6px;
+  }
+}
+        @media (max-width: 600px) {
+ .hero h1 {
+    font-size: 3.5em; /* Smaller size for screens 600px and below */
+  }
+    .hero {
+      height: 120vh;
+}
+}
         .hero p {
             font-size: 1.5rem;
             margin: 20px 0;
@@ -265,7 +284,7 @@ header nav a:hover {
         <nav>
             <a href="https://www.axlcrvz.com">Inicio</a>
 
-            <a href="https://wa.me/your-number" class="whatsapp-btn">WhatsApp</a>
+            <a href="https://wa.me/your-number" class="whatsapp-btn">Consulta</a>
         </nav>
     </div>
 </header>
@@ -275,18 +294,18 @@ header nav a:hover {
     <section class="hero">
         <h1>Soluciones Digitales a tu medida</h1>
         <p>Impulsa Tu Negocio con Estrategias Personalizadas.</p>
-        <a href="https://wa.me/your-number" class="whatsapp-btn">Mandar WhatsApp</a>
+        <a href="https://wa.me/your-number" class="whatsapp-btn">¡Obtén tu consulta gratis!</a>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2>Que esperar?</h2>
+        <h2>¿Que esperar?</h2>
         <p>Estrategias avanzadas, una presencia web sólida, y una gestión eficaz de redes sociales, todo en un servicio integral y optimizado.</p>
         <div class="service-list">
             <div class="service-item">
                 <img src="web-development-icon.png" alt="Website Development">
                 <h3>Estrategia Cohesiva</h3>
-                <p>Este plan asegura que todas las partes del marketing digital de tu empresa estén alineadas y trabajen juntas para alcanzar tus objetivos.</p>
+                <p>Este plan asegura que todas las partes de tu marketing digital estén alineadas y trabajen juntas para alcanzar tus objetivos.</p>
             </div>
             <div class="service-item">
                 <img src="social-media-icon.png" alt="Social Media Management">
