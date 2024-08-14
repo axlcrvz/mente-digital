@@ -205,14 +205,17 @@ header nav a:hover {
             letter-spacing: 1px;
         }
 
-        .social-buttons {
-            display: block;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
+
+.social-buttons {
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    gap: 20px; /* Space between buttons */
+    margin-top: 40px;
     width: 80%; /* Set a fixed width */
     padding: 10px;
-       }
+}
+
 
         .social-buttons a {
             display: block;
