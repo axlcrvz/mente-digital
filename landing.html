@@ -210,6 +210,17 @@ header nav a:hover {
             gap: 20px;
             margin-top: 40px;
         }
+        /* Container to prevent overflow */
+.social-buttons .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 40px; /* Internal padding to maintain spacing */
+    max-width: 1500px; /* Optional: limit the header width to avoid content stretching */
+    margin: 0 auto; /* Center the content */
+    box-sizing: border-box;
+}
 
         .social-buttons a {
             display: block;
@@ -315,7 +326,7 @@ header nav a:hover {
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="container" class="contact">
         <h2>Contacto</h2>
         <a href="https://wa.me/your-number" class="whatsapp-btn">WhatsApp</a>
         <div class="social-buttons">
