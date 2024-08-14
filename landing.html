@@ -61,6 +61,7 @@ header nav a:hover {
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 600;
+    width: 80%;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -206,25 +207,25 @@ header nav a:hover {
         }
 
 .social-buttons {
-    display: block;
-    text-align: center; /* Center the text within the container */
-    margin-top: 40px;
+    display: block; /* Keep it block-level */
+    margin: 40px auto; /* Center the container */
     width: 80%; /* Set a fixed width */
     padding: 10px;
 }
 
+.social-buttons a {
+    display: block; /* Keep buttons as block elements */
+    background-color: #1a1a1a;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center; /* Center text inside buttons */
+}
 
-        .social-buttons a {
-            display: block;
-            background-color: #1a1a1a;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: background-color 0.3s, transform 0.3s;
-        }
 
         .social-buttons a:hover {
             background-color: #1e90ff;
@@ -260,7 +261,7 @@ header nav a:hover {
 <header>
     <div class="container">
         <div class="logo">
-            <a href="#"><img src="logo.png" alt="Logo" width="150"></a>
+            <a href="#"><img src="logo.png" alt="Logo" width="50%"></a>
         </div>
         <nav>
             <a href="https://www.axlcrvz.com">Inicio</a>
