@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mente Digital: Conecta, Crea, Crece. Agencia de marketing digital que ofrece soluciones integrales para hacer crecer tu marca.">
+    <title>Mente Digital | Conecta, Crea, Crece</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: transparent;
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            margin-left: 20px;
+            font-weight: 300;
+        }
+
+        header .cta {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background-color 0.3s;
+        }
+
+        header .cta:hover {
+            background-color: #555;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #fff, #f1f3f5);
+            padding: 0 5%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 200;
+            color: #333;
+            letter-spacing: 2px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #666;
+            margin: 20px 0 40px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .hero .cta-hero {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .hero .cta-hero:hover {
+            background-color: #555;
+        }
+
+        section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 200;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #ccc;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="logo.png" alt="Mente Digital Logo">
+        <nav>
+            <a href="#cta" class="cta">Trabaja con Nosotros</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="fade-in">Conecta. Crea. Crece.</h1>
+        <p class="fade-in">Impulsamos tu marca en el entorno digital, creando conexiones auténticas que generan crecimiento sostenible.</p>
+        <a href="#cta" class="cta-hero fade-in">Descubre nuestros servicios</a>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us">
+        <h2 class="fade-in">Sobre Nosotros</h2>
+        <p class="fade-in">En Mente Digital, somos una agencia de marketing digital comprometida con ayudar a empresas, emprendedores y creativos a destacarse en un mercado cada vez más competitivo. Nos especializamos en soluciones integrales que combinan creatividad, tecnología y datos para diseñar estrategias efectivas y personalizadas que se adaptan a las necesidades únicas de cada cliente. Nuestro equipo está enfocado en conectar marcas con su audiencia de manera auténtica, crear experiencias memorables y generar un crecimiento sostenible.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="fade-in">Nuestros Servicios</h2>
+        <p class="fade-in">Ofrecemos una gama completa de servicios que incluyen marketing en redes sociales, desarrollo web, publicidad digital, producción musical y consultoría estratégica. Ya sea que estés buscando lanzar tu negocio al mundo digital, crear una campaña publicitaria efectiva o desarrollar una identidad de marca sólida, en Mente Digital tenemos las herramientas y el equipo necesario para hacerlo realidad.</p>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="cta">
+        <h2 class="fade-in">¿Listo para Crecer?</h2>
+        <p class="fade-in">Contáctanos hoy mismo y trabajemos juntos para hacer crecer tu marca en el mundo digital.</p>
+        <a href="#contact" class="cta-hero fade-in">Contáctanos</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Mente Digital. Todos los derechos reservados.</p>
+        <p>
+            <a href="#about-us">Sobre Nosotros</a> |
+            <a href="#services">Servicios</a> |
+            <a href="#contact">Contacto</a>
+        </p>
+    </footer>
+
+</body>
+</html>
