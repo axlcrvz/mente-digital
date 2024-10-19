@@ -1,1 +1,405 @@
-qui va el code
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logom.png">
+    <title>Mente Digital: Conecta, Crea, Crece</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Helvetica Neue', sans-serif;
+        background-color: #0d0d0d;
+        /* Very dark background */
+        color: #e0e0e0;
+        /* Softer light text */
+        line-height: 1.6;
+      }
+
+      /* Fixed Header */
+      header {
+        position: fixed;
+        width: 100%;
+        background-color: #121212;
+        padding: 10px 0;
+        /* Adjusted padding to avoid overflow */
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+        /* Ensures padding is included in the width calculation */
+      }
+
+      /* Container to prevent overflow */
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding-right: 30px;
+        /* Internal padding to maintain spacing */
+        max-width: 1500px;
+        /* Optional: limit the header width to avoid content stretching */
+        margin: 0 auto;
+        /* Center the content */
+        box-sizing: border-box;
+      }
+
+      header nav a {
+        color: #e0e0e0;
+        margin-left: 15%;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: color 0.3s;
+      }
+
+      header nav a:hover {
+        color: #1e90ff;
+      }
+
+      .logo img {
+        max-width: 200px;
+        height: auto;
+        margin-right: none;
+      }
+
+      .whatsapp-btn {
+        background-color: #382bf0;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        width: 80%;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .whatsapp-btn:hover {
+        background-color: #271dae;
+        transform: scale(1.1);
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        background-image: url('images/hero10.png');
+        /* Replace with your image path */
+        background-size: cover;
+        /* Ensures the image covers the entire section */
+        background-position: center;
+        /* Centers the image */
+        padding-top: 25px;
+        /* Adjust for fixed header */
+        color: #f5f5f5;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        max-width: 80%;
+      }
+
+      @media (max-width: 370px) {
+        .hero h1 {
+          font-size: 2.5em;
+          /* Smaller size for screens 600px and below */
+        }
+
+        .hero {
+          height: 150vh;
+        }
+
+        .whatsapp-btn {
+          font-size: 0.8rem;
+          padding: 6px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .hero h1 {
+          font-size: 3.5em;
+          /* Smaller size for screens 600px and below */
+        }
+
+        .hero {
+          height: 120vh;
+        }
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin: 20px 0;
+        font-weight: 300;
+        max-width: 80%;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero .whatsapp-btn {
+        margin-top: 30px;
+        font-size: 1.2rem;
+      }
+
+      /* Services Section */
+      .services {
+        padding: 50px 20px;
+        text-align: center;
+        background-color: #121212;
+      }
+
+      .services h2 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+      }
+
+      .services p {
+        font-size: 1.3rem;
+        margin-bottom: 60px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 300;
+        color: #b0b0b0;
+      }
+
+      .service-list {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
+      .service-item {
+        max-width: 300px;
+        text-align: center;
+        margin: 20px 10px;
+        padding: 30px 20px;
+        background-color: #181818;
+        border-radius: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .service-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .service-item img {
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 50%;
+      }
+
+      .service-item h3 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #f5f5f5;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        padding: 50px 20px;
+        background-color: #0d0d0d;
+        text-align: center;
+      }
+
+      .testimonials h2 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+      }
+
+      .testimonial-logos {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        padding-top: 40px;
+      }
+
+      .testimonial-logos img {
+        max-width: 120px;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+        border-radius: 50%;
+      }
+
+      .testimonial-logos img:hover {
+        opacity: 1;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 50px 20px;
+        text-align: center;
+        background-color: #121212;
+      }
+
+      .contact h2 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+      }
+
+      .social-buttons {
+        display: block;
+        /* Keep it block-level */
+        margin: 40px auto;
+        /* Center the container */
+        width: 80%;
+        /* Set a fixed width */
+        padding: 10px;
+      }
+
+      .social-buttons a {
+        display: block;
+        /* Keep buttons as block elements */
+        background-color: #1a1a1a;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: background-color 0.3s, transform 0.3s;
+        text-align: center;
+        /* Center text inside buttons */
+      }
+
+      .social-buttons a:hover {
+        background-color: #382bf0;
+        transform: scale(1.1);
+      }
+
+      /* Footer */
+      footer {
+        padding: 15px;
+        background-color: #0d0d0d;
+        text-align: center;
+        font-size: 1rem;
+        color: #808080;
+      }
+
+      footer nav a {
+        margin: 0 15px;
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      footer nav a:hover {
+        color: #1e90ff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="https://www.mentedigitalqro.com" style="text-decoration: none;">
+            <img src="images/mente1.png" alt="Inicio" />
+          </a>
+        </div>
+        <nav>
+          <a href="https://wa.link/potbpx" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">Consulta</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Sobre nosotros</h1>
+      <p>Conecta, Crea, Crece.</p>
+      <a href="#services" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">Leer Mas</a>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <h2>¿Quiénes somos?</h2>
+      <p>En Mente Digital, nuestro objetivo es simple: ayudar a las marcas a conectar con su audiencia, crear experiencias memorables, y crecer de manera sostenible en un mundo digital en constante evolución.</p>
+      <p>Fundada en 2024, Mente Digital nace con la visión de transformar cómo las empresas y emprendedores se posicionan en el entorno digital. Sabemos que no basta con estar presentes en las plataformas digitales, se trata de tener una estrategia clara, creativa y orientada a resultados que conecte con las emociones y necesidades de tu público.</p>
+      <h2>¿Qué Hacemos?</h2>
+      <p>En Mente Digital, ofrecemos un enfoque integral para el marketing digital, combinando tecnología, creatividad y análisis para impulsar el crecimiento de nuestros clientes. Nos especializamos en:</p>
+      <div class="service-list">
+        <div class="service-item">
+          <h3>Marketing en Redes Sociales</h3>
+          <p>Gestionamos tus perfiles y campañas en redes sociales para maximizar tu visibilidad y generar conexiones genuinas con tu audiencia.</p>
+        </div>
+        <div class="service-item">
+          <h3>Desarrollo Web</h3>
+          <p>Diseñamos y desarrollamos sitios web atractivos y funcionales que mejoran la experiencia del usuario y convierten visitas en clientes.</p>
+        </div>
+        <div class="service-item">
+          <h3>Publicidad Digital</h3>
+          <p>Creamos campañas publicitarias en plataformas como Facebook, Instagram y Google, optimizando cada peso invertido para obtener el mejor retorno de inversión (ROI).</p>
+        </div>
+        <div class="service-item">
+          <h3>Consultoría de Marketing</h3>
+          <p>Te ayudamos a desarrollar una estrategia digital efectiva, alineada con tus objetivos de negocio y las últimas tendencias del mercado.</p>
+        </div>
+      </div>
+      <h2>Nuestra Filosofía</h2>
+      <p>Creemos que el éxito digital se basa en tres pilares fundamentales:</p>
+      <div class="service-list">
+        <div class="service-item">
+          <h3>Conectar</h3>
+          <p>Escuchamos y comprendemos las necesidades tanto de nuestros clientes como de sus audiencias. Creemos en la importancia de crear conexiones genuinas que vayan más allá de las ventas.</p>
+        </div>
+        <div class="service-item">
+          <h3>Crear</h3>
+          <p>Nuestra pasión es crear contenido y experiencias que impacten. Desde campañas publicitarias hasta diseños web, cada solución está hecha a medida, con un enfoque en la innovación y la calidad.</p>
+        </div>
+        <div class="service-item">
+          <h3>Crecer</h3>
+          <p>El crecimiento es el resultado de la estrategia, la creatividad y la ejecución efectiva. Trabajamos codo a codo con nuestros clientes para garantizar su éxito a largo plazo, ayudándolos a expandir su alcance y a adaptarse a un mercado cambiante.</p>
+        </div>
+      </div>
+      <h2>Conecta Hoy</h2>
+      <p>¿Estás listo para escalar tu marca? En Mente Digital, estamos aquí para ayudarte a Conectar, Crear y Crecer en el mundo digital. Contáctanos y descubre cómo podemos trabajar juntos para lograr resultados extraordinarios.</p>
+      <a href="https://wa.link/potbpx" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">Consulta Gratis</a>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+      <h2>Marcas Satisfechas</h2>
+      <div class="testimonial-logos">
+        <img src="images/mrtaco.PNG" alt="Client 1">
+        <img src="images/milkshake.JPG" alt="Client 2">
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Contacto</h2>
+      <div class="social-buttons">
+        <a href="https://wa.link/potbpx" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <br>
+        <a href="https://instagram.com/mentedigital.qro" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <br>
+        <a href="https://www.facebook.com/profile.php?id=61566421641228&mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <br>
+        <a href="https://www.tiktok.com/@mentedigital.qro?_t=8qb2t6UYmUo&_r=1" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <br>
+        <a href="mailto:mentedigital.qro@proton.me" target="_blank" rel="noopener noreferrer">Email</a>
+        <br>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 @mentedigital.qro | <a href="https://www.mentedigitalqro.com" style="color:grey;">mentedigitalqro.com</a>
+      </p>
+    </footer>
+  </body>
+</html>
