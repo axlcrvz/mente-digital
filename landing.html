@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agencia de marketing digital en Querétaro. Especializados en manejo de redes sociales, creación de sitios web y publicidad en redes sociales.">
+    <meta name="keywords" content="marketing digital queretaro, manejo de redes sociales en queretaro, Creacion de sitios web, publicidad en redes sociales">
+    <title>Agencia Digital - Marketing en Querétaro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #111, #000);
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        .cta-header {
+            background-color: #ddf344;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .cta-header:hover {
+            box-shadow: 0 5px 20px rgba(221, 243, 68, 0.5);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            animation: fadeInUp 1.5s ease-out;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ddf344 0%, #ffffff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.7rem;
+            margin: 30px 0;
+            color: #ccc;
+        }
+
+        .cta-hero {
+            background-color: #ddf344;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-hero:hover {
+            box-shadow: 0 5px 20px rgba(221, 243, 68, 0.5);
+        }
+
+        section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .about, .services, .brands, .contact {
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .about h2, .services h2, .brands h2 {
+            font-size: 2.7rem;
+            margin-bottom: 30px;
+            letter-spacing: 1.5px;
+        }
+        h2 {
+            font-size: 2.7rem;
+            padding-top: 100px;
+            letter-spacing: 1.5px;
+            text-align:center;
+            padding-bottom:0px;
+        }
+        .about p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #bbb;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .services .service {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            width: 30%;
+            padding: 40px;
+            margin: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .services .service:hover {
+            transform: translateY(-10px);
+        }
+
+        .services h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ddf344;
+        }
+
+        .services p {
+            font-size: 1.2rem;
+            color: #bbb;
+        }
+
+        .brands {
+            background-color: #000;
+        }
+
+        .brands .brand {
+            display: inline-block;
+            margin: 40px;
+            text-align: center;
+        }
+
+        .brands img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .brands p {
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        .contact {
+            background-color: #000;
+        }
+
+        .contact h2 {
+            font-size: 2.7rem;
+            margin-bottom: 30px;
+            letter-spacing: 1.5px;
+        }
+
+        .contact .icon-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact .icon-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .contact .icon-button i {
+            font-size: 1.7rem;
+            color: #ddf344;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 30px;
+            text-align: center;
+            font-size: 1rem;
+            color: #888;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .services .service {
+                width: 100%;
+                margin: 30px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="logo.png" alt="Logo">
+        <a href="#contact" class="cta-header">Contáctanos</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Marketing Digital en Querétaro</h1>
+        <p>Transformamos tu negocio con estrategias digitales de alto impacto</p>
+        <a href="#services" class="cta-hero">Descubre nuestros servicios</a>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos una agencia líder en marketing digital y manejo de redes sociales en Querétaro, dedicada a impulsar el crecimiento de tu marca con soluciones innovadoras, creativas y personalizadas que destacan en el mercado.</p>
+    </section>
+
+    <!-- Services Section -->
+    <h2>Servicios</h2>
+    <section class="services" id="services">
+        <div class="service">
+            <h3>Manejo de Redes Sociales</h3>
+            <p>Optimiza tu presencia online con estrategias dirigidas y contenido atractivo.</p>
+        </div>
+        <div class="service">
+            <h3>Creación de Sitios Web</h3>
+            <p>Desarrollamos plataformas web futuristas y de alto rendimiento para tu negocio.</p>
+        </div>
+        <div class="service">
+            <h3>Publicidad en Redes Sociales</h3>
+            <p>Alcanza a tu público ideal con campañas publicitarias que convierten.</p>
+        </div>
+    </section>
+
+    <!-- Satisfied Brands Section -->
+    <section class="brands">
+        <h2>Marcas Satisfechas</h2>
+        <div class="brand">
+            <img src="brand1.jpg" alt="Marca 1">
+            <p>Marca 1</p>
+        </div>
+        <div class="brand">
+            <img src="brand2.jpg" alt="Marca 2">
+            <p>Marca 2</p>
+        </div>
+        <div class="brand">
+            <img src="brand3.jpg" alt="Marca 3">
+            <p>Marca 3</p>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact" id="contact">
+        <h2>Contáctanos</h2>
+        <div class="icon-button">
+            <i class="fas fa-phone"></i>
+        </div>
+        <div class="icon-button">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <div class="icon-button">
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Agencia Digital. Todos los derechos reservados.</p>
+        <p>Marketing Digital en Querétaro | Manejo de Redes Sociales en Querétaro</p>
+    </footer>
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
