@@ -1,335 +1,742 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Agencia de marketing digital en Querétaro. Especializados en manejo de redes sociales, creación de sitios web y publicidad en redes sociales.">
-    <meta name="keywords" content="marketing digital queretaro, manejo de redes sociales en queretaro, Creacion de sitios web, publicidad en redes sociales">
-    <title>Agencia Digital - Marketing en Querétaro</title>
+    <title>Premium Landing Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
-            scroll-behavior: smooth;
+        }
+
+        :root {
+            --neon: #ddf344;
+            --purple: #382bf0;
+            --dark: #191919;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--purple), #6b4ef5);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--purple);
+            border-radius: 5px;
         }
 
         body {
-            background: radial-gradient(circle at center, #111, #000);
-            color: #fff;
+            background-color: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+            position: relative;
         }
 
-        a {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        header {
+        /* Dynamic Background */
+        body::before {
+            content: '';
             position: fixed;
-            width: 100%;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(56, 43, 240, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(221, 243, 68, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            background: var(--gradient);
+            filter: blur(60px);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(30px, 30px) rotate(180deg); }
+        }
+
+        /* Glass Morphism Enhanced */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.18);
+        }
+
+        /* Header Enhanced */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            background: rgba(25, 25, 25, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        header img {
-            height: 60px;
-        }
-
-        .cta-header {
-            background-color: #ddf344;
-            padding: 12px 35px;
-            border-radius: 50px;
+        .logo {
+            font-size: 1.8rem;
+            color: var(--white);
+            text-decoration: none;
             font-weight: bold;
-            color: #000;
-            transition: all 0.3s ease;
-        }
-
-        .cta-header:hover {
-            box-shadow: 0 5px 20px rgba(221, 243, 68, 0.5);
-        }
-
-        .hero {
-            height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            animation: fadeInUp 1.5s ease-out;
-            backdrop-filter: blur(5px);
+            gap: 0.5rem;
         }
 
-        .hero h1 {
-            font-size: 5rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #ddf344 0%, #ffffff 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero p {
-            font-size: 1.7rem;
-            margin: 30px 0;
-            color: #ccc;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
         }
 
-        .cta-hero {
-            background-color: #ddf344;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: bold;
-            color: #000;
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+          
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon);
+            transition: width 0.3s ease;
+          
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+          text-decoration: none;
         }
 
-        .cta-hero:hover {
-            box-shadow: 0 5px 20px rgba(221, 243, 68, 0.5);
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+         
         }
 
-        section {
-            padding: 100px 20px;
-            text-align: center;
+        .cta-button:hover::before {
+            left: 100%;
         }
 
-        .about, .services, .brands, .contact {
-            animation: fadeInUp 1.5s ease-out;
-        }
-
-        .about h2, .services h2, .brands h2 {
-            font-size: 2.7rem;
-            margin-bottom: 30px;
-            letter-spacing: 1.5px;
-        }
-        h2 {
-            font-size: 2.7rem;
-            padding-top: 100px;
-            letter-spacing: 1.5px;
-            text-align:center;
-            padding-bottom:0px;
-        }
-        .about p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            color: #bbb;
-        }
-
-        .services {
+        /* Hero Section Enhanced */
+        .hero {
+            min-height: 100vh;
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            align-items: center;
+            padding: 8rem 5% 5rem;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        .services .service {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            width: 30%;
-            padding: 40px;
-            margin: 20px;
+        .hero-content {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--white), var(--neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Form Enhanced */
+        .form-container {
+            flex: 1;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, var(--purple) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        form {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        form h2 {
+            color: var(--neon);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        form p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--purple);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Services Section Enhanced */
+        .services {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transform: rotate(-5deg);
             transition: transform 0.3s ease;
         }
 
-        .services .service:hover {
-            transform: translateY(-10px);
+        .service-card:hover .service-icon {
+            transform: rotate(5deg) scale(1.1);
         }
 
-        .services h3 {
+        .service-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #ddf344;
+            margin-bottom: 1rem;
+            color: var(--neon);
         }
 
-        .services p {
-            font-size: 1.2rem;
-            color: #bbb;
-        }
-
+        /* Brands Section Enhanced */
         .brands {
-            background-color: #000;
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .brands .brand {
-            display: inline-block;
-            margin: 40px;
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial {
+            padding: 3rem 2rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+
+        .testimonial-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-info p {
+            color: var(--neon);
+            font-size: 1rem;
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Contact Section Enhanced */
+        .contact {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .brands img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
-        .brands p {
-            font-size: 1.1rem;
-            color: #bbb;
-        }
-
-        .contact {
-            background-color: #000;
-        }
-
-        .contact h2 {
-            font-size: 2.7rem;
-            margin-bottom: 30px;
-            letter-spacing: 1.5px;
-        }
-
-        .contact .icon-button {
+        .social-button {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.05);
-            display: inline-flex;
-            justify-content: center;
+            border-radius: 15px;
+            display: flex;
             align-items: center;
-            margin: 20px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+            justify-content: center;
+            background: var(--gradient);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .contact .icon-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
 
-        .contact .icon-button i {
-            font-size: 1.7rem;
-            color: #ddf344;
+        .social-button:hover::before {
+            left: 100%;
         }
 
+        /* Footer Enhanced */
         footer {
-            background-color: #111;
-            padding: 30px;
+            padding: 4rem 5% 2rem;
+            background: linear-gradient(to top, var(--dark), transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-column h4 {
+            color: var(--neon);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--neon);
+        }
+
+        .footer-bottom {
             text-align: center;
-            font-size: 1rem;
-            color: #888;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        footer p {
-            margin-bottom: 10px;
+        /* Cookie Banner Enhanced */
+        .cookie-banner {
+    position: fixed;
+    bottom: 2rem;
+    left: 0; /* Set left to 0 */
+    right: 0; /* Ensure it stretches across */
+    margin: 0 auto; /* Center it */
+    padding: 1.5rem 2rem;
+    background: rgba(25, 25, 25, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    z-index: 1000;
+    width: 90%; /* Keep your desired width */
+    max-width: 1200px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero { flex-direction: column; text-align: center; }
+
+/* Responsive Design (continued) */
+            @media (max-width: 1200px) {
+                .hero-content h1 { font-size: 3.5rem; }
+                .services-grid { grid-template-columns: repeat(2, 1fr); }
+                .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+                .footer-content { grid-template-columns: repeat(2, 1fr); }
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            @media (max-width: 768px) {
+                .hero-content h1 { font-size: 2.8rem; }
+                .services-grid { grid-template-columns: 1fr; }
+                .testimonial-grid { grid-template-columns: 1fr; }
+                .nav-links { display: none; }
+                .footer-content { grid-template-columns: 1fr; }
+                .social-buttons { flex-wrap: wrap; }
             }
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
+        /* Advanced Animations */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
 
-            .services .service {
-                width: 100%;
-                margin: 30px 0;
-            }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* Mouse Parallax Effect */
+        .parallax-wrapper {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .parallax-element {
+            transition: transform 0.2s ease-out;
         }
     </style>
 </head>
 <body>
+    <!-- Dynamic Background Elements -->
+    <div class="floating-element" style="width:300px;height:300px;top:20%;left:10%"></div>
+    <div class="floating-element" style="width:200px;height:200px;top:60%;right:15%"></div>
+    <div class="floating-element" style="width:250px;height:250px;top:40%;right:40%"></div>
 
-    <!-- Header -->
     <header>
-        <img src="logo.png" alt="Logo">
-        <a href="#contact" class="cta-header">Contáctanos</a>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <img src="images/mente1.png" class="logo-icon" alt="Agencia de Marketing Digital Querétaro" />
+            </a>
+            <nav class="nav-links">
+                <a href="#home">Inicio</a>
+                <a href="#services">Servicios</a>
+                <a href="#about">Nosotros</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+            <a class="cta-button" href="#contact">Contacto</a>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Marketing Digital en Querétaro</h1>
-        <p>Transformamos tu negocio con estrategias digitales de alto impacto</p>
-        <a href="#services" class="cta-hero">Descubre nuestros servicios</a>
+    <section class="hero" id="home">
+        <div class="hero-content parallax-wrapper" data-depth="0.2">
+            <h1 class="shimmer">Transformamos Ideas en Experiencias Digitales</h1>
+            <p>Impulsa tu negocio con estrategias personalizadas diseñadas por expertos en marketing digital</p>
+            <button class="cta-button pulse" onclick="window.location.href='https://wa.link/potbpx'" target="_blank" rel="noopener noreferrer">Contáctanos por WhatsApp</button> 
+        </div>
+        
     </section>
 
-    <!-- About Us Section -->
-    <section class="about">
-        <h2>Sobre Nosotros</h2>
-        <p>Somos una agencia líder en marketing digital y manejo de redes sociales en Querétaro, dedicada a impulsar el crecimiento de tu marca con soluciones innovadoras, creativas y personalizadas que destacan en el mercado.</p>
-    </section>
-
-    <!-- Services Section -->
-    <h2>Servicios</h2>
     <section class="services" id="services">
-        <div class="service">
-            <h3>Manejo de Redes Sociales</h3>
-            <p>Optimiza tu presencia online con estrategias dirigidas y contenido atractivo.</p>
+        <div class="section-title">
+            <h2>Nuestros Servicios</h2>
+            <p>Soluciones digitales diseñadas para la excelencia</p>
         </div>
-        <div class="service">
-            <h3>Creación de Sitios Web</h3>
-            <p>Desarrollamos plataformas web futuristas y de alto rendimiento para tu negocio.</p>
-        </div>
-        <div class="service">
-            <h3>Publicidad en Redes Sociales</h3>
-            <p>Alcanza a tu público ideal con campañas publicitarias que convierten.</p>
+        <div class="services-grid">
+            <div class="service-card glass parallax-wrapper" data-depth="0.1">
+                <div class="service-icon">
+                    <i class="fas fa-pencil-ruler"></i>
+                </div>
+                <h3>Manejo de Redes Sociales</h3>
+                <p>Potencia tu presencia en línea</p>
+            </div>
+                      <div class="service-card glass parallax-wrapper" data-depth="0.1">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Publicidad en Redes Sociales</h3>
+                <p>Campañas de publicidad en redes sociales que generan resultados medibles</p>
+            </div>
+            <div class="service-card glass parallax-wrapper" data-depth="0.1">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Desarrollo Web</h3>
+                <p>Experiencias de usuario que convierten visitantes en clientes.</p>
+            </div>
+
         </div>
     </section>
 
-    <!-- Satisfied Brands Section -->
-    <section class="brands">
-        <h2>Marcas Satisfechas</h2>
-        <div class="brand">
-            <img src="brand1.jpg" alt="Marca 1">
-            <p>Marca 1</p>
+    <section class="brands" id="about">
+        <div class="section-title">
+            <h2>Marcas que Confían en Nosotros</h2>
+            <p>Historias de éxito que nos respaldan</p>
         </div>
-        <div class="brand">
-            <img src="brand2.jpg" alt="Marca 2">
-            <p>Marca 2</p>
-        </div>
-        <div class="brand">
-            <img src="brand3.jpg" alt="Marca 3">
-            <p>Marca 3</p>
+        <div class="testimonial-grid">
+            <div class="testimonial glass">
+                <div class="testimonial-header">
+                    <img src="images/mrtaco.PNG" alt="CEO">
+                    <div class="testimonial-info">
+                        <h3>@mrtaco.qro</h3>
+                        <p>"Solo Para Paladares Exigentes"</p>
+                    </div>
+                </div>
+               </div>  
+            <div class="testimonial glass">
+                <div class="testimonial-header">
+                    <img src="images/milkshake.JPG" alt="Director">
+                    <div class="testimonial-info">
+                        <h3>@themilkshakefactory</h3>
+                        <p>"Shakes, Cold Drinks & Bubble Bar"</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Contact Us Section -->
-    <section class="contact" id="contact">
-        <h2>Contáctanos</h2>
-        <div class="icon-button">
-            <i class="fas fa-phone"></i>
+    <section class="contact glass" id="contact">
+        <div class="section-title">
+            <h2>Conecta con Nosotros</h2>
+            <p>Estamos aquí para hacer realidad tu visión</p>
         </div>
-        <div class="icon-button">
-            <i class="fas fa-envelope"></i>
+
+        
+        <div class="social-buttons">
+            <a href="https://instagram.com/mentedigital.qro" class="social-button"><i class="fab fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61566421641228&mibextid=LQQJ4d" class="social-button"><i class="fab fa-facebook" target="_blank" rel="noopener noreferrer"></i></a>
+            <a href="https://wa.link/potbpx" class="social-button"><i class="fab fa-whatsapp" target="_blank" rel="noopener noreferrer"></i></a>
+            <a href="mailto:mentedigital.qro@proton.me" class="social-button"><i class="fa-solid fa-envelope" target="_blank" rel="noopener noreferrer"></i></a>
         </div>
-        <div class="icon-button">
-            <i class="fas fa-map-marker-alt"></i>
-        </div>
+        
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Agencia Digital. Todos los derechos reservados.</p>
-        <p>Marketing Digital en Querétaro | Manejo de Redes Sociales en Querétaro</p>
+
+        <div class="footer-bottom">
+             <p>&copy; 2024 @mentedigital.qro | <a href="https://www.mentedigitalqro.com" style="color:grey;" >mentedigitalqro.com</a></p>
+        </div>
     </footer>
 
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <div class="cookie-banner glass" id="cookieBanner">
+        <p>Utilizamos cookies para mejorar tu experiencia y ofrecer un servicio personalizado.</p>
+        <button class="cta-button" onclick="acceptCookies()">Aceptar</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Form submission
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            // Replace with your Google Sheets API endpoint
+            const SHEET_URL = 'YOUR_GOOGLE_SHEETS_URL';
+            
+            fetch(SHEET_URL, {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+                form.reset();
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+
+
+        // Cookie consent
+        function acceptCookies() {
+            document.getElementById('cookieBanner').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        }
+
+        if (localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
