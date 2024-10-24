@@ -522,6 +522,13 @@
     max-width: 1200px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
+              .close-button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
         /* Responsive Design */
         @media (max-width: 1200px) {
@@ -693,6 +700,7 @@
     <div class="cookie-banner glass" id="cookieBanner">
         <p>Utilizamos cookies para mejorar tu experiencia y ofrecer un servicio personalizado.</p>
         <button class="cta-button" onclick="acceptCookies()">Aceptar</button>
+        <button class="close-button" onclick="rejectCookies()">&times;</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -725,14 +733,24 @@
 
 
         // Cookie consent
-        function acceptCookies() {
-            document.getElementById('cookieBanner').style.display = 'none';
-            localStorage.setItem('cookiesAccepted', 'true');
-        }
+function acceptCookies() {
+    document.getElementById('cookieBanner').style.display = 'none';
+    localStorage.setItem('cookiesAccepted', 'true');
+}
 
-        if (localStorage.getItem('cookiesAccepted')) {
-            document.getElementById('cookieBanner').style.display = 'none';
-        }
+function rejectCookies() {
+    document.getElementById('cookieBanner').style.display = 'none';
+    localStorage.setItem('cookiesAccepted', 'false');
+}
+
+// Check cookie consent status on page load
+if (localStorage.getItem('cookiesAccepted') === 'true') {
+    document.getElementById('cookieBanner').style.display = 'none';
+}
+
+// Event listeners for accept and reject buttons
+document.getElementById('acceptButton').addEventListener('click', acceptCookies);
+document.getElementById('rejectButton').addEventListener('click', rejectCookies); 
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
