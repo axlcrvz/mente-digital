@@ -772,8 +772,9 @@
     </footer>
     <div class="cookie-banner glass" id="cookieBanner">
       <p>Utilizamos cookies para mejorar tu experiencia y ofrecer un servicio personalizado.</p>
-      <button class="cta-button" onclick="acceptCookies()">Aceptar</button>
-      <button class="close-button" onclick="rejectCookies()">&times;</button>
+      <button id="acceptButton" class="cta-button" onclick="acceptCookies()">Aceptar</button>
+<button id="rejectButton" class="close-button" onclick="rejectCookies()">&times;</button>
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
@@ -813,6 +814,12 @@
       if (localStorage.getItem('cookiesAccepted') === 'true') {
         document.getElementById('cookieBanner').style.display = 'none';
       }
+      window.addEventListener('load', () => {
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+        document.getElementById('cookieBanner').style.display = 'none';
+    }
+});
+
       // Event listeners for accept and reject buttons
       document.getElementById('acceptButton').addEventListener('click', acceptCookies);
       document.getElementById('rejectButton').addEventListener('click', rejectCookies);
