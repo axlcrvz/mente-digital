@@ -748,7 +748,7 @@
           <input type="tel" name="phone" placeholder="Teléfono (opcional)">
         </div>
         <div class="input-group">
-          <input type="tel" name="message" placeholder="Mensaje">
+          <input type="text" name="message" placeholder="Mensaje">
         </div>
         <button type="submit" class="cta-button">Comenzar Ahora</button>
       </form>
@@ -772,9 +772,8 @@
     </footer>
     <div class="cookie-banner glass" id="cookieBanner">
       <p>Utilizamos cookies para mejorar tu experiencia y ofrecer un servicio personalizado.</p>
-      <button id="acceptButton" class="cta-button" onclick="acceptCookies()">Aceptar</button>
-<button id="rejectButton" class="close-button" onclick="rejectCookies()">&times;</button>
-
+      <button id="acceptButton" class="cta-button">Aceptar</button>
+      <button id="rejectButton" class="close-button">&times;</button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
@@ -789,18 +788,24 @@
         e.preventDefault();
         const formData = new FormData(form);
         // Replace with your Google Sheets API endpoint
-        const SHEET_URL = https: //script.google.com/macros/s/AKfycbxPZPUjwRe7ck7WXzTuhknMYmGtqOlcUnf4D8pTjoKx9t3nU0oZT4lmQQrK-vopga5nWQ/exec;
-          fetch(SHEET_URL, {
-            method: 'POST',
-            body: formData
-          }).then(response => {
-            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-            form.reset();
-          }).catch(error => {
-            console.error('Error:', error);
-          });
+        const SHEET_URL = "https://script.google.com/macros/s/AKfycbxPZPUjwRe7ck7WXzTuhknMYmGtqOlcUnf4D8pTjoKx9t3nU0oZT4lmQQrK-vopga5nWQ/exec";
+        fetch(SHEET_URL, {
+          method: 'POST',
+          body: formData
+        }).then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // Assuming the API returns JSON
+        }).then(data => {
+          alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+          form.reset(); // Reset the form only after successful submission
+        }).catch(error => {
+          console.error('Error:', error);
+          alert('Hubo un problema al enviar el formulario. Inténtalo de nuevo más tarde.');
+        });
       });
-      // Cookie consent
+      // Cookie consent functions
       function acceptCookies() {
         document.getElementById('cookieBanner').style.display = 'none';
         localStorage.setItem('cookiesAccepted', 'true');
@@ -811,19 +816,18 @@
         localStorage.setItem('cookiesAccepted', 'false');
       }
       // Check cookie consent status on page load
-      if (localStorage.getItem('cookiesAccepted') === 'true') {
-        document.getElementById('cookieBanner').style.display = 'none';
-      }
       window.addEventListener('load', () => {
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-        document.getElementById('cookieBanner').style.display = 'none';
-    }
-});
-
-      // Event listeners for accept and reject buttons
-      document.getElementById('acceptButton').addEventListener('click', acceptCookies);
-      document.getElementById('rejectButton').addEventListener('click', rejectCookies);
-      // Smooth scroll
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+          document.getElementById('cookieBanner').style.display = 'none';
+        } else {
+          // Show banner if not accepted or rejected
+          document.getElementById('cookieBanner').style.display = 'block';
+        }
+        // Event listeners for accept and reject buttons
+        document.getElementById('acceptButton').addEventListener('click', acceptCookies);
+        document.getElementById('rejectButton').addEventListener('click', rejectCookies);
+      });
+      // Smooth scroll functionality
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
