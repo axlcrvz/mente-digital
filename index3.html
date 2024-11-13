@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mente Digital, marketing digital en Querétaro que ofrece soluciones personalizadas para tu negocio. Estrategias de crecimiento, gestión de redes sociales y más.">
+    <title>Mente Digital | Agencia de Marketing Digital en Querétaro</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/mente3.png">
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" async>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" async>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SE72S7X50M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-SE72S7X50M');
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+      }
+
+      :root {
+        --neon: #ddf344;
+        --purple: #382bf0;
+        --dark: #191919;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, var(--purple), #6b4ef5);
+        --glass: rgba(255, 255, 255, 0.05);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--purple);
+        border-radius: 5px;
+      }
+
+      body {
+        background-color: var(--dark);
+        color: var(--white);
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Dynamic Background */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(56, 43, 240, 0.15) 0%, transparent 40%),
+          radial-gradient(circle at 80% 80%, rgba(221, 243, 68, 0.1) 0%, transparent 40%);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Floating Elements */
+      .floating-element {
+        position: absolute;
+        background: var(--gradient);
+        filter: blur(60px);
+        opacity: 0.1;
+        border-radius: 50%;
+        z-index: -1;
+        animation: float 20s infinite alternate ease-in-out;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+
+        100% {
+          transform: translate(30px, 30px) rotate(180deg);
+        }
+      }
+
+      /* Glass Morphism Enhanced */
+      .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .glass:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.18);
+      }
+
+      /* Header Enhanced */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 1.5rem 5%;
+        background: rgba(25, 25, 25, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        color: var(--white);
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--neon);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .cta-button {
+        padding: 1rem 2rem;
+        background: var(--gradient);
+        color: var(--white);
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+      }
+
+      .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+      }
+
+      .cta-button:hover::before {
+        left: 100%;
+      }
+
+      /* Hero Section Enhanced */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 8rem 5% 5rem;
+        gap: 4rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .hero-content {
+        flex: 1;
+        position: relative;
+      }
+
+      .hero-content h1 {
+        font-size: 4.5rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, var(--white), var(--neon));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+      }
+
+      .hero-content p {
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+      }
+
+      /* Form Enhanced */
+      .form-container {
+        flex: 1;
+        padding: 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .form-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at center, var(--purple) 0%, transparent 70%);
+        opacity: 0.1;
+        animation: rotate 20s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      form {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      form h2 {
+        color: var(--neon);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      form p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group {
+        position: relative;
+      }
+
+      input {
+        width: 100%;
+        padding: 1.2rem;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--white);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: var(--purple);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Services Section Enhanced */
+      .services {
+        padding: 8rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title h2 {
+        font-size: 3rem;
+        color: var(--white);
+        margin-bottom: 1rem;
+      }
+
+      .section-title p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.2rem;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .service-card {
+        padding: 3rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 2rem;
+        background: var(--gradient);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        transform: rotate(-5deg);
+        transition: transform 0.3s ease;
+      }
+
+      .service-card:hover .service-icon {
+        transform: rotate(5deg) scale(1.1);
+      }
+
+      .service-card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--neon);
+      }
+
+      /* Brands Section Enhanced */
+      .brands {
+        padding: 8rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+        margin-top: 4rem;
+      }
+
+      .testimonial {
+        padding: 3rem 2rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .testimonial-header {
+        display: fixed;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .testimonial img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 10px;
+        object-fit: cover;
+      }
+
+      .testimonial-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .testimonial-info p {
+        color: var(--neon);
+        font-size: 1rem;
+      }
+
+      .testimonial-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Contact Section Enhanced */
+      .contact {
+        padding: 8rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+        max-width: 70%;
+      }
+
+      .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .social-button {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient);
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+      }
+
+      .social-button:hover::before {
+        left: 100%;
+      }
+
+      /* Footer Enhanced */
+      footer {
+        padding: 4rem 5% 2rem;
+        background: linear-gradient(to top, var(--dark), transparent);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+      }
+
+      .footer-column h4 {
+        color: var(--neon);
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 1rem;
+      }
+
+      .footer-column ul li a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--neon);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 3rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Cookie Banner Enhanced */
+      .cookie-banner {
+        position: fixed;
+        bottom: 2rem;
+        left: 0;
+        /* Set left to 0 */
+        right: 0;
+        /* Ensure it stretches across */
+        margin: 0 auto;
+        /* Center it */
+        padding: 1.5rem 2rem;
+        background: rgba(25, 25, 25, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        z-index: 1000;
+        width: 90%;
+        /* Keep your desired width */
+        max-width: 1200px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .close-button {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        /* Responsive Design (continued) */
+        @media (max-width: 1200px) {
+          .hero-content h1 {
+            font-size: 3.5rem;
+          }
+
+          .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .testimonial-grid {
+            grid-template-columns: repeat(1, 1fr);
+          }
+
+          .footer-content {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hero-content h1 {
+            font-size: 2.8rem;
+          }
+
+          .services-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .testimonial-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .nav-links {
+            display: none;
+          }
+
+          .footer-content {
+            grid-template-columns: 1fr;
+          }
+
+          .social-buttons {
+            flex-wrap: wrap;
+          }
+
+          .cookie-banner {
+            flex-direction: column;
+            /* Stack elements vertically */
+            align-items: flex-center;
+            /* Align items to the start */
+            gap: 1rem;
+            /* Adjust gap for better spacing */
+          }
+
+          .contact {
+            max-width: 90%;
+          }
+        }
+      }
+
+      /* Advanced Animations */
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      .shimmer {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        background-size: 1000px 100%;
+        animation: shimmer 3s infinite linear;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.05);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pulse {
+        animation: pulse 2s infinite ease-in-out;
+      }
+
+      /* Mouse Parallax Effect */
+      .parallax-wrapper {
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+      }
+
+      .parallax-element {
+        transition: transform 0.2s ease-out;
+    </style>
+  </head>
+  <body>
+    <!-- Floating Elements and Fixed Elements -->
+    <div class="floating-element" style="width:300px;height:300px;top:20%;left:10%"></div>
+    <div class="floating-element" style="width:200px;height:200px;top:60%;right:15%"></div>
+    <div class="floating-element" style="width:250px;height:250px;top:40%;right:40%"></div>
+    <header>
+      <div class="header-content">
+        <a href="https://www.mentedigitalqro.com/" class="logo">
+          <img src="images/mente3.png" class="logo-icon" alt="Agencia de Marketing Digital Querétaro">
+        </a>
+        <nav class="nav-links">
+          <a href="#home">Inicio</a>
+          <a href="#services">Servicios</a>
+          <a href="#about">Nosotros</a>
+          <a href="#contact">Contacto</a>
+        </nav>
+        <a class="cta-button" href="#contact">Contacto</a>
+      </div>
+    </header>
+    <!-- Sections (Hero, Services, Brands, Contact, Footer) -->
+    <section class="hero" id="home">
+      <div class="hero-content parallax-wrapper" data-depth="0.2">
+        <h1 class="shimmer">Transformamos Ideas en Experiencias Digitales</h1>
+        <p>Impulsa tu negocio con estrategias personalizadas diseñadas por expertos en marketing digital</p>
+        <button class="cta-button pulse" onclick="window.open('https://wa.link/potbpx', '_blank')">Contáctanos por WhatsApp</button>
+      </div>
+    </section>
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="section-title">
+        <h2>Nuestros Servicios</h2>
+        <p>Soluciones digitales diseñadas para la excelencia</p>
+      </div>
+      <div class="services-grid">
+        <!-- Service Cards -->
+        <div class="service-card glass parallax-wrapper" data-depth="0.1">
+          <div class="service-icon">
+            <i class="fas fa-pencil-ruler"></i>
+          </div>
+          <h3>Manejo de Redes Sociales</h3>
+          <p>Potencia tu presencia en línea</p>
+        </div>
+        <div class="service-card glass parallax-wrapper" data-depth="0.1">
+          <div class="service-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Publicidad en Redes Sociales</h3>
+          <p>Campañas de publicidad en redes sociales que generan resultados medibles</p>
+        </div>
+        <div class="service-card glass parallax-wrapper" data-depth="0.1">
+          <div class="service-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>Desarrollo Web</h3>
+          <p>Experiencias de usuario que convierten visitantes en clientes.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact glass" id="contact">
+      <div class="section-title">
+        <h2>Conecta con Nosotros</h2>
+        <p>Estamos aquí para hacer realidad tu visión</p>
+      </div>
+      <form id="contactForm">
+        <div class="input-group">
+          <input type="text" name="name" placeholder="Nombre" required>
+        </div>
+        <div class="input-group">
+          <input type="email" name="email" placeholder="Correo electrónico" required>
+        </div>
+        <div class="input-group">
+          <input type="tel" name="phone" placeholder="Teléfono (opcional)">
+        </div>
+        <div class="input-group">
+          <input type="text" name="message" placeholder="Mensaje">
+        </div>
+        <button type="submit" class="cta-button">Comenzar Ahora</button>
+      </form>
+    </section>
+    <!-- Social Buttons and Footer -->
+    <div class="social-buttons">
+      <a href="https://instagram.com/mentedigital.qro" class="social-button">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61566421641228&mibextid=LQQJ4d" class="social-button">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://wa.link/potbpx" class="social-button">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+    <footer>
+      <div class="footer-bottom">
+        <p>&copy; 2024 | <a href="https://www.mentedigitalqro.com" style="color:grey;">mentedigitalqro.com</a>
+        </p>
+      </div>
+    </footer>
+    <!-- Cookie Banner -->
+    <div class="cookie-banner glass" id="cookieBanner">
+      <p>Utilizamos cookies para mejorar tu experiencia y ofrecer un servicio personalizado.</p>
+      <button id="acceptButton" class="cta-button">Aceptar</button>
+      <button id="rejectButton" class="close-button">&times;</button>
+    </div>
+    <!-- External JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+    <script>
+      // Initialize AOS
+      document.addEventListener('DOMContentLoaded', () => {
+        AOS.init({
+          duration: 1000,
+          once: true
+        });
+      });
+      // Form submission
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch("https://script.google.com/macros/s/AKfycbzKPCYr6NDEHlVQ067ljMSNBPvuDNwO1Ljv0po5DB174Gs5_rdYPIOB5mTqLUWZXuOnEw/exec", {
+          method: 'POST',
+          body: formData
+        }).then(response => response.json()).then(data => {
+          alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+          form.reset();
+        }).catch(error => alert('Hubo un problema al enviar el formulario. Inténtalo de nuevo más tarde.'));
+      });
+      // Cookie consent functions
+      function manageCookieConsent(accepted) {
+        document.getElementById('cookieBanner').style.display = 'none';
+        localStorage.setItem('cookiesAccepted', accepted);
+      }
+      // Check cookie consent status on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const banner = document.getElementById('cookieBanner');
+        if (localStorage.getItem('cookiesAccepted') !== 'true') banner.style.display = 'block';
+        document.getElementById('acceptButton').addEventListener('click', () => manageCookieConsent('true'));
+        document.getElementById('rejectButton').addEventListener('click', () => manageCookieConsent('false'));
+      });
+      // Smooth scroll functionality
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
