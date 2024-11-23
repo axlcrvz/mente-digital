@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código 808 - Escuela Virtual de Beats</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .header-blur {
+            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                        url('/api/placeholder/1920/1080') center/cover;
+        }
+
+        .golden-text {
+            color: #FFD700;
+        }
+
+        .golden-button {
+            background-color: #FFD700;
+            transition: all 0.3s ease;
+        }
+
+        .golden-button:hover {
+            background-color: #FFC800;
+            transform: translateY(-2px);
+        }
+
+        .benefit-card {
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Header -->
+    <header class="header-blur fixed w-full z-50 py-4">
+        <nav class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold golden-text">Código 808</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#inicio" class="hover:golden-text">Inicio</a>
+                <a href="#nosotros" class="hover:golden-text">Sobre Nosotros</a>
+                <a href="#testimonios" class="hover:golden-text">Testimonios</a>
+                <a href="#faq" class="hover:golden-text">FAQ</a>
+                <button class="golden-button text-black px-6 py-2 rounded-full font-semibold">
+                    ¡Regístrate Gratis!
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
+            <div class="space-y-8">
+                <h1 class="text-5xl font-bold leading-tight">
+                    Convierte tus beats en un negocio exitoso.
+                </h1>
+                <p class="text-xl text-gray-300">
+                    Aprende a vender tus beats en línea con nuestra guía paso a paso. 
+                    Únete hoy mismo a nuestra escuela virtual.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <img src="/api/placeholder/32/32" alt="Trust badge" class="rounded-full">
+                    <span class="text-sm text-gray-300">Más de 5,000 productores confían en nosotros</span>
+                </div>
+            </div>
+            <div class="bg-gray-900 p-8 rounded-lg shadow-xl">
+                <form id="registrationForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Nombre</label>
+                        <input type="text" required class="w-full px-4 py-3 rounded bg-gray-800 border border-gray-700">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-3 rounded bg-gray-800 border border-gray-700">
+                    </div>
+                    <button type="submit" class="w-full golden-button text-black py-4 rounded-lg font-bold text-lg">
+                        ¡Comienza Ahora Gratis!
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="nosotros" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">¿Por qué elegir Código 808?</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="benefit-card bg-black p-8 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gray-800 rounded-full flex items-center justify-center">
+                        <img src="/api/placeholder/32/32" alt="Marketing icon">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Experto en Marketing</h3>
+                    <p class="text-gray-400">Conviértete en un experto en marketing de beats</p>
+                </div>
+                <!-- More benefit cards following the same structure -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Historias de Éxito de Nuestros Estudiantes</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 p-8 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="/api/placeholder/48/48" alt="Student" class="rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Carlos Rodriguez</h4>
+                            <p class="text-sm text-gray-400">Beat Producer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Gracias a Código 808, mis ventas de beats se multiplicaron por 3 en solo dos meses."</p>
+                </div>
+                <!-- More testimonials following the same structure -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">¿Tienes Preguntas? Aquí están las Respuestas</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="faq-item bg-black rounded-lg p-6 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-semibold">¿Cuánto cuesta unirse a la escuela virtual?</h3>
+                        <span class="transform transition-transform">▼</span>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-400">
+                        El registro inicial es completamente gratuito. Tendrás acceso a contenido introductorio y podrás decidir si deseas continuar con el programa completo.
+                    </div>
+                </div>
+                <!-- More FAQ items following the same structure -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8">¡Empieza tu camino hacia el éxito ahora!</h2>
+            <form id="finalCTA" class="max-w-md mx-auto space-y-6">
+                <input type="email" placeholder="Tu email" required class="w-full px-4 py-3 rounded bg-gray-800 border border-gray-700">
+                <button type="submit" class="w-full golden-button text-black py-4 rounded-lg font-bold text-lg">
+                    ¡Únete a Código 808!
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold golden-text mb-4">Código 808</h3>
+                    <p class="text-gray-400">Tu escuela virtual para vender beats</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Políticas de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-white">Términos y Condiciones</a></li>
+                        <li><a href="#" class="hover:text-white">Soporte</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Redes Sociales</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <img src="/api/placeholder/24/24" alt="Instagram">
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <img src="/api/placeholder/24/24" alt="YouTube">
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contacto</h4>
+                    <p class="text-gray-400">info@codigo808.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const wasActive = item.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+
+                // Toggle clicked item
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission handling
+        const handleSubmit = (formId) => {
+            document.getElementById(formId).addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = e.target.querySelector('input[type="email"]').value;
+                // Here you would typically send the data to your backend
+                console.log(`Form ${formId} submitted with email: ${email}`);
+                alert('¡Gracias por registrarte! Te contactaremos pronto.');
+                e.target.reset();
+            });
+        };
+
+        handleSubmit('registrationForm');
+        handleSubmit('finalCTA');
+    </script>
+</body>
+</html>
