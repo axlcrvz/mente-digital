@@ -345,10 +345,51 @@
 
       /* Brands Section Enhanced */
       .brands {
-        padding: 8rem 5%;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
+  padding: 4rem 5%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+.logo-scroll {
+  display: flex;
+  align-items: center;
+  animation: scroll 20s linear infinite;
+  width: fit-content; /* Allows container to fit content width */
+}
+
+.logo-scroll img {
+  width: 150px; /* Fixed width for all logos */
+  height: 150px; /* Fixed height for all logos */
+  object-fit: contain; /* Maintains aspect ratio */
+  margin: 0 2rem; /* Equal spacing between logos */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Create the continuous effect by duplicating logos */
+.logo-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.logo-scroll {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+/* Pause animation on hover */
+.logo-container:hover .logo-scroll {
+  animation-play-state: paused;
+}
 
       .testimonial-grid {
         display: grid;
@@ -728,20 +769,28 @@
     </section>
     <!-- brands sectiom -->
     <section class="brands" id="about">
-      <div class="section-title">
-        <h2>Marcas que Confían en Nosotros</h2>
+    <div class="section-title">
+      <h2>Marcas que Confían en Nosotros</h2>
+    </div>
+    <div class="logo-container">
+      <!-- Original set of logos -->
+      <div class="logo-scroll">
+        <img src="images/marca3.png" alt="Logo 1">
+        <img src="images/marca4.png" alt="Logo 2">
+        <img src="images/mrtaco.PNG" alt="Logo 3">
+        <img src="images/milkshake.JPG" alt="Logo 4">
+        <img src="images/marca7.png" alt="Logo 5">
+        <img src="images/marca6.png" alt="Logo 6">
+        <!-- Duplicate set for seamless scrolling -->
+        <img src="images/marca3.png" alt="Logo 1">
+        <img src="images/marca4.png" alt="Logo 2">
+        <img src="images/mrtaco.PNG" alt="Logo 3">
+        <img src="images/milkshake.JPG" alt="Logo 4">
+        <img src="images/marca7.png" alt="Logo 5">
+        <img src="images/marca6.png" alt="Logo 6">
       </div>
-      <div class="testimonial-grid">
-        <div class="testimonial glass">
-          <img src="images/marca3.png" alt="CEO">
-          <img src="images/marca4.png" alt="CEO">
-          <img src="images/mrtaco.PNG" alt="CEO">
-          <img src="images/milkshake.JPG" alt="Director">
-          <img src="images/marca7.png" alt="CEO">
-          <img src="images/marca6.png" alt="CEO">
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
     <!-- Contact Section -->
     <section class="contact glass" id="contact">
       <div class="section-title">
