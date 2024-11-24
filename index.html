@@ -632,17 +632,8 @@
       .pulse {
         animation: pulse 2s infinite ease-in-out;
       }
-
-      /* Mouse Parallax Effect */
-      .parallax-wrapper {
-        transform-style: preserve-3d;
-        transform: perspective(1000px);
-      }
-
-      .parallax-element {
-        transition: transform 0.2s ease-out;
     </style>
-        <script>
+    <script>
       window.dataLayer = window.dataLayer || [];
 
       function gtag() {
@@ -651,23 +642,31 @@
       gtag('js', new Date());
       gtag('config', 'G-SE72S7X50M');
     </script>
-      <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '584596487370670');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=584596487370670&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <!-- Meta Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '584596487370670');
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=584596487370670&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
   </head>
   <body>
     <!-- Floating Elements and Fixed Elements -->
@@ -690,7 +689,7 @@ src="https://www.facebook.com/tr?id=584596487370670&ev=PageView&noscript=1"
     </header>
     <!-- Sections (Hero, Services, Brands, Contact, Footer) -->
     <section class="hero" id="home">
-      <div class="hero-content parallax-wrapper" data-depth="0.2">
+      <div class="hero-content" data-depth="0.2">
         <h1 class="shimmer">Publicidad en Redes Sociales y Marketing Digital en Querétaro</h1>
         <p>Impulsa tu negocio con estrategias personalizadas de Publicidad en Redes Sociales y Marketing Digital diseñadas por expertos en Querétaro.</p>
         <button class="cta-button pulse" onclick="window.open('https://www.mentedigitalqro.com/auditoria', '_blank')">Solicita tu auditoria digital gratis</button>
@@ -704,21 +703,21 @@ src="https://www.facebook.com/tr?id=584596487370670&ev=PageView&noscript=1"
       </div>
       <div class="services-grid">
         <!-- Service Cards -->
-        <div class="service-card glass parallax-wrapper" data-depth="0.1">
+        <div class="service-card glass" data-depth="0.1">
           <div class="service-icon">
             <i class="fas fa-pencil-ruler"></i>
           </div>
           <h3>Gestión de Redes Sociales</h3>
           <p>Potencia tu presencia en línea</p>
         </div>
-        <div class="service-card glass parallax-wrapper" data-depth="0.1">
+        <div class="service-card glass" data-depth="0.1">
           <div class="service-icon">
             <i class="fas fa-chart-line"></i>
           </div>
           <h3>Publicidad en Redes Sociales</h3>
           <p>Campañas de publicidad en redes sociales que generan resultados medibles</p>
         </div>
-        <div class="service-card glass parallax-wrapper" data-depth="0.1">
+        <div class="service-card glass" data-depth="0.1">
           <div class="service-icon">
             <i class="fas fa-code"></i>
           </div>
@@ -727,7 +726,7 @@ src="https://www.facebook.com/tr?id=584596487370670&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-  <!-- brands sectiom -->
+    <!-- brands sectiom -->
     <section class="brands" id="about">
       <div class="section-title">
         <h2>Marcas que Confían en Nosotros</h2>
@@ -778,19 +777,21 @@ src="https://www.facebook.com/tr?id=584596487370670&ev=PageView&noscript=1"
       </a>
     </div>
     <footer>
-        <div class="footer-column">
-                <h4>Recursos</h4>
-                <ul>
-                    <li><a href="https://www.mentedigitalqro.com/blog">Blog</a></li>
-      <div class="footer-bottom">
-        <h3 class="text-2xl font-bold mb-4">Mente Digital</h3>
-        <p class="mb-6">Conecta, Crea, Crece.</p>
-        <div class="logo-icon">
-          <a href="https://www.mentedigitalqro.com/" class="logo-icon">
-            <img src="images/mente3.png" class="logo-icon" alt="Agencia de Marketing Digital Querétaro" />
-          </a>
-        </div>
-      </div>
+      <div class="footer-column">
+        <h4>Recursos</h4>
+        <ul>
+          <li>
+            <a href="https://www.mentedigitalqro.com/blog">Blog</a>
+          </li>
+          <div class="footer-bottom">
+            <h3 class="text-2xl font-bold mb-4">Mente Digital</h3>
+            <p class="mb-6">Conecta, Crea, Crece.</p>
+            <div class="logo-icon">
+              <a href="https://www.mentedigitalqro.com/" class="logo-icon">
+                <img src="images/mente3.png" class="logo-icon" alt="Agencia de Marketing Digital Querétaro" />
+              </a>
+            </div>
+          </div>
     </footer>
     <!-- Cookie Banner -->
     <div class="cookie-banner glass" id="cookieBanner">
