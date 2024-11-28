@@ -345,52 +345,59 @@
 
       /* Brands Section Enhanced */
       .brands {
-  padding: 4rem 5%;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-}
-.logo-scroll {
-  display: flex;
-  align-items: center;
-  animation: scroll 20s linear infinite;
-  width: fit-content; /* Allows container to fit content width */
-}
+        padding: 4rem 5%;
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+      }
 
-.logo-scroll img {
-  width: 80px; /* Fixed width for all logos */
-  height: 80px; /* Fixed height for all logos */
-  object-fit: contain; /* Maintains aspect ratio */
-  margin: 0 2rem; /* Equal spacing between logos */
-  border-radius: 50%;
-}
+      .logo-scroll {
+        display: flex;
+        align-items: center;
+        animation: scroll 20s linear infinite;
+        width: fit-content;
+        /* Allows container to fit content width */
+      }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+      .logo-scroll img {
+        width: 80px;
+        /* Fixed width for all logos */
+        height: 80px;
+        /* Fixed height for all logos */
+        object-fit: contain;
+        /* Maintains aspect ratio */
+        margin: 0 2rem;
+        /* Equal spacing between logos */
+        border-radius: 50%;
+      }
 
-/* Create the continuous effect by duplicating logos */
-.logo-container {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-}
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
 
-.logo-scroll {
-  display: flex;
-  animation: scroll 20s linear infinite;
-}
+        100% {
+          transform: translateX(-50%);
+        }
+      }
 
-/* Pause animation on hover */
-.logo-container:hover .logo-scroll {
-  animation-play-state: paused;
-}
+      /* Create the continuous effect by duplicating logos */
+      .logo-container {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .logo-scroll {
+        display: flex;
+        animation: scroll 20s linear infinite;
+      }
+
+      /* Pause animation on hover */
+      .logo-container:hover .logo-scroll {
+        animation-play-state: paused;
+      }
 
       .testimonial-grid {
         display: grid;
@@ -733,18 +740,18 @@
     <section class="hero" id="home">
       <div class="hero-content" data-depth="0.2">
         <h1 class="shimmer">Diseñamos estrategias claras, personalizadas y efectivas</h1>
-        <p>¿Hablamos de tu proyecto?</p>
-        <button class="cta-button pulse" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });">Consulta gratis</button>
+        <p>¿Hablamos de tu proyecto? ¡Es gratis!</p>
+        <iframe src="https://embeds.beehiiv.com/2cfd69dd-a20a-44d0-9903-41564636f2ba?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; width:90%; border-radius: 0px !important; background-color: transparent;"></iframe>
       </div>
     </section>
-<!-- us sectiom -->
+    <!-- us sectiom -->
     <section class="brands" id="us">
-    <div class="section-title">
-      <h2>¿Nosotros?</h2>
-      <p>Mente Digital Qro.</p> 
-<p>Ayudamos a negocios en Querétaro a crecer y conectar con su audiencia mediante estrategias digitales que impulsan resultados.</p>
-    </div>
-</section>
+      <div class="section-title">
+        <h2>¿Nosotros?</h2>
+        <p>Mente Digital Qro.</p>
+        <p>Ayudamos a negocios en Querétaro a crecer y conectar con su audiencia mediante estrategias digitales que impulsan resultados.</p>
+      </div>
+    </section>
     <!-- Services Section -->
     <section class="services" id="services">
       <div class="section-title">
@@ -778,49 +785,35 @@
     </section>
     <!-- brands sectiom -->
     <section class="brands" id="about">
-    <div class="section-title">
-      <h2>Marcas que Confían en Nosotros</h2>
-    </div>
-    <div class="logo-container">
-      <!-- Original set of logos -->
-      <div class="logo-scroll">
-        <img src="images/marca3.png" alt="Logo 1">
-        <img src="images/marca4.png" alt="Logo 2">
-        <img src="images/mrtaco.PNG" alt="Logo 3">
-        <img src="images/milkshake.JPG" alt="Logo 4">
-        <img src="images/marca7.png" alt="Logo 5">
-        <img src="images/marca6.png" alt="Logo 6">
-        <!-- Duplicate set for seamless scrolling -->
-        <img src="images/marca3.png" alt="Logo 1">
-        <img src="images/marca4.png" alt="Logo 2">
-        <img src="images/mrtaco.PNG" alt="Logo 3">
-        <img src="images/milkshake.JPG" alt="Logo 4">
-        <img src="images/marca7.png" alt="Logo 5">
-        <img src="images/marca6.png" alt="Logo 6">
+      <div class="section-title">
+        <h2>Marcas que Confían en Nosotros</h2>
       </div>
-    </div>
-  </section>
+      <div class="logo-container">
+        <!-- Original set of logos -->
+        <div class="logo-scroll">
+          <img src="images/marca3.png" alt="Logo 1">
+          <img src="images/marca4.png" alt="Logo 2">
+          <img src="images/mrtaco.PNG" alt="Logo 3">
+          <img src="images/milkshake.JPG" alt="Logo 4">
+          <img src="images/marca7.png" alt="Logo 5">
+          <img src="images/marca6.png" alt="Logo 6">
+          <!-- Duplicate set for seamless scrolling -->
+          <img src="images/marca3.png" alt="Logo 1">
+          <img src="images/marca4.png" alt="Logo 2">
+          <img src="images/mrtaco.PNG" alt="Logo 3">
+          <img src="images/milkshake.JPG" alt="Logo 4">
+          <img src="images/marca7.png" alt="Logo 5">
+          <img src="images/marca6.png" alt="Logo 6">
+        </div>
+      </div>
+    </section>
     <!-- Contact Section -->
     <section class="contact glass" id="contact">
       <div class="section-title">
         <h2>Haz de tu marca la favorita</h2>
-        <p>Obtén hoy mismo tu plan de marketing digital (¡Gratis!)</p>
+        <p>Obtén hoy mismo tu plan de marketing digital</p>
       </div>
-      <form id="contactForm">
-        <div class="input-group">
-          <input type="text" name="name" placeholder="Nombre" required>
-        </div>
-        <div class="input-group">
-          <input type="email" name="email" placeholder="Correo electrónico" required>
-        </div>
-        <div class="input-group">
-          <input type="tel" name="phone" placeholder="Teléfono (opcional)">
-        </div>
-        <div class="input-group">
-          <input type="text" name="message" placeholder="Mensaje">
-        </div>
-        <button type="submit" class="cta-button">Comenzar Ahora</button>
-      </form>
+      <iframe src="https://embeds.beehiiv.com/2cfd69dd-a20a-44d0-9903-41564636f2ba?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; width:90%; border-radius: 0px !important; background-color: transparent;"></iframe>
     </section>
     <!-- Social Buttons and Footer -->
     <div class="social-buttons">
