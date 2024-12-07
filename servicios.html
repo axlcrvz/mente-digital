@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mente Digital | Paquetes de Marketing Digital</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --neon: #ddf344;
+      --purple: #382bf0;
+      --dark: #191919;
+      --white: #ffffff;
+      --gradient: linear-gradient(135deg, var(--purple), #6b4ef5);
+      --glass: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Dynamic Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56, 43, 240, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(221, 243, 68, 0.1) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.5rem 5%;
+      background: rgba(25, 25, 25, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--neon);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 12rem 5% 6rem;
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--white), var(--neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Packages Section */
+    .packages {
+      padding: 4rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .ladder-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 4rem;
+    }
+
+    .ladder-step {
+      background: var(--glass);
+      border-radius: 20px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ladder-step:hover {
+      transform: translateY(-10px);
+      border-color: var(--neon);
+      box-shadow: 0 10px 30px rgba(221, 243, 68, 0.1);
+    }
+
+    .step-title {
+      font-size: 2rem;
+      color: var(--neon);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .step-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gradient);
+    }
+
+    .price {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 20px 0;
+      background: linear-gradient(to right, var(--white), var(--neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .features {
+      list-style: none;
+      margin: 25px 0;
+      flex-grow: 1;
+    }
+
+    .features li {
+      margin: 15px 0;
+      padding-left: 30px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--neon);
+      font-weight: bold;
+    }
+
+    .cta-button {
+      padding: 1.2rem 2.5rem;
+      background: var(--gradient);
+      color: var(--white);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(56, 43, 240, 0.3);
+    }
+
+    .extras {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(to top, var(--dark), transparent);
+      padding: 4rem 5% 2rem;
+      margin-top: 6rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
+      text-align: left;
+    }
+
+    .footer-column h4 {
+      color: var(--neon);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-column ul li a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+      color: var(--neon);
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .social-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(56, 43, 240, 0.4);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 1200px) {
+      .ladder-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .ladder-container {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="#" class="logo">
+        Mente Digital
+      </a>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#paquetes">Paquetes</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <h1>Impulsa tu Negocio con Marketing Digital</h1>
+    <p>Eleva tu presencia online con nuestras estrategias personalizadas de marketing digital. Diseñadas para hacer crecer tu negocio en el mundo digital.</p>
+  </section>
+
+  <section class="packages" id="paquetes">
+    <div class="ladder-container">
+      <div class="ladder-step">
+        <h2 class="step-title">Presencia Inicial</h2>
+        <div class="price">$4,900 MXN</div>
+        <p>Ideal para negocios que están comenzando.</p>
+        <ul class="features">
+          <li>Página tipo Linktree con links importantes</li>
+          <li>3 videos cortos por semana (4 semanas)</li>
+          <li>Calendario de contenido organizado</li>
+          <li>Configuración básica Google Maps</li>
+        </ul>
+        <div class="extras">
+          <strong>Extras:</strong>
+          <ul class="features">
+            <li>Dominio web gratis (1er año)</li>
+            <li>Red social adicional: +$1,000 MXN</li>
+          </ul>
+        </div>
+        <a href="#contacto" class="cta-button">Comenzar Ahora</a>
+      </div>
+
+      <div class="ladder-step">
+        <h2 class="step-title">Crecimiento Online</h2>
+        <div class="price">$8,900 MXN</div>
+        <p>Ideal para negocios que quieren profesionalizar su estrategia.</p>
+        <ul class="features">
+          <li>Landing page completa</li>
+          <li>5 videos cortos por semana (4 semanas)</li>
+          <li>Presencia en 2 redes sociales</li>
+          <li>Configuración avanzada Google Maps</li>
+          <li>Campaña en Meta Ads</li>
+          <li>$890 MXN en presupuesto para Ads</li>
+        </ul>
+        <div class="extras">
+          <strong>Extras:</strong>
+          <ul class="features">
+            <li>Dominio web gratis (1er año)</li>
+            <li>Red social adicional: +$1,500 MXN</li>
+          </ul>
+        </div>
+        <a href="#contacto" class="cta-button">Comenzar Ahora</a>
+      </div>
+
+      <div class="ladder-step">
+        <h2 class="step-title">Impacto Total</h2>
+        <div class="price">$19,000 MXN</div>
+        <p>Para negocios consolidados que buscan dominar las redes sociales.</p>
+        <ul class="features">
+          <li>Página web personalizada avanzada</li>
+          <li>7 videos cortos por semana (4 semanas)</li>
+          <li>Presencia en 3 redes sociales</li>
+          <li>Estrategia avanzada Meta Ads</li>
+          <li>$1,900 MXN en presupuesto para Ads</li>
+          <li>Embudo completo para captación</li>
+        </ul>
+        <div class="extras">
+          <strong>Extras:</strong>
+          <ul class="features">
+            <li>Dominio web gratis (1er año)</li>
+            <li>Red social adicional: +$2,000 MXN</li>
+          </ul>
+        </div>
+        <a href="#contacto" class="cta-button">Comenzar Ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-buttons">
+      <a href="https://instagram.com/mentedigital.qro" class="social-button">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61566421641228" class="social-button">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://wa.link/potbpx" class="social-button">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#">Redes Sociales</a></li>
+          <li><a href="#">Publicidad Digital</a></li>
+          <li><a href="#">Desarrollo Web</a></li>
+        </ul>
+      </div>
+      <div class="footer
