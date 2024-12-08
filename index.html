@@ -343,6 +343,118 @@
         color: var(--neon);
       }
 
+      /* brands */
+      /* Packages Section */
+      .packages {
+        padding: 4rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .ladder-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 4rem;
+      }
+
+      .ladder-step {
+        background: var(--glass);
+        border-radius: 20px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ladder-step:hover {
+        transform: translateY(-10px);
+        border-color: var(--neon);
+        box-shadow: 0 10px 30px rgba(221, 243, 68, 0.1);
+      }
+
+      .step-title {
+        font-size: 2rem;
+        color: var(--neon);
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .step-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: var(--gradient);
+      }
+
+      .price {
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 20px 0;
+        background: linear-gradient(to right, var(--white), var(--neon));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .features {
+        list-style: none;
+        margin: 25px 0;
+        flex-grow: 1;
+      }
+
+      .features li {
+        margin: 15px 0;
+        padding-left: 30px;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .features li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: var(--neon);
+        font-weight: bold;
+      }
+
+      .cta-button {
+        padding: 1rem 2rem;
+        background: var(--gradient);
+        color: var(--white);
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        margin-top: auto;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(56, 43, 240, 0.3);
+      }
+
+      .extras {
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
       /* Brands Section Enhanced */
       .brands {
         padding: 4rem 5%;
@@ -588,6 +700,10 @@
           text-align: center;
         }
 
+        .ladder-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
         /* Responsive Design (continued) */
         @media (max-width: 1200px) {
           .hero-content h1 {
@@ -610,6 +726,10 @@
         @media (max-width: 768px) {
           .hero-content h1 {
             font-size: 2.8rem;
+          }
+
+          .ladder-container {
+            grid-template-columns: 1fr;
           }
 
           .services-grid {
@@ -729,8 +849,8 @@
         </a>
         <nav class="nav-links">
           <a href="#home">Inicio</a>
-          <a href="#services">Servicios</a>
           <a href="#about">Nosotros</a>
+          <a href="#services">Servicios</a>
           <a href="#contact">Contacto</a>
         </nav>
         <a class="cta-button" href="#contact">Comenzar</a>
@@ -745,46 +865,88 @@
       </div>
     </section>
     <!-- us sectiom -->
-    <section class="brands" id="us">
+    <section class="brands" id="about">
       <div class="section-title">
         <h2>¿Nosotros?</h2>
         <p>Mente Digital Qro.</p>
         <p>Ayudamos a negocios en Querétaro a crecer y conectar con su audiencia mediante estrategias digitales que impulsan resultados.</p>
       </div>
     </section>
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- services -->
+    <section class="packages" id="services">
       <div class="section-title">
-        <h2>Nuestros Servicios</h2>
+        <h2>Paquetes Disponibles</h2>
         <p>Soluciones digitales diseñadas para la excelencia</p>
       </div>
-      <div class="services-grid">
-        <!-- Service Cards -->
-        <div class="service-card glass" data-depth="0.1">
-          <div class="service-icon">
-            <i class="fas fa-pencil-ruler"></i>
+      <div class="ladder-container">
+        <div class="ladder-step">
+          <h2 class="step-title">Presencia Inicial</h2>
+          <div class="price">$4,900 MXN</div>
+          <p>Ideal para negocios que están comenzando.</p>
+          <ul class="features">
+            <li>Página web tipo Linktree</li>
+            <li>3 videos cortos por semana</li>
+            <li>Presencia en 1 red social</li>
+            <li>Configuración básica en Google Maps</li>
+            <li>4 semanas de duración</li>
+          </ul>
+          <div class="extras">
+            <strong>Extras:</strong>
+            <ul class="features">
+              <li>Dominio web gratis (1er año)</li>
+              <li>Red social adicional: +$1,000 MXN</li>
+            </ul>
           </div>
-          <h3>Gestión de Redes Sociales</h3>
-          <p>Potencia tu presencia en línea</p>
+          <a href="#contact" class="cta-button">Comenzar Ahora</a>
         </div>
-        <div class="service-card glass" data-depth="0.1">
-          <div class="service-icon">
-            <i class="fas fa-chart-line"></i>
+        <div class="ladder-step">
+          <h2 class="step-title">Crecimiento Online</h2>
+          <div class="price">$8,900 MXN</div>
+          <p>Ideal para negocios que quieren profesionalizar su estrategia.</p>
+          <ul class="features">
+            <li>Landing page completa</li>
+            <li>5 videos cortos por semana</li>
+            <li>Presencia en 2 redes sociales</li>
+            <li>Configuración avanzada en Google Maps</li>
+            <li>Campaña en Meta Ads</li>
+            <li>$890 MXN en presupuesto para Ads</li>
+            <li>4 semanas de duración</li>
+          </ul>
+          <div class="extras">
+            <strong>Extras:</strong>
+            <ul class="features">
+              <li>Dominio web gratis (1er año)</li>
+              <li>Red social adicional: +$1,500 MXN</li>
+            </ul>
           </div>
-          <h3>Publicidad Pagada</h3>
-          <p>Campañas de publicidad en redes sociales que generan resultados medibles</p>
+          <a href="#contact" class="cta-button">Comenzar Ahora</a>
         </div>
-        <div class="service-card glass" data-depth="0.1">
-          <div class="service-icon">
-            <i class="fas fa-code"></i>
+        <div class="ladder-step">
+          <h2 class="step-title">Impacto Total</h2>
+          <div class="price">$19,000 MXN</div>
+          <p>Para negocios consolidados que buscan dominar las redes sociales.</p>
+          <ul class="features">
+            <li>Landing page avanzada</li>
+            <li>7 videos cortos por semana (4 semanas)</li>
+            <li>Presencia en 3 redes sociales</li>
+            <li>Estrategia avanzada en Meta Ads</li>
+            <li>$1,900 MXN en presupuesto para Ads</li>
+            <li>Embudo completo para captación de leads</li>
+            <li>4 semanas de duración</li>
+          </ul>
+          <div class="extras">
+            <strong>Extras:</strong>
+            <ul class="features">
+              <li>Dominio web gratis (1er año)</li>
+              <li>Red social adicional: +$2,000 MXN</li>
+            </ul>
           </div>
-          <h3>Desarrollo Web</h3>
-          <p>Experiencias de usuario que convierten visitantes en clientes.</p>
+          <a href="#contact" class="cta-button">Comenzar Ahora</a>
         </div>
       </div>
     </section>
     <!-- brands sectiom -->
-    <section class="brands" id="about">
+    <section class="brands">
       <div class="section-title">
         <h2>Marcas que Confían en Nosotros</h2>
       </div>
