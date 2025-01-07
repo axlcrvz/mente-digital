@@ -118,13 +118,14 @@
 
       .swipe-indicator {
         position: absolute;
-        bottom: 30px;
+        bottom: 120px;
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
         z-index: 2;
         animation: fadeInOut 2s infinite;
         pointer-events: none;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
       }
 
       .swipe-indicator span {
@@ -132,6 +133,23 @@
         opacity: 0.8;
         display: block;
         margin-top: 4px;
+      }
+
+      .play-indicator {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        z-index: 3;
+      }
+
+      .play-indicator.visible {
+        opacity: 1;
       }
 
       @keyframes fadeInOut {
@@ -217,6 +235,7 @@
                     
 						<span>Swipe up for more</span>
 					</div>
+					<div class="play-indicator">⏸️</div>
 					<div class="progress-bar">
 						<div class="progress"></div>
 					</div>
@@ -251,7 +270,30 @@
       }, {
         threshold: 0.5
       });
-      videoWrappers.forEach(wrapper => observer.observe(wrapper));
+      videoWrappers.forEach(wrapper => {
+        observer.observe(wrapper);
+        // Add tap to play/pause functionality
+        const video = wrapper.querySelector('video');
+        const playIndicator = wrapper.querySelector('.play-indicator');
+        let isPlaying = true;
+        wrapper.addEventListener('click', (e) => {
+          // Ignore clicks on buttons
+          if (e.target.closest('.interaction-button')) return;
+          if (isPlaying) {
+            video.pause();
+            playIndicator.textContent = '▶️';
+          } else {
+            video.play();
+            playIndicator.textContent = '⏸️';
+          }
+          isPlaying = !isPlaying;
+          playIndicator.classList.add('visible');
+          // Hide play indicator after 1 second
+          setTimeout(() => {
+            playIndicator.classList.remove('visible');
+          }, 1000);
+        });
+      });
       // Add touch/scroll handling for mobile
       let touchStartY = 0;
       let touchEndY = 0;
