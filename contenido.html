@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Video Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-container {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        .video-wrapper {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .video-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            max-width: 80%;
+        }
+
+        .video-info h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .interaction-buttons {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 2;
+        }
+
+        .interaction-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .interaction-button span {
+            font-size: 12px;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            width: 100%;
+        }
+
+        .progress {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container" id="videoContainer">
+        <!-- Video items will be inserted here by JavaScript -->
+    </div>
+
+    <script>
+        // Sample video data - replace with your actual video data
+        const videos = [
+            {
+                url: "/api/placeholder/400/320",
+                title: "Marketing Campaign 1",
+                description: "Engaging product showcase with dynamic transitions",
+                likes: "45.2K",
+                shares: "2.1K"
+            },
+            {
+                url: "/api/placeholder/400/320",
+                title: "Brand Story 2",
+                description: "Behind the scenes of our latest campaign",
+                likes: "32.1K",
+                shares: "1.8K"
+            },
+            {
+                url: "/api/placeholder/400/320",
+                title: "Product Launch",
+                description: "Unveiling our newest innovation",
+                likes: "67.8K",
+                shares: "5.4K"
+            }
+        ];
+
+        const videoContainer = document.getElementById('videoContainer');
+
+        // Create video elements
+        videos.forEach((videoData, index) => {
+            const videoWrapper = document.createElement('div');
+            videoWrapper.className = 'video-wrapper';
+            
+            videoWrapper.innerHTML = `
+                <video src="${videoData.url}" loop muted playsinline>
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-info">
+                    <h3>${videoData.title}</h3>
+                    <p>${videoData.description}</p>
+                </div>
+                <div class="interaction-buttons">
+                    <button class="interaction-button">
+                        ♥
+                        <span>${videoData.likes}</span>
+                    </button>
+                    <button class="interaction-button">
+                        ↗
+                        <span>${videoData.shares}</span>
+                    </button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            `;
+
+            videoContainer.appendChild(videoWrapper);
+        });
+
+        // Handle video playback
+        const videoWrappers = document.querySelectorAll('.video-wrapper');
+        let currentVideo = null;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target.querySelector('video');
+                const progress = entry.target.querySelector('.progress');
+                
+                if (entry.isIntersecting) {
+                    video.play();
+                    currentVideo = video;
+                    
+                    // Update progress bar
+                    const updateProgress = () => {
+                        const percentage = (video.currentTime / video.duration) * 100;
+                        progress.style.width = `${percentage}%`;
+                        if (video.playing) requestAnimationFrame(updateProgress);
+                    };
+                    
+                    video.addEventListener('playing', () => {
+                        requestAnimationFrame(updateProgress);
+                    });
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
+                    progress.style.width = '0%';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        videoWrappers.forEach(wrapper => observer.observe(wrapper));
+
+        // Add touch/scroll handling for mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartY = e.touches[0].clientY;
+        }, false);
+
+        document.addEventListener('touchend', e => {
+            touchEndY = e.changedTouches[0].clientY;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const diff = touchStartY - touchEndY;
+            const sensitivity = 50;
+
+            if (Math.abs(diff) > sensitivity) {
+                if (diff > 0) {
+                    // Swipe up - go to next video
+                    currentVideo.parentElement.nextElementSibling?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // Swipe down - go to previous video
+                    currentVideo.parentElement.previousElementSibling?.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
