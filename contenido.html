@@ -228,6 +228,7 @@
         videoWrapper.className = 'video-wrapper';
         videoWrapper.innerHTML = `
         
+					
 					<video src="${videoData.url}" loop playsinline>
             Your browser does not support the video tag.
         </video>
@@ -239,17 +240,18 @@
 						<button class="interaction-button">
                 ♥
                 
+							
 							<span>${videoData.likes}</span>
 						</button>
 						<button class="interaction-button">
                 ↗
                 
+							
 							<span>${videoData.shares}</span>
 						</button>
 						<button class="sound-button interaction-button">
             🔇
             
-							<span>Sound</span>
 						</button>
 					</div>
 					<div class="swipe-indicator">
@@ -267,8 +269,7 @@
         video.muted = true;
         soundButton.addEventListener('click', () => {
           video.muted = !video.muted;
-          soundButton.innerHTML = video.muted ? '🔇 < span > Sound < /span>' : 
-          '🔊 < span > Sound < /span>';
+          soundButton.innerHTML = video.muted ? '🔇 < span > Sound < /span>' : '🔊 < span > Sound < /span>';
         });
       });
       const videoWrappers = document.querySelectorAll('.video-wrapper');
