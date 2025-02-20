@@ -167,7 +167,7 @@ videos.forEach((videoData, index) => {
   const videoWrapper = document.createElement('div');
   videoWrapper.className = 'video-wrapper';
   videoWrapper.innerHTML = `
-    <video src="${videoData.url}" playsinline autoplay>
+    <video src="${videoData.url}" playsinline>
       Your browser does not support the video tag.
     </video>
     <div class="video-info">
@@ -200,17 +200,8 @@ const observer = new IntersectionObserver((entries) => {
     const soundControl = entry.target.querySelector('.sound-control');
 
     if (entry.isIntersecting && entry.intersectionRatio > 0.8) {
-      // Ensure video plays unmuted
-      video.muted = false;
-      video.play().catch(e => {
-        console.log("Playback failed:", e);
-        // If autoplay fails, we can show a play button or try alternative approaches
-        video.muted = true;
-        video.play().then(() => {
-          // Once playing, unmute
-          video.muted = false;
-        });
-      });
+      // Only play when mostly visible
+      video.play().catch(e => console.log("", e));
       updateProgress(video, progress);
     } else {
       video.pause();
@@ -219,7 +210,7 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: [0, 0.8, 1]
+  threshold: [0, 0.8, 1] // Monitor different visibility thresholds
 });
 
 // Observe all video wrappers
@@ -235,14 +226,8 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
     soundControl.textContent = video.muted ? '🔈' : '🔊';
   });
   
-  // Ensure videos start unmuted
+  // Initially mute videos
   video.muted = false;
-  
-  // Attempt to play immediately for the first visible video
-  if (wrapper.getBoundingClientRect().top >= 0 && 
-      wrapper.getBoundingClientRect().top <= window.innerHeight / 2) {
-    video.play().catch(e => console.log("Initial autoplay failed:", e));
-  }
 });
 
 // Progress bar update function
@@ -277,7 +262,7 @@ videoContainer.addEventListener('scroll', () => {
     if (currentWrapper) {
       currentWrapper.scrollIntoView({ behavior: 'smooth' });
     }
-  }, 150);
+  }, 150); // Adjust timeout as needed
 });
 </script>
 </body>
