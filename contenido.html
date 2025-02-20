@@ -137,19 +137,26 @@
         transform: translateX(-50%);
         text-align: center;
         z-index: 2;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 12px 20px;
+        background: rgba(0, 0, 0, 0.4);
+        /* Reduced opacity */
+        padding: 8px 15px;
+        /* Reduced padding */
         border-radius: 20px;
-        backdrop-filter: blur(4px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        animation: pulseAndBounce 2s infinite;
+        backdrop-filter: blur(2px);
+        /* Reduced blur effect */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Reduced border visibility */
+        animation: pulseAndBounce 4s infinite;
+        /* Slower animation */
         pointer-events: none;
       }
 
       .swipe-indicator span {
         font-size: 14px;
-        font-weight: 500;
-        opacity: 1;
+        font-weight: 400;
+        /* Reduced font weight */
+        opacity: 0.9;
+        /* Slightly reduced opacity */
         display: block;
         margin-top: 4px;
         white-space: nowrap;
@@ -158,7 +165,8 @@
 
       .swipe-indicator::before {
         content: "↑";
-        font-size: 20px;
+        font-size: 18px;
+        /* Slightly smaller arrow */
         display: block;
         margin-bottom: 4px;
       }
@@ -229,6 +237,7 @@
         videoWrapper.innerHTML = `
         
 					
+					
 					<video src="${videoData.url}" loop playsinline>
             Your browser does not support the video tag.
         </video>
@@ -241,11 +250,13 @@
                 ♥
                 
 							
+							
 							<span>${videoData.likes}</span>
 						</button>
 						<button class="interaction-button">
                 ↗
                 
+							
 							
 							<span>${videoData.shares}</span>
 						</button>
