@@ -1,337 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Video Viewer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            overflow: hidden;
-            background: #000;
-        }
-
-        body {
-            color: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-        }
-
-        .app-container {
-            width: 100%;
-            max-width: 420px;
-            height: 100%;
-            position: relative;
-            background: #000;
-            overflow: hidden;
-        }
-
-        .video-container {
-            height: 100%;
-            width: 100%;
-            position: relative;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-        }
-
-        .video-wrapper {
-            height: 100%;
-            width: 100%;
-            position: relative;
-            scroll-snap-align: start;
-            overflow: hidden;
-        }
-
-        video {
-            height: 100%;
-            width: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .video-info {
-            position: absolute;
-            bottom: 80px;
-            left: 20px;
-            z-index: 2;
-            max-width: 80%;
-        }
-
-        .video-info h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .video-info p {
-            font-size: 14px;
-            opacity: 0.8;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .interaction-buttons {
-            position: absolute;
-            right: 20px;
-            bottom: 80px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            z-index: 2;
-        }
-
-        .interaction-button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .interaction-button span {
-            font-size: 12px;
-        }
-
-        .progress-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.3);
-            width: 100%;
-            z-index: 2;
-        }
-
-        .progress {
-            height: 100%;
-            background: white;
-            width: 0%;
-            transition: width 0.1s linear;
-        }
-
-        .swipe-indicator {
-            position: absolute;
-            bottom: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            z-index: 2;
-            animation: fadeInOut 2s infinite;
-            pointer-events: none;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .swipe-indicator span {
-            font-size: 12px;
-            opacity: 0.8;
-            display: block;
-            margin-top: 4px;
-            white-space: nowrap;
-        }
-
-        .play-indicator {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 48px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            z-index: 3;
-        }
-
-        .play-indicator.visible {
-            opacity: 1;
-        }
-
-        @keyframes fadeInOut {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        /* Hide scrollbar but keep functionality */
-        .video-container::-webkit-scrollbar {
-            display: none;
-        }
-        .video-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Viewer</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+body {
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+.video-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+.video-wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+}
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+}
+.video-info {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+  z-index: 2;
+  max-width: 80%;
+}
+.video-info h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.video-info p {
+  font-size: 14px;
+  opacity: 0.8;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.interaction-buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2;
+}
+.interaction-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.interaction-button span {
+  font-size: 12px;
+}
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  z-index: 2;
+}
+.progress {
+  height: 100%;
+  background: white;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.sound-control {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.video-container::-webkit-scrollbar {
+  display: none;
+}
+.video-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
 </head>
 <body>
-    <div class="app-container">
-        <div class="video-container" id="videoContainer">
-            <!-- Video items will be inserted here by JavaScript -->
-        </div>
+<div class="app-container">
+  <div class="video-container" id="videoContainer">
+    <!-- Videos will be inserted here -->
+  </div>
+</div>
+
+<script>
+const videos = [
+  {
+    url: "/videos/01.mp4",
+    title: "Marketing Campaign 1",
+    description: "Engaging product showcase with dynamic transitions",
+    likes: "45.2K",
+    shares: "2.1K"
+  },
+  {
+    url: "/api/placeholder/400/320",
+    title: "Brand Story 2",
+    description: "Behind the scenes of our latest campaign",
+    likes: "32.1K",
+    shares: "1.8K"
+  },
+  {
+    url: "/api/placeholder/400/320",
+    title: "Product Launch",
+    description: "Unveiling our newest innovation",
+    likes: "67.8K",
+    shares: "5.4K"
+  }
+];
+
+const videoContainer = document.getElementById('videoContainer');
+let isScrolling = false;
+let scrollTimeout;
+
+// Create video elements
+videos.forEach((videoData, index) => {
+  const videoWrapper = document.createElement('div');
+  videoWrapper.className = 'video-wrapper';
+  videoWrapper.innerHTML = `
+    <video src="${videoData.url}" playsinline>
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-info">
+      <h3>${videoData.title}</h3>
+      <p>${videoData.description}</p>
     </div>
+    <div class="interaction-buttons">
+      <button class="interaction-button">
+        ♥
+        <span>${videoData.likes}</span>
+      </button>
+      <button class="interaction-button">
+        ↗
+        <span>${videoData.shares}</span>
+      </button>
+    </div>
+    <div class="sound-control">🔊</div>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  `;
+  videoContainer.appendChild(videoWrapper);
+});
 
-    <script>
-        // Sample video data - replace with your actual video data
-        const videos = [
-            {
-                url: "/videos/01.mp4",
-                title: "Marketing Campaign 1",
-                description: "Engaging product showcase with dynamic transitions",
-                likes: "45.2K",
-                shares: "2.1K"
-            },
-            {
-                url: "/api/placeholder/400/320",
-                title: "Brand Story 2",
-                description: "Behind the scenes of our latest campaign",
-                likes: "32.1K",
-                shares: "1.8K"
-            },
-            {
-                url: "/api/placeholder/400/320",
-                title: "Product Launch",
-                description: "Unveiling our newest innovation",
-                likes: "67.8K",
-                shares: "5.4K"
-            }
-        ];
+// Improved intersection observer with threshold array
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target.querySelector('video');
+    const progress = entry.target.querySelector('.progress');
+    const soundControl = entry.target.querySelector('.sound-control');
 
-        const videoContainer = document.getElementById('videoContainer');
+    if (entry.isIntersecting && entry.intersectionRatio > 0.8) {
+      // Only play when mostly visible
+      video.play().catch(e => console.log("Auto-play prevented:", e));
+      updateProgress(video, progress);
+    } else {
+      video.pause();
+      video.currentTime = 0;
+      progress.style.width = '0%';
+    }
+  });
+}, {
+  threshold: [0, 0.8, 1] // Monitor different visibility thresholds
+});
 
-        // Create video elements
-        videos.forEach((videoData, index) => {
-            const videoWrapper = document.createElement('div');
-            videoWrapper.className = 'video-wrapper';
-            
-            videoWrapper.innerHTML = `
-                <video src="${videoData.url}" loop muted playsinline>
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-info">
-                    <h3>${videoData.title}</h3>
-                    <p>${videoData.description}</p>
-                </div>
-                <div class="interaction-buttons">
-                    <button class="interaction-button">
-                        ♥
-                        <span>${videoData.likes}</span>
-                    </button>
-                    <button class="interaction-button">
-                        ↗
-                        <span>${videoData.shares}</span>
-                    </button>
-                </div>
-                <div class="swipe-indicator">
-                    ↑
-                    <span>Swipe up for more</span>
-                </div>
-                <div class="play-indicator">⏸️</div>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-            `;
+// Observe all video wrappers
+document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+  observer.observe(wrapper);
+  
+  const video = wrapper.querySelector('video');
+  const soundControl = wrapper.querySelector('.sound-control');
+  
+  // Sound control toggle
+  soundControl.addEventListener('click', () => {
+    video.muted = !video.muted;
+    soundControl.textContent = video.muted ? '🔈' : '🔊';
+  });
+  
+  // Initially mute videos
+  video.muted = true;
+});
 
-            videoContainer.appendChild(videoWrapper);
-        });
+// Progress bar update function
+function updateProgress(video, progressBar) {
+  const update = () => {
+    const progress = (video.currentTime / video.duration) * 100;
+    progressBar.style.width = `${progress}%`;
+    if (!video.paused) {
+      requestAnimationFrame(update);
+    }
+  };
+  video.addEventListener('play', update);
+}
 
-        // Handle video playback
-        const videoWrappers = document.querySelectorAll('.video-wrapper');
-        let currentVideo = null;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target.querySelector('video');
-                const progress = entry.target.querySelector('.progress');
-                
-                if (entry.isIntersecting) {
-                    video.play();
-                    currentVideo = video;
-                    
-                    // Update progress bar
-                    const updateProgress = () => {
-                        const percentage = (video.currentTime / video.duration) * 100;
-                        progress.style.width = `${percentage}%`;
-                        if (video.playing) requestAnimationFrame(updateProgress);
-                    };
-                    
-                    video.addEventListener('playing', () => {
-                        requestAnimationFrame(updateProgress);
-                    });
-                } else {
-                    video.pause();
-                    video.currentTime = 0;
-                    progress.style.width = '0%';
-                }
-            });
-        }, { threshold: 0.5 });
-
-        videoWrappers.forEach(wrapper => {
-            observer.observe(wrapper);
-            
-            // Add tap to play/pause functionality
-            const video = wrapper.querySelector('video');
-            const playIndicator = wrapper.querySelector('.play-indicator');
-            let isPlaying = true;
-            
-            wrapper.addEventListener('click', (e) => {
-                // Ignore clicks on buttons
-                if (e.target.closest('.interaction-button')) return;
-                
-                if (isPlaying) {
-                    video.pause();
-                    playIndicator.textContent = '▶️';
-                } else {
-                    video.play();
-                    playIndicator.textContent = '⏸️';
-                }
-                
-                isPlaying = !isPlaying;
-                playIndicator.classList.add('visible');
-                
-                // Hide play indicator after 1 second
-                setTimeout(() => {
-                    playIndicator.classList.remove('visible');
-                }, 1000);
-            });
-        });
-
-        // Add touch/scroll handling for mobile
-        let touchStartY = 0;
-        let touchEndY = 0;
-
-        document.addEventListener('touchstart', e => {
-            touchStartY = e.touches[0].clientY;
-        }, false);
-
-        document.addEventListener('touchend', e => {
-            touchEndY = e.changedTouches[0].clientY;
-            handleSwipe();
-        }, false);
-
-        function handleSwipe() {
-            const diff = touchStartY - touchEndY;
-            const sensitivity = 50;
-
-            if (Math.abs(diff) > sensitivity) {
-                if (diff > 0) {
-                    // Swipe up - go to next video
-                    currentVideo.parentElement.nextElementSibling?.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    // Swipe down - go to previous video
-                    currentVideo.parentElement.previousElementSibling?.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        }
-    </script>
+// Prevent rapid scrolling
+videoContainer.addEventListener('scroll', () => {
+  if (!isScrolling) {
+    isScrolling = true;
+  }
+  
+  clearTimeout(scrollTimeout);
+  
+  scrollTimeout = setTimeout(() => {
+    isScrolling = false;
+    // Ensure current video is properly aligned
+    const currentWrapper = Array.from(document.querySelectorAll('.video-wrapper'))
+      .find(wrapper => {
+        const rect = wrapper.getBoundingClientRect();
+        return rect.top >= 0 && rect.top <= window.innerHeight / 2;
+      });
+    
+    if (currentWrapper) {
+      currentWrapper.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 150); // Adjust timeout as needed
+});
+</script>
 </body>
 </html>
