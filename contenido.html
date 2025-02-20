@@ -201,7 +201,7 @@ const observer = new IntersectionObserver((entries) => {
 
     if (entry.isIntersecting && entry.intersectionRatio > 0.8) {
       // Only play when mostly visible
-      video.play().catch(e => console.log("", e));
+      video.play().catch(e => console.log("Auto-play prevented:", e));
       updateProgress(video, progress);
     } else {
       video.pause();
@@ -227,7 +227,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
   });
   
   // Initially mute videos
-  video.muted = false;
+  video.muted = true;
 });
 
 // Progress bar update function
