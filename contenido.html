@@ -35,15 +35,15 @@ width: 100%;
 position: relative;
 overflow-y: scroll;
 scroll-snap-type: y mandatory;
-scroll-behavior: smooth;
-overscroll-behavior-y: contain; /* Prevents bounce/rubber-band effect */
+scroll-behavior: auto; /* Changed to auto for snappier scrolling */
+overscroll-behavior-y: contain;
 }
 .video-wrapper {
 height: 100%;
 width: 100%;
 position: relative;
 scroll-snap-align: start;
-scroll-snap-stop: always; /* Forces stopping at each snap point */
+scroll-snap-stop: always;
 overflow: hidden;
 }
 video {
@@ -227,7 +227,6 @@ videoContainer.appendChild(videoWrapper);
 // Handle video playback
 const videoWrappers = document.querySelectorAll('.video-wrapper');
 let currentVideo = null;
-let isScrolling = false;
 
 const observer = new IntersectionObserver((entries) => {
 entries.forEach(entry => {
@@ -284,42 +283,31 @@ wrapper.addEventListener('click', (e) => {
 });
 });
 
-// Controlled scroll handling
+// Simplified scroll handling with boundary protection
 let touchStartY = 0;
-let touchEndY = 0;
-let currentIndex = 0;
+let currentScrollPosition = 0;
 
-document.addEventListener('touchstart', e => {
+videoContainer.addEventListener('touchstart', e => {
 touchStartY = e.touches[0].clientY;
-}, false);
+currentScrollPosition = videoContainer.scrollTop;
+}, { passive: true });
 
-document.addEventListener('touchend', e => {
-if (isScrolling) return;
+videoContainer.addEventListener('touchmove', e => {
+const currentY = e.touches[0].clientY;
+const diff = touchStartY - currentY;
 
-touchEndY = e.changedTouches[0].clientY;
-const diff = touchStartY - touchEndY;
-const sensitivity = 50;
-
-if (Math.abs(diff) > sensitivity) {
-    isScrolling = true;
-    
-    if (diff > 0 && currentIndex < videos.length - 1) {
-        // Swipe up - go to next video
-        currentIndex++;
-    } else if (diff < 0 && currentIndex > 0) {
-        // Swipe down - go to previous video
-        currentIndex--;
-    }
-    
-    const targetVideo = videoWrappers[currentIndex];
-    targetVideo.scrollIntoView({ behavior: 'smooth' });
-    
-    // Reset scrolling flag after animation
-    setTimeout(() => {
-        isScrolling = false;
-    }, 500);
+// Prevent scrolling up when at the top
+if (currentScrollPosition === 0 && diff < 0) {
+    e.preventDefault();
+    return;
 }
-}, false);
+
+// Prevent scrolling down when at the bottom
+if (currentScrollPosition >= videoContainer.scrollHeight - videoContainer.clientHeight && diff > 0) {
+    e.preventDefault();
+    return;
+}
+}, { passive: false });
 </script>
 </body>
 </html>
