@@ -205,8 +205,8 @@
     <script>
       const videos = [{
         url: "/videos/01.mp4",
-        title: "Marketing Campaign 1",
-        description: "Engaging product showcase with dynamic transitions",
+        title: "@mrtaco.qro",
+        description: "@mrtaco.qro",
         likes: "45.2K",
         shares: "2.1K"
       }, {
@@ -269,7 +269,7 @@
         video.muted = true;
         soundButton.addEventListener('click', () => {
           video.muted = !video.muted;
-          soundButton.innerHTML = video.muted ? '🔇 < span > Sound < /span>' : '🔊 < span > Sound < /span>';
+          soundButton.innerHTML = video.muted ? '🔇' : '🔊';
         });
       });
       const videoWrappers = document.querySelectorAll('.video-wrapper');
