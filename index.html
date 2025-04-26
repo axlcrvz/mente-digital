@@ -347,6 +347,7 @@
         0% {
           transform: translateX(0);
         }
+
         100% {
           transform: translateX(-50%);
         }
@@ -422,6 +423,7 @@
         0% {
           background-position: -1000px 0;
         }
+
         100% {
           background-position: 1000px 0;
         }
@@ -469,6 +471,7 @@
     </style>
     <script>
       window.dataLayer = window.dataLayer || [];
+
       function gtag() {
         dataLayer.push(arguments);
       }
@@ -477,14 +480,22 @@
     </script>
     <!-- Meta Pixel Code -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '584596487370670');
       fbq('track', 'PageView');
     </script>
@@ -498,7 +509,6 @@
     <div class="floating-element" style="width:300px;height:300px;top:20%;left:10%"></div>
     <div class="floating-element" style="width:200px;height:200px;top:60%;right:15%"></div>
     <div class="floating-element" style="width:250px;height:250px;top:40%;right:40%"></div>
-    
     <!-- Header -->
     <header>
       <div class="header-content">
@@ -514,18 +524,15 @@
         <a class="cta-button" href="https://wa.link/potbpx">Comenzar</a>
       </div>
     </header>
-    
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-content" data-depth="0.2">
         <h1 class="shimmer">Posiciona tu negocio frente a la audiencia correcta</h1>
-        <p>Publicamos contenido estratégico en 3 redes de tu elección, asegurando que llegues al público adecuado.</p>
+        <p>Publicamos contenido viral y estratégico en YouTube Shorts, Reels y TikTok — para que tu negocio esté donde está el público.</p>
         <a href="https://wa.link/potbpx" class="cta-button">
-          <i class="fab fa-whatsapp"></i> Consulta
-        </a>
+          <i class="fab fa-whatsapp"></i> Consulta </a>
       </div>
     </section>
-    
     <!-- About Section -->
     <section class="brands" id="about">
       <div class="section-title">
@@ -533,7 +540,6 @@
         <p>En Mente Digital Qro, nos especializamos en la creación y gestión de contenido en video para redes sociales. Ayudamos a emprendedores, marcas y negocios a aumentar su visibilidad con estrategias efectivas y publicaciones constantes. Nuestro objetivo es posicionarte frente a la audiencia correcta, ahorrándote tiempo y esfuerzo mientras tu negocio crece.</p>
       </div>
     </section>
-    
     <!-- Services/Packages Section -->
     <section class="packages" id="services">
       <div class="section-title">
@@ -578,7 +584,6 @@
         </div>
       </div>
     </section>
-    
     <!-- Brands Section -->
     <section class="brands">
       <div class="section-title">
@@ -596,18 +601,15 @@
         </div>
       </div>
     </section>
-    
     <!-- Contact Section -->
     <section class="contact" id="contact">
       <div class="section-title">
         <h2>Haz de tu marca la favorita</h2>
-        <p>Contáctanos hoy y elige el paquete ideal para tu negocio. ¡Tu audiencia te está esperando!</p>
+        <p>Haz de tu marca una de las más vistas en tu ciudad o en todo el país. Producimos contenido, lo publicamos por ti, y hacemos que funcione.</p>
       </div>
       <a href="https://wa.link/potbpx" class="cta-button">
-        <i class="fab fa-whatsapp"></i> Consulta
-      </a>
+        <i class="fab fa-whatsapp"></i> Consulta </a>
     </section>
-    
     <!-- Footer -->
     <footer>
       <div class="footer-column">
@@ -626,7 +628,6 @@
         </div>
       </div>
     </footer>
-
     <!-- External JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
     <script>
@@ -637,7 +638,6 @@
           once: true
         });
       });
-      
       // Smooth scroll functionality
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
