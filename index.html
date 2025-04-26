@@ -76,7 +76,7 @@
         animation: float 20s infinite alternate ease-in-out;
       }
 
-      /* Header Enhanced */
+      /* Header */
       header {
         position: fixed;
         top: 0;
@@ -114,7 +114,6 @@
         align-items: center;
         justify-content: center;
         display: inline-block;
-        /* Allows centering with text-align */
       }
 
       .nav-links {
@@ -159,6 +158,8 @@
         position: relative;
         overflow: hidden;
         text-decoration: none;
+        display: inline-block;
+        text-align: center;
       }
 
       .cta-button::before {
@@ -176,7 +177,12 @@
         left: 100%;
       }
 
-      /* Hero Section Enhanced */
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(56, 43, 240, 0.3);
+      }
+
+      /* Hero Section */
       .hero {
         min-height: 100vh;
         display: flex;
@@ -210,86 +216,7 @@
         line-height: 1.6;
       }
 
-      /* Form Enhanced */
-      .form-container {
-        flex: 1;
-        padding: 3rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .form-container::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle at center, var(--purple) 0%, transparent 70%);
-        opacity: 0.1;
-        animation: rotate 20s linear infinite;
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      form {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      form h2 {
-        color: var(--neon);
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      form p {
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: 1.5rem;
-      }
-
-      .input-group {
-        position: relative;
-      }
-
-      input {
-        width: 100%;
-        padding: 1.2rem;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--white);
-        font-size: 1rem;
-        transition: all 0.3s ease;
-      }
-
-      input:focus {
-        outline: none;
-        border-color: var(--purple);
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      input::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      /* Services Section Enhanced */
-      .services {
-        padding: 8rem 5%;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
+      /* Sections */
       .section-title {
         text-align: center;
         margin-bottom: 4rem;
@@ -306,44 +233,6 @@
         font-size: 1.2rem;
       }
 
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-      }
-
-      .service-card {
-        padding: 3rem 2rem;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .service-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 2rem;
-        background: var(--gradient);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        transform: rotate(-5deg);
-        transition: transform 0.3s ease;
-      }
-
-      .service-card:hover .service-icon {
-        transform: rotate(5deg) scale(1.1);
-      }
-
-      .service-card h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        color: var(--neon);
-      }
-
-      /* brands */
       /* Packages Section */
       .packages {
         padding: 4rem 5%;
@@ -423,37 +312,7 @@
         font-weight: bold;
       }
 
-      .cta-button {
-        padding: 1rem 2rem;
-        background: var(--gradient);
-        color: var(--white);
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        margin-top: auto;
-      }
-
-      .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(56, 43, 240, 0.3);
-      }
-
-      .extras {
-        margin-top: 25px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.7);
-      }
-
-      /* Brands Section Enhanced */
+      /* Brands Section */
       .brands {
         padding: 4rem 5%;
         max-width: 100%;
@@ -462,37 +321,6 @@
         position: relative;
       }
 
-      .logo-scroll {
-        display: flex;
-        align-items: center;
-        animation: scroll 20s linear infinite;
-        width: fit-content;
-        /* Allows container to fit content width */
-      }
-
-      .logo-scroll img {
-        width: 80px;
-        /* Fixed width for all logos */
-        height: 80px;
-        /* Fixed height for all logos */
-        object-fit: contain;
-        /* Maintains aspect ratio */
-        margin: 0 4rem;
-        /* Equal spacing between logos */
-        border-radius: 50%;
-      }
-
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      /* Create the continuous effect by duplicating logos */
       .logo-container {
         display: flex;
         overflow: hidden;
@@ -501,7 +329,27 @@
 
       .logo-scroll {
         display: flex;
+        align-items: center;
         animation: scroll 20s linear infinite;
+        width: fit-content;
+      }
+
+      .logo-scroll img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin: 0 4rem;
+        border-radius: 50%;
+      }
+
+      /* Logo animation */
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
       }
 
       /* Pause animation on hover */
@@ -509,98 +357,15 @@
         animation-play-state: paused;
       }
 
-      .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 3rem;
-        margin-top: 4rem;
-      }
-
-      .testimonial {
-        padding: 3rem 2rem;
-        text-align: center;
-        position: relative;
-      }
-
-      .testimonial-header {
-        display: fixed;
-        align-items: center;
-        gap: 1.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .testimonial img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        margin: 10px;
-        object-fit: cover;
-      }
-
-      .testimonial-info h3 {
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .testimonial-info p {
-        color: var(--neon);
-        font-size: 1rem;
-      }
-
-      .testimonial-content {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      /* Contact Section Enhanced */
+      /* Contact Section */
       .contact {
         padding: 8rem 5%;
-        max-width: 1400px;
+        max-width: 70%;
         margin: 0 auto;
         text-align: center;
-        max-width: 70%;
       }
 
-      .social-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin: 3rem 0;
-      }
-
-      .social-button {
-        width: 60px;
-        height: 60px;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--gradient);
-        color: var(--white);
-        text-decoration: none;
-        font-size: 1.5rem;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .social-button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: 0.5s;
-      }
-
-      .social-button:hover::before {
-        left: 100%;
-      }
-
-      /* Footer Enhanced */
+      /* Footer */
       footer {
         padding: 4rem 5% 2rem;
         background: linear-gradient(to top, var(--dark), transparent);
@@ -609,12 +374,8 @@
         text-align: center;
       }
 
-      .footer-content {
-        max-width: 1400px;
+      .footer-column {
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 3rem;
       }
 
       .footer-column h4 {
@@ -650,12 +411,26 @@
 
       .footer-bottom h3 {
         margin-bottom: 1.5rem;
-        /* Space below the heading */
       }
 
       .footer-bottom p {
         margin-bottom: 2rem;
-        /* Space below the paragraph */
+      }
+
+      /* Shimmer animation */
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      .shimmer {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        background-size: 1000px 100%;
+        animation: shimmer 3s infinite linear;
       }
 
       /* Responsive Design */
@@ -669,98 +444,31 @@
           grid-template-columns: repeat(2, 1fr);
         }
 
-        /* Responsive Design (continued) */
-        @media (max-width: 1200px) {
-          .hero-content h1 {
-            font-size: 3.5rem;
-          }
-
-          .services-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .testimonial-grid {
-            grid-template-columns: repeat(1, 1fr);
-          }
-
-          .footer-content {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (max-width: 768px) {
-          .hero-content h1 {
-            font-size: 2.8rem;
-          }
-
-          .ladder-container {
-            grid-template-columns: 1fr;
-          }
-
-          .services-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .testimonial-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .nav-links {
-            display: none;
-          }
-
-          .footer-content {
-            grid-template-columns: 1fr;
-          }
-
-          .social-buttons {
-            flex-wrap: wrap;
-          }
-
-          .contact {
-            max-width: 90%;
-          }
+        .hero-content h1 {
+          font-size: 3.5rem;
         }
       }
 
-      /* Advanced Animations */
-      @keyframes shimmer {
-        0% {
-          background-position: -1000px 0;
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.8rem;
         }
 
-        100% {
-          background-position: 1000px 0;
-        }
-      }
-
-      .shimmer {
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-        background-size: 1000px 100%;
-        animation: shimmer 3s infinite linear;
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
+        .ladder-container {
+          grid-template-columns: 1fr;
         }
 
-        50% {
-          transform: scale(1.05);
+        .nav-links {
+          display: none;
         }
 
-        100% {
-          transform: scale(1);
+        .contact {
+          max-width: 90%;
         }
-      }
-
-      .pulse {
-        animation: pulse 2s infinite ease-in-out;
       }
     </style>
     <script>
       window.dataLayer = window.dataLayer || [];
-
       function gtag() {
         dataLayer.push(arguments);
       }
@@ -769,22 +477,14 @@
     </script>
     <!-- Meta Pixel Code -->
     <script>
-      ! function(f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function() {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s)
-      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '584596487370670');
       fbq('track', 'PageView');
     </script>
@@ -794,10 +494,12 @@
     <!-- End Meta Pixel Code -->
   </head>
   <body>
-    <!-- Floating Elements and Fixed Elements -->
+    <!-- Floating Elements -->
     <div class="floating-element" style="width:300px;height:300px;top:20%;left:10%"></div>
     <div class="floating-element" style="width:200px;height:200px;top:60%;right:15%"></div>
     <div class="floating-element" style="width:250px;height:250px;top:40%;right:40%"></div>
+    
+    <!-- Header -->
     <header>
       <div class="header-content">
         <a href="https://www.mentedigitalqro.com/" class="logo">
@@ -812,24 +514,27 @@
         <a class="cta-button" href="https://wa.link/potbpx">Comenzar</a>
       </div>
     </header>
-    <!-- Sections (Hero, Services, Brands, Contact, Footer) -->
+    
+    <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-content" data-depth="0.2">
         <h1 class="shimmer">Posiciona tu negocio frente a la audiencia correcta</h1>
         <p>Publicamos contenido estratégico en 3 redes de tu elección, asegurando que llegues al público adecuado.</p>
         <a href="https://wa.link/potbpx" class="cta-button">
-          <i class="fab fa-whatsapp"> consulta</i>
+          <i class="fab fa-whatsapp"></i> Consulta
         </a>
       </div>
     </section>
-    <!-- us sectiom -->
+    
+    <!-- About Section -->
     <section class="brands" id="about">
       <div class="section-title">
         <h2>Sobre Nosotros</h2>
         <p>En Mente Digital Qro, nos especializamos en la creación y gestión de contenido en video para redes sociales. Ayudamos a emprendedores, marcas y negocios a aumentar su visibilidad con estrategias efectivas y publicaciones constantes. Nuestro objetivo es posicionarte frente a la audiencia correcta, ahorrándote tiempo y esfuerzo mientras tu negocio crece.</p>
       </div>
     </section>
-    <!-- services -->
+    
+    <!-- Services/Packages Section -->
     <section class="packages" id="services">
       <div class="section-title">
         <h2>Paquetes Disponibles</h2>
@@ -873,13 +578,13 @@
         </div>
       </div>
     </section>
-    <!-- brands sectiom -->
+    
+    <!-- Brands Section -->
     <section class="brands">
       <div class="section-title">
         <h2>Marcas que Confían en Nosotros</h2>
       </div>
       <div class="logo-container">
-        <!-- Original set of logos -->
         <div class="logo-scroll">
           <img src="images/mrtaco.PNG" alt="Logo 1">
           <img src="images/milkshake.JPG" alt="Logo 2">
@@ -891,17 +596,19 @@
         </div>
       </div>
     </section>
+    
     <!-- Contact Section -->
-    <section class="contact glass" id="contact">
+    <section class="contact" id="contact">
       <div class="section-title">
         <h2>Haz de tu marca la favorita</h2>
         <p>Contáctanos hoy y elige el paquete ideal para tu negocio. ¡Tu audiencia te está esperando!</p>
       </div>
       <a href="https://wa.link/potbpx" class="cta-button">
-        <i class="fab fa-whatsapp"> consulta</i>
+        <i class="fab fa-whatsapp"></i> Consulta
       </a>
     </section>
-    <!-- Social Buttons and Footer -->
+    
+    <!-- Footer -->
     <footer>
       <div class="footer-column">
         <h4>Recursos</h4>
@@ -909,16 +616,17 @@
           <li>
             <a href="https://www.mentedigitalqro.com/blog">Blog</a>
           </li>
-          <div class="footer-bottom">
-            <h3 class="text-2xl font-bold mb-4">Mente Digital</h3>
-            <p class="mb-6">Conecta, Crea, Crece.</p>
-            <div class="logo-icon">
-              <a href="https://www.mentedigitalqro.com/" class="logo-icon">
-                <img src="images/mente3.png" class="logo-icon" alt="Agencia de Marketing Digital Querétaro" />
-              </a>
-            </div>
-          </div>
+        </ul>
+        <div class="footer-bottom">
+          <h3>Mente Digital</h3>
+          <p>Conecta, Crea, Crece.</p>
+          <a href="https://www.mentedigitalqro.com/" class="logo-icon">
+            <img src="images/mente3.png" class="logo-icon" alt="Agencia de Marketing Digital Querétaro" />
+          </a>
+        </div>
+      </div>
     </footer>
+
     <!-- External JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
     <script>
@@ -929,6 +637,7 @@
           once: true
         });
       });
+      
       // Smooth scroll functionality
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -936,26 +645,6 @@
           document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
           });
-        });
-      });
-      // Form submission
-      document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const email = e.target.querySelector('input[type="email"]').value;
-          // Send data to Google Apps Script web app
-          fetch('https://script.google.com/macros/s/AKfycbwvxLkGXJvJH77EZoBlR5gamTxVV_Gh1FiwK-JvwFCkidbdCUcjiN4ASpVsVrO-13jN/exec', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: `email=${email}`
-          }).then(response => response.text()).then(message => console.log(message)).catch(error => console.error('Error:', error));
-          alert('¡Gracias por registrarte! Nos pondremos en contacto contigo pronto.');
-          e.target.reset();
-          if (modal.classList.contains('active')) {
-            toggleModal();
-          }
         });
       });
     </script>
