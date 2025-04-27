@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mente Digital Qro - Short-Form Domination</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #4527a0;
+            --accent-color: #7e57c2;
+            --text-color: #333;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 150px 0 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1200/800');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light-color);
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .about p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .highlight {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background-color: white;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+        
+        .step-card {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        /* Packages */
+        .packages {
+            background-color: var(--light-color);
+        }
+        
+        .package-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+        
+        .package-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .package-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .package-features li {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Why Short-Form */
+        .why-section {
+            background-color: white;
+        }
+        
+        .why-points {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            margin: 1rem;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .urgency-message {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        /* Trust Section */
+        .trust {
+            background-color: var(--light-color);
+        }
+        
+        .client-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .client-logo {
+            width: 120px;
+            height: auto;
+            margin: 1rem 2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .client-logo:hover {
+            opacity: 1;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-info {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .footer-links li {
+            margin-right: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+                margin-left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .step-card, .package-card {
+                margin-bottom: 2rem;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Mente Digital Qro</div>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="#how">Cómo Funciona</a></li>
+                    <li><a href="#packages">Paquetes</a></li>
+                    <li><a href="#why">Por Qué</a></li>
+                    <li><a href="#cta">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>We Don't Just Make Videos. We Build Attention Machines.</h1>
+                <p>Turn your brand into a daily presence on YouTube Shorts, TikTok, and Reels — without lifting a finger.</p>
+                <a href="#cta" class="btn">Start Growing Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="about-content fade-in">
+                <h2>Mente Digital Qro is your Short-Form Content Strike Force.</h2>
+                <p>We specialize in creating and managing viral-ready short videos that put your brand exactly where people are already watching: their phone screens.</p>
+                <p>Our job: <span class="highlight">Turn eyeballs into customers.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how" class="how-it-works section">
+        <div class="container">
+            <h2 class="text-center fade-in">How It Works</h2>
+            <div class="steps-container">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Strategy Call</h3>
+                    <p>We understand your brand, your audience, and your goals.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Content Plan</h3>
+                    <p>We build a monthly Short-Form Content Plan tailored for you.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Production</h3>
+                    <p>Our team edits, optimizes, and posts your Shorts/Reels/TikToks.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Growth Reporting</h3>
+                    <p>Get monthly reports with views, engagement, and improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="packages section">
+        <div class="container">
+            <h2 class="text-center fade-in">Our Packages</h2>
+            <div class="package-cards">
+                <div class="package-card fade-in">
+                    <h3 class="package-title">Starter Growth</h3>
+                    <div class="package-price">$4,900 MXN</div>
+                    <ul class="package-features">
+                        <li>12 videos/month (3/week)</li>
+                        <li>3 platforms</li>
+                        <li>Basic optimization</li>
+                        <li>Monthly reporting</li>
+                    </ul>
+                    <a href="#cta" class="btn">Get Started</a>
+                </div>
+                <div class="package-card fade-in">
+                    <h3 class="package-title">Scaling Mode</h3>
+                    <div class="package-price">$8,900 MXN</div>
+                    <ul class="package-features">
+                        <li>20 videos/month (5/week)</li>
+                        <li>3 platforms</li>
+                        <li>Light optimization</li>
+                        <li>Bi-weekly reporting</li>
+                    </ul>
+                    <a href="#cta" class="btn">Get Started</a>
+                </div>
+                <div class="package-card fade-in">
+                    <h3 class="package-title">Domination Plan</h3>
+                    <div class="package-price">$19,000 MXN</div>
+                    <ul class="package-features">
+                        <li>28 videos/month (7/week)</li>
+                        <li>3 platforms</li>
+                        <li>Deep optimization</li>
+                        <li>Advanced analytics</li>
+                        <li>Weekly reporting</li>
+                    </ul>
+                    <a href="#cta" class="btn">Get Started</a>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="#" class="btn">See Full Details</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Short-Form Section -->
+    <section id="why" class="why-section section">
+        <div class="container">
+            <h2 class="text-center fade-in">Why Short-Form Now?</h2>
+            <div class="why-points fade-in">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-value">90%</div>
+                        <p>of internet users prefer short videos</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3X</div>
+                        <p>higher organic reach for Shorts vs regular posts</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">300%</div>
+                        <p>increase in engagement with short-form content</p>
+                    </div>
+                </div>
+                <div class="urgency-message">
+                    <i class="fas fa-chart-line" style="color: red;"></i> Don't be invisible. 
+                    <i class="fas fa-chart-line" style="color: green;"></i> Start dominating where the attention already is.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust section">
+        <div class="container">
+            <h2 class="text-center fade-in">Brands Trust Mente Digital Qro</h2>
+            <div class="client-logos">
+                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
+                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
+                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
+                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
+                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
+                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta section">
+        <div class="container">
+            <h2 class="fade-in">Your Brand Deserves Daily Visibility.</h2>
+            <p class="fade-in">Book a Free Strategy Call — let's build your attention machine today.</p>
+            <a href="#" class="btn fade-in" id="ctaButton">Start Growing Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-info">
+                    <h3>Mente Digital Qro</h3>
+                    <p>Conecta. Crea. Crece.</p>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#about">Servicios</a></li>
+                        <li><a href="#packages">Paquetes</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#cta">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h3>Contáctanos</h3>
+                    <p><i class="fas fa-envelope"></i> info@mentedigitalqro.com</p>
+                    <p><i class="fas fa-phone"></i> +52 442 123 4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Querétaro, México</p>
+                </div>
+                <div class="footer-info">
+                    <h3>Síguenos</h3>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 15px; font-size: 1.5rem; color: white;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 15px; font-size: 1.5rem; color: white;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="margin-right: 15px; font-size: 1.5rem; color: white;"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" style="margin-right: 15px; font-size: 1.5rem; color: white;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Mente Digital Qro. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Form -->
+    <div id="modal" style="display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+        <div style="background-color: white; margin: 10% auto; padding: 30px; width: 80%; max-width: 500px; border-radius: 10px; position: relative;">
+            <span id="closeModal" style="position: absolute; right: 20px; top: 10px; font-size: 1.5rem; cursor: pointer;">&times;</span>
+            <h2 style="margin-bottom: 20px; color: var(--primary-color);">Book Your Free Strategy Call</h2>
+            <form id="contactForm">
+                <div style="margin-bottom: 15px;">
+                    <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
+                    <input type="text" id="name" name="name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="email" style="display: block; margin-bottom: 5px;">Email:</label>
+                    <input type="email" id="email" name="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="phone" style="display: block; margin-bottom: 5px;">Phone:</label>
+                    <input type="tel" id="phone" name="phone" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="company" style="display: block; margin-bottom: 5px;">Company:</label>
+                    <input type="text" id="company" name="company" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit</button>
+            </form>
+            <div id="formSuccess" style="display: none; margin-top: 20px; padding: 10px; background-color: var(--success-color); color: white; border-radius: 5px; text-align: center;">
+                Thank you! We'll contact you shortly to schedule your free strategy call.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('navLinks').classList.remove('show');
+            });
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+        
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        const ctaButton = document.getElementById('ctaButton');
+        const closeModal = document.getElementById('closeModal');
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        
+        ctaButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'block';
+        });
+        
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            formSuccess.style.display = 'none';
+            contactForm.reset();
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                formSuccess.style.display = 'none';
+                contactForm.reset();
+            }
+        });
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally send the form data to your server
+            // For demo purposes, we'll just show the success message
+            contactForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+            
+            // Reset and close after 3 seconds
+            setTimeout(function() {
+                modal.style.display = 'none';
+                formSuccess.style.display = 'none';
+                contactForm.style.display = 'block';
+                contactForm.reset();
+            }, 3000);
+        });
+        
+        // Counter animation for stats
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Current year in footer
+        document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} Mente Digital Qro. Todos los derechos reservados.`;
+    </script>
+</body>
+</html>
