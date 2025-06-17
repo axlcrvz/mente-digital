@@ -1033,20 +1033,10 @@
           },
           body: formDataUrlEncoded
         }).then(() => {
-          // Show success message
-          contactForm.style.display = 'none';
-          formSuccess.style.display = 'block';
-          // Reset form and hide success message after delay
-          setTimeout(() => {
-            modal.style.display = 'none';
-            contactForm.style.display = 'block';
-            formSuccess.style.display = 'none';
-            contactForm.reset();
-            document.body.style.overflow = 'auto';
-            submitButton.textContent = originalButtonText;
-            submitButton.disabled = false;
-          }, 3000);
-        }).catch(error => {
+  // Redirect to Thank You page immediately after successful submission
+  window.location.href = 'https://www.mentedigitalqro.com/gracias'; // <-- Change this to your actual thank you page URL
+})
+.catch(error => {
           console.error('Error:', error);
           alert('There was an error submitting your form. Please try again.');
           submitButton.textContent = originalButtonText;
