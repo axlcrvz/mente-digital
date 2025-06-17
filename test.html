@@ -956,6 +956,7 @@
       <div class="modal-content">
         <span id="closeModal">&times;</span>
         <h2>Solicita tu llamada estratégica</h2>
+        <div id="formSuccess" style="display: none;">¡Gracias! Te contactaremos en menos de 24 horas.</div>
         <form id="contactForm">
           <div class="form-group">
             <label for="name">Tu Nombre</label>
@@ -1004,81 +1005,83 @@
       });
       // Form handling function - fixed version
       contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Get form data
-            const formData = {
-              name: document.getElementById('name').value,
-              email: document.getElementById('email').value,
-              company: document.getElementById('company').value
-            };
-            // Replace this URL with the URL of your properly deployed Google Apps Script
-            // Make sure your script is deployed as a web app and accessible to anyone (including anonymous)
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyyyk-POxTbtyc8F6Oa8fpwWbzM7-reU8PSpKBL7GqPB2zuCk2LBqeBFvm8JWygGdKSog/exec';
-            // Show loading state
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            // Send the data as URL encoded form data (which works better with Google Apps Script)
-            const formDataUrlEncoded = new URLSearchParams();
-            Object.keys(formData).forEach(key => {
-              formDataUrlEncoded.append(key, formData[key]);
+        e.preventDefault();
+        // Get form data
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          company: document.getElementById('company').value
+        };
+        // Replace this URL with the URL of your properly deployed Google Apps Script
+        // Make sure your script is deployed as a web app and accessible to anyone (including anonymous)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyyyk-POxTbtyc8F6Oa8fpwWbzM7-reU8PSpKBL7GqPB2zuCk2LBqeBFvm8JWygGdKSog/exec';
+        // Show loading state
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        // Send the data as URL encoded form data (which works better with Google Apps Script)
+        const formDataUrlEncoded = new URLSearchParams();
+        Object.keys(formData).forEach(key => {
+          formDataUrlEncoded.append(key, formData[key]);
+        });
+        fetch(scriptURL, {
+          method: 'POST',
+          mode: 'no-cors', // This helps with CORS issues
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: formDataUrlEncoded
+        }).then(() => {
+  // Redirect to Thank You page immediately after successful submission
+  window.location.href = 'https://www.mentedigitalqro.com/gracias'; // <-- Change this to your actual thank you page URL
+})
+.catch(error => {
+          console.error('Error:', error);
+          alert('There was an error submitting your form. Please try again.');
+          submitButton.textContent = originalButtonText;
+          submitButton.disabled = false;
+        });
+      });
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
             });
-            fetch(scriptURL, {
-              method: 'POST',
-              mode: 'no-cors', // This helps with CORS issues
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-              body: formDataUrlEncoded
-            }).then(() => {}).then(() => {
-              // Redirect to Thank You page
-              window.location.href = 'https://www.mentedigitalqro.com/gracias'; // Use your actual Thank You page path here
-            }).catch(error => {
-              console.error('Error:', error);
-              alert('There was an error submitting your form. Please try again.');
-              submitButton.textContent = originalButtonText;
-              submitButton.disabled = false;
-            });
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-              anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                  window.scrollTo({
-                    top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
-                  });
-                  // Close mobile menu if open
-                  if (navLinks.classList.contains('show')) {
-                    navLinks.classList.remove('show');
-                  }
-                }
-              });
-            });
-            // Animation on scroll
-            window.addEventListener('scroll', () => {
-              const elements = document.querySelectorAll('.step-card, .ladder-step, .stat-item');
-              elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                if (elementTop < window.innerHeight - 100) {
-                  element.style.opacity = '1';
-                  element.style.transform = 'translateY(0)';
-                }
-              });
-            });
-            // Initialize elements for animation
-            document.addEventListener('DOMContentLoaded', () => {
-              const elements = document.querySelectorAll('.step-card, .ladder-step, .stat-item');
-              elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'all 0.6s ease-out';
-              });
-            });
+            // Close mobile menu if open
+            if (navLinks.classList.contains('show')) {
+              navLinks.classList.remove('show');
+            }
+          }
+        });
+      });
+      // Animation on scroll
+      window.addEventListener('scroll', () => {
+        const elements = document.querySelectorAll('.step-card, .ladder-step, .stat-item');
+        elements.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          if (elementTop < window.innerHeight - 100) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          }
+        });
+      });
+      // Initialize elements for animation
+      document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.step-card, .ladder-step, .stat-item');
+        elements.forEach(element => {
+          element.style.opacity = '0';
+          element.style.transform = 'translateY(20px)';
+          element.style.transition = 'all 0.6s ease-out';
+        });
+      });
     </script>
     <!-- Start of HubSpot Embed Code -->
     <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/50165218.js"></script>
