@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <!-- TRACKING CODES -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SE72S7X50M"></script>
     <script>
@@ -12,9 +13,16 @@
       gtag('js', new Date());
       gtag('config', 'G-SE72S7X50M');
     </script>
+    <!-- Google tag (gtag.js) -->
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/50165218.js"></script>
+    <!-- End of HubSpot Embed Code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mente Digital Qro | Agencia de Marketing Digital en Querétaro</title>
+    <meta name="description" content="Agencia de marketing digital querétaro">
+    <meta name="keywords" content="marketing digital en querétaro, marketing digital queretaro, agencia de marketing queretaro">
+    <meta name="Mente Digital Qro" content="Mente Digital Qro">
     <link rel="icon" type="image/png" href="images/mente3.png">
     <style>
       * {
@@ -896,7 +904,7 @@
     <!-- CTA Section -->
     <section id="cta" class="cta">
       <h2>¿Estás listo para escalar tu marca?</h2>
-      <p>Agenda una consulta gratuita hoy mismo.</p>
+      <p>Reserva tu lugar para una sesión estratégica gratis</p>
       <a class="cta-button" id="ctaButton">Comienza Hoy</a>
     </section>
     <!-- Footer -->
@@ -955,7 +963,7 @@
     <div id="modal">
       <div class="modal-content">
         <span id="closeModal">&times;</span>
-        <h2>Solicita tu llamada estratégica</h2>
+        <h2>Sesion Estratégica</h2>
         <div id="formSuccess" style="display: none;">¡Gracias! Te contactaremos en menos de 24 horas.</div>
         <form id="contactForm">
           <div class="form-group">
@@ -970,7 +978,7 @@
             <label for="company">Nombre de tu Empresa</label>
             <input type="text" id="company" name="company">
           </div>
-          <button type="submit" class="cta-button">Solicitar mi llamada</button>
+          <button type="submit" class="cta-button">Reservar mi lugar</button>
         </form>
       </div>
     </div>
@@ -1033,10 +1041,9 @@
           },
           body: formDataUrlEncoded
         }).then(() => {
-  // Redirect to Thank You page immediately after successful submission
-  window.location.href = 'https://www.mentedigitalqro.com/gracias'; // <-- Change this to your actual thank you page URL
-})
-.catch(error => {
+          // Redirect to Thank You page immediately after successful submission
+          window.location.href = 'https://www.mentedigitalqro.com/gracias'; // <-- Change this to your actual thank you page URL
+        }).catch(error => {
           console.error('Error:', error);
           alert('There was an error submitting your form. Please try again.');
           submitButton.textContent = originalButtonText;
@@ -1083,8 +1090,5 @@
         });
       });
     </script>
-    <!-- Start of HubSpot Embed Code -->
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/50165218.js"></script>
-    <!-- End of HubSpot Embed Code -->
   </body>
 </html>
