@@ -3,803 +3,839 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mente Digital Qro - Short-Form Domination</title>
+    <title>Optimized CSS</title>
     <style>
-        /* Base styles */
+        /* CSS Variables & Reset */
         :root {
-            --primary-color: #4527a0;
-            --accent-color: #7e57c2;
-            --text-color: #333;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
-            --success-color: #28a745;
+            --neon: #ddf344;
+            --purple: #382bf0;
+            --purple-light: #6b4ef5;
+            --dark: #191919;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --white-70: rgba(255, 255, 255, 0.7);
+            --white-80: rgba(255, 255, 255, 0.8);
+            --gradient: linear-gradient(135deg, var(--purple), var(--purple-light));
+            --gradient-text: linear-gradient(to right, var(--white), var(--neon));
+            --shadow-neon: 0 10px 30px rgba(221, 243, 68, 0.1);
+            --shadow-purple: 0 10px 20px rgba(56, 43, 240, 0.3);
+            --transition: all 0.3s ease;
+            --border-radius: 20px;
+            --border-radius-small: 10px;
+            --border-radius-large: 30px;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
             overflow-x: hidden;
+            position: relative;
         }
-        
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
-        
-        p {
-            margin-bottom: 1rem;
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
         }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        ::-webkit-scrollbar-thumb {
+            background: var(--purple);
+            border-radius: 5px;
         }
-        
-        .section {
-            padding: 5rem 0;
+
+        /* Background Effects */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(56, 43, 240, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(221, 243, 68, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
         }
-        
-        .text-center {
+
+        .floating-element {
+            position: absolute;
+            background: var(--gradient);
+            filter: blur(60px);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        /* Utility Classes */
+        .gradient-text {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+        }
+
+        .hover-lift {
+            transition: var(--transition);
+        }
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 7s infinite linear;
+        }
+
+        /* Typography */
+        .section-title {
             text-align: center;
+            margin-bottom: 4rem;
         }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
-        
-        .btn:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        .section-title p {
+            color: var(--white-80);
+            font-size: 1.2rem;
         }
-        
+
         /* Header */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
+            top: 0;
             width: 100%;
             z-index: 1000;
+            padding: 1.5rem 5%;
+            background: rgba(25, 25, 25, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
         }
-        
-        .navbar {
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
         }
-        
+
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 1.8rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: var(--border-radius-small);
+            display: inline-block;
+        }
+
         .nav-links {
             display: flex;
-            list-style: none;
+            gap: 2rem;
         }
-        
-        .nav-links li {
-            margin-left: 20px;
-        }
-        
+
         .nav-links a {
+            color: var(--white);
             text-decoration: none;
-            color: var(--text-color);
             font-weight: 500;
-            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
         }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon);
+            transition: width 0.3s ease;
         }
-        
-        .hamburger {
-            display: none;
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-large);
             cursor: pointer;
-            font-size: 1.5rem;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
-            padding: 150px 0 100px 0;
+            transition: var(--transition);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
-        
-        .hero::before {
+
+        .cta-button::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background-image: url('/api/placeholder/1200/800');
-            background-size: cover;
-            opacity: 0.2;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-purple);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 5rem;
+            gap: 4rem;
+            max-width: 1400px;
             margin: 0 auto;
-            text-align: center;
         }
-        
-        .hero h1 {
-            font-size: 3rem;
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
         }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            color: var(--white-80);
+            line-height: 1.6;
         }
-        
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .content-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
         /* About Section */
         .about {
-            background-color: var(--light-color);
+            text-align: center;
         }
-        
+
         .about-content {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
         }
-        
+
         .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-        
-        .about p {
-            font-size: 1.2rem;
+            font-size: 3rem;
             margin-bottom: 2rem;
         }
-        
-        .highlight {
-            font-weight: 700;
-            color: var(--primary-color);
+
+        .about p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--white-80);
         }
-        
-        /* How It Works */
-        .how-it-works {
-            background-color: white;
+
+        /* Steps/Cards */
+        .steps-container, .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 4rem;
         }
-        
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 3rem;
-        }
-        
-        .step-card {
-            background-color: var(--light-color);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+
+        .step-card, .stat-item {
+            flex: 1;
+            min-width: 250px;
             text-align: center;
         }
-        
-        .step-card:hover {
-            transform: translateY(-10px);
+
+        .step-card {
+            padding: 2.5rem;
         }
-        
+
         .step-number {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
             color: white;
             border-radius: 50%;
-            line-height: 40px;
-            margin-bottom: 1rem;
+            line-height: 60px;
+            font-size: 1.8rem;
             font-weight: 700;
-        }
-        
-        .step-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        
-        /* Packages */
-        .packages {
-            background-color: var(--light-color);
-        }
-        
-        .package-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 3rem;
-        }
-        
-        .package-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            text-align: center;
-        }
-        
-        .package-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .package-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .package-price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .package-features {
-            list-style: none;
             margin-bottom: 1.5rem;
         }
-        
-        .package-features li {
-            margin-bottom: 0.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        /* Why Short-Form */
-        .why-section {
-            background-color: white;
-        }
-        
-        .why-points {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-            margin: 1rem;
-        }
-        
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .urgency-message {
+
+        .step-title {
             font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 2rem;
-            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--neon);
         }
-        
-        /* Trust Section */
-        .trust {
-            background-color: var(--light-color);
+
+        /* Packages/Ladder */
+        .ladder-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 4rem;
         }
-        
-        .client-logos {
+
+        .ladder-step {
+            padding: 40px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+        }
+
+        .ladder-step .step-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .ladder-step .step-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .features {
+            list-style: none;
+            margin: 25px 0;
+            flex-grow: 1;
+        }
+
+        .features li {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--neon);
+            font-weight: bold;
+        }
+
+        /* Stats */
+        .stat-value {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--neon);
+            margin-bottom: 1rem;
+        }
+
+        .urgency-message {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 4rem;
+        }
+
+        /* Brands */
+        .brands {
+            padding: 4rem 5%;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .logo-scroll {
+            display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            margin-top: 3rem;
+            animation: scroll 20s linear infinite;
+            width: fit-content;
         }
-        
-        .client-logo {
-            width: 120px;
-            height: auto;
-            margin: 1rem 2rem;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
+
+        .logo-scroll img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin: 0 4rem;
+            border-radius: 50%;
         }
-        
-        .client-logo:hover {
-            opacity: 1;
+
+        .logo-container:hover .logo-scroll {
+            animation-play-state: paused;
         }
-        
+
         /* CTA Section */
         .cta {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
+            background: var(--gradient);
             text-align: center;
+            padding: 6rem 5%;
         }
-        
+
         .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .cta p {
-            font-size: 1.2rem;
+            font-size: 3rem;
             margin-bottom: 2rem;
-            max-width: 600px;
+        }
+
+        .cta p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
-        
+
+        .cta .cta-button {
+            background: var(--dark);
+            border: 2px solid var(--neon);
+            box-shadow: 0 0 20px rgba(221, 243, 68, 0.3);
+        }
+
+        .cta .cta-button:hover {
+            background: var(--neon);
+            color: var(--dark);
+        }
+
         /* Footer */
         footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 3rem 0;
+            padding: 4rem 5% 2rem;
+            background: linear-gradient(to top, var(--dark), transparent);
+            overflow: hidden;
         }
-        
+
         .footer-container {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        
-        .footer-info {
+
+        .footer-column {
             flex: 1;
-            min-width: 300px;
+            min-width: 250px;
+        }
+
+        .footer-column h4 {
+            color: var(--neon);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--white-70);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--neon);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-bottom h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-bottom p {
             margin-bottom: 2rem;
         }
-        
-        .footer-links {
-            display: flex;
-            list-style: none;
-            margin-top: 1rem;
+
+        /* Modal */
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            overflow: auto;
         }
-        
-        .footer-links li {
-            margin-right: 1rem;
+
+        .modal-content {
+            background-color: var(--dark);
+            margin: 10% auto;
+            padding: 3rem;
+            width: 90%;
+            max-width: 550px;
+            border-radius: var(--border-radius);
+            position: relative;
+            border: 1px solid var(--glass-border);
         }
-        
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
+
+        #closeModal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--white);
+            transition: var(--transition);
         }
-        
-        .footer-links a:hover {
-            color: var(--accent-color);
+
+        #closeModal:hover {
+            color: var(--neon);
         }
-        
-        .copyright {
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neon);
+        }
+
+        .form-group input {
+            width: 100%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: var(--border-radius-small);
+            color: var(--white);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--neon);
+        }
+
+        #formSuccess {
+            background: linear-gradient(45deg, var(--purple), var(--neon));
+            color: var(--dark);
+            font-weight: bold;
+            padding: 1rem;
+            border-radius: var(--border-radius-small);
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .navbar {
+
+        /* Responsive Design */
+        .hamburger {
+            display: none;
+        }
+
+        @media (max-width: 1200px) {
+            .hero {
                 flex-direction: column;
-                align-items: flex-start;
+                text-align: center;
             }
-            
+
+            .ladder-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .ladder-container {
+                grid-template-columns: 1fr;
+            }
+
             .nav-links {
                 display: none;
-                width: 100%;
-                flex-direction: column;
-                margin-top: 1rem;
             }
-            
-            .nav-links.show {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 0.5rem 0;
-                margin-left: 0;
-            }
-            
+
             .hamburger {
                 display: block;
-                position: absolute;
-                right: 20px;
-                top: 20px;
+                cursor: pointer;
+                font-size: 1.8rem;
+                color: var(--white);
             }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .step-card, .package-card {
-                margin-bottom: 2rem;
-            }
-            
-            .footer-container {
+
+            .nav-links.show {
+                display: flex;
                 flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(25, 25, 25, 0.95);
+                padding: 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--glass-border);
             }
-        }
-        
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
 <body>
-    <!-- Header -->
+    <div class="floating-element" style="width: 300px; height: 300px; top: 10%; left: 80%;"></div>
+    <div class="floating-element" style="width: 200px; height: 200px; top: 60%; left: 10%;"></div>
+    
     <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">Mente Digital Qro</div>
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#hero">Inicio</a></li>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#how">Cómo Funciona</a></li>
-                    <li><a href="#packages">Paquetes</a></li>
-                    <li><a href="#why">Por Qué</a></li>
-                    <li><a href="#cta">Contacto</a></li>
-                </ul>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+            </a>
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#contacto">Contacto</a>
             </nav>
+            <a href="#consulta" class="cta-button">Empezar</a>
+            <div class="hamburger">☰</div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <h1>We Don't Just Make Videos. We Build Attention Machines.</h1>
-                <p>Turn your brand into a daily presence on YouTube Shorts, TikTok, and Reels — without lifting a finger.</p>
-                <a href="#cta" class="btn">Start Growing Today</a>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1 class="gradient-text">Agencia de Marketing Digital en Querétaro</h1>
+            <p>Publicidad y Estrategias Digitales para Impulsar tu Negocio</p>
+            <a href="#consulta" class="cta-button">Obtén una Sesión Estratégica Gratis</a>
+        </div>
+    </section>
+
+    <section class="about content-container" id="nosotros">
+        <div class="about-content">
+            <h2 class="gradient-text">¿Buscas una agencia de marketing digital en Querétaro que realmente genere resultados?</h2>
+            <p>Diseñamos estrategias personalizadas que conectan tu marca con el público correcto, usando herramientas innovadoras de publicidad digital, SEO, redes sociales, Google Ads y más.</p>
+            <p>Nuestra misión: <strong>convertir tu presencia digital en una máquina de ganancias.</strong></p>
+            <a href="#consulta" class="cta-button">Obtén una Sesión Estratégica Gratis</a>
+        </div>
+    </section>
+
+    <section class="how-it-works content-container" id="servicios">
+        <div class="section-title">
+            <h2>Servicios de Marketing Digital en Querétaro</h2>
+            <p>Somos una de las agencias de publicidad en Querétaro más completas, ofreciendo soluciones integrales para todo tipo de negocios:</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-card glass-card hover-lift">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Publicidad Digital</h3>
+                <p>Google Ads, Meta Ads, TikTok Ads y campañas optimizadas para maximizar tu ROI</p>
+            </div>
+            <div class="step-card glass-card hover-lift">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Posicionamiento SEO</h3>
+                <p>SEO local y nacional para posicionar tu empresa en los primeros lugares de Google</p>
+            </div>
+            <div class="step-card glass-card hover-lift">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Gestión de Redes Sociales</h3>
+                <p>Estrategias de contenido y community management para todas las plataformas</p>
+            </div>
+            <div class="step-card glass-card hover-lift">
+                <div class="step-number">4</div>
+                <h3 class="step-title">Diseño y Desarrollo Web</h3>
+                <p>Sitios web optimizados para SEO, velocidad y conversión</p>
+            </div>
+            <div class="step-card glass-card hover-lift">
+                <div class="step-number">5</div>
+                <h3 class="step-title">Email Marketing</h3>
+                <p>Automatización y campañas de email marketing personalizadas</p>
+            </div>
+            <div class="step-card glass-card hover-lift">
+                <div class="step-number">6</div>
+                <h3 class="step-title">Análisis y Reportes</h3>
+                <p>Medición de resultados con informes claros y métricas relevantes</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#consulta" class="cta-button">Obtén una Sesión Estratégica Gratis</a>
+        </div>
+    </section>
+
+    <section class="why-section content-container">
+        <div class="section-title">
+            <h2>¿Por qué elegirnos como tu agencia de marketing digital en Querétaro?</h2>
+        </div>
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Experiencia Comprobada</h3>
+                <p>Somos una agencia de publicidad y marketing con años de experiencia acumulativa en el mercado local</p>
+            </div>
+            <div class="stat-item">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Estrategias Personalizadas</h3>
+                <p>Expertos en estrategias personalizadas para empresas de todos los tamaños</p>
+            </div>
+            <div class="stat-item">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Resultados Medibles</h3>
+                <p>Atención personalizada, informes claros y resultados medibles</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#consulta" class="cta-button">Obtén una Sesión Estratégica Gratis</a>
+        </div>
+    </section>
+
+    <section class="brands content-container">
+        <div class="section-title">
+            <h2>🏆 Una de las Mejores Empresas de Publicidad y Marketing en Querétaro</h2>
+            <p>Nos posicionamos como una de las mejores empresas de marketing y publicidad gracias a nuestra combinación de creatividad, análisis y tecnología. Ya seas una pyme o una gran marca, somos tu agencia de marketing en Querétaro ideal para crecer online.</p>
+            <div class="urgency-message gradient-text">¡No todas las agencias de marketing digital en Querétaro son iguales!</div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#consulta" class="cta-button">Obtén una Sesión Estratégica Gratis</a>
+        </div>
+    </section>
+
+    <section class="about content-container">
+        <div class="about-content">
+            <h2 class="gradient-text">📍 Presencia Local, Impacto Global</h2>
+            <p>Desde el corazón de Querétaro, ofrecemos servicios de marketing a todo México. Si buscas una agencia confiable y comprometida con el crecimiento de tu negocio, estás en el lugar correcto.</p>
+            <a href="#consulta" class="cta-button">Obtén una Sesión Estratégica Gratis</a>
+        </div>
+    </section>
+
+    <section class="brands content-container">
+        <div class="section-title">
+            <h2>Marcas que confían en Mente Digital Qro</h2>
+        </div>
+        <div class="logo-container">
+            <div class="logo-scroll">
+                <!-- Placeholder logos - replace with actual client logos -->
+                <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: 50%; margin: 0 4rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Logo 1</div>
+                <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: 50%; margin: 0 4rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Logo 2</div>
+                <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: 50%; margin: 0 4rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Logo 3</div>
+                <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: 50%; margin: 0 4rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Logo 4</div>
+                <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: 50%; margin: 0 4rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Logo 5</div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about section">
-        <div class="container">
-            <div class="about-content fade-in">
-                <h2>Mente Digital Qro is your Short-Form Content Strike Force.</h2>
-                <p>We specialize in creating and managing viral-ready short videos that put your brand exactly where people are already watching: their phone screens.</p>
-                <p>Our job: <span class="highlight">Turn eyeballs into customers.</span></p>
-            </div>
-        </div>
+    <section class="cta" id="consulta">
+        <h2>¿Estás listo para escalar tu marca?</h2>
+        <p>Reserva tu lugar para una sesión estratégica gratis</p>
+        <a href="#" class="cta-button">Comienza Hoy</a>
     </section>
 
-    <!-- How It Works Section -->
-    <section id="how" class="how-it-works section">
-        <div class="container">
-            <h2 class="text-center fade-in">How It Works</h2>
-            <div class="steps-container">
-                <div class="step-card fade-in">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Strategy Call</h3>
-                    <p>We understand your brand, your audience, and your goals.</p>
-                </div>
-                <div class="step-card fade-in">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Content Plan</h3>
-                    <p>We build a monthly Short-Form Content Plan tailored for you.</p>
-                </div>
-                <div class="step-card fade-in">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Production</h3>
-                    <p>Our team edits, optimizes, and posts your Shorts/Reels/TikToks.</p>
-                </div>
-                <div class="step-card fade-in">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Growth Reporting</h3>
-                    <p>Get monthly reports with views, engagement, and improvements.</p>
-                </div>
+    <footer id="contacto">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Mente Digital Qro</h4>
+                <p style="color: var(--white-80); margin-bottom: 1rem;">Conecta. Crea. Crece.</p>
+                <p style="color: var(--white-80); font-style: italic;">Impulsa tu marca con una agencia de publicidad y marketing que entiende tu negocio.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Packages Section -->
-    <section id="packages" class="packages section">
-        <div class="container">
-            <h2 class="text-center fade-in">Our Packages</h2>
-            <div class="package-cards">
-                <div class="package-card fade-in">
-                    <h3 class="package-title">Starter Growth</h3>
-                    <div class="package-price">$4,900 MXN</div>
-                    <ul class="package-features">
-                        <li>12 videos/month (3/week)</li>
-                        <li>3 platforms</li>
-                        <li>Basic optimization</li>
-                        <li>Monthly reporting</li>
-                    </ul>
-                    <a href="#cta" class="btn">Get Started</a>
-                </div>
-                <div class="package-card fade-in">
-                    <h3 class="package-title">Scaling Mode</h3>
-                    <div class="package-price">$8,900 MXN</div>
-                    <ul class="package-features">
-                        <li>20 videos/month (5/week)</li>
-                        <li>3 platforms</li>
-                        <li>Light optimization</li>
-                        <li>Bi-weekly reporting</li>
-                    </ul>
-                    <a href="#cta" class="btn">Get Started</a>
-                </div>
-                <div class="package-card fade-in">
-                    <h3 class="package-title">Domination Plan</h3>
-                    <div class="package-price">$19,000 MXN</div>
-                    <ul class="package-features">
-                        <li>28 videos/month (7/week)</li>
-                        <li>3 platforms</li>
-                        <li>Deep optimization</li>
-                        <li>Advanced analytics</li>
-                        <li>Weekly reporting</li>
-                    </ul>
-                    <a href="#cta" class="btn">Get Started</a>
-                </div>
+            <div class="footer-column">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
             </div>
-            <div class="text-center" style="margin-top: 2rem;">
-                <a href="#" class="btn">See Full Details</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Short-Form Section -->
-    <section id="why" class="why-section section">
-        <div class="container">
-            <h2 class="text-center fade-in">Why Short-Form Now?</h2>
-            <div class="why-points fade-in">
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <div class="stat-value">90%</div>
-                        <p>of internet users prefer short videos</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">3X</div>
-                        <p>higher organic reach for Shorts vs regular posts</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">300%</div>
-                        <p>increase in engagement with short-form content</p>
-                    </div>
-                </div>
-                <div class="urgency-message">
-                    <i class="fas fa-chart-line" style="color: red;"></i> Don't be invisible. 
-                    <i class="fas fa-chart-line" style="color: green;"></i> Start dominating where the attention already is.
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:info@mentedigitalqro.com">info@mentedigitalqro.com</a></li>
+                    <li><a href="tel:+52">+52 *** *** ****</a></li>
+                    <li>Querétaro, México</li>
+                </ul>
+                <h4 style="margin-top: 2rem;">Social</h4>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <a href="#" style="color: var(--neon); font-size: 1.5rem;">📱</a>
+                    <a href="#" style="color: var(--neon); font-size: 1.5rem;">📧</a>
+                    <a href="#" style="color: var(--neon); font-size: 1.5rem;">🌐</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Trust Section -->
-    <section class="trust section">
-        <div class="container">
-            <h2 class="text-center fade-in">Brands Trust Mente Digital Qro</h2>
-            <div class="client-logos">
-                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
-                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
-                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
-                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
-                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
-                <img src="/api/placeholder/120/60" alt="Client Logo" class="client-logo">
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="cta" class="cta section">
-        <div class="container">
-            <h2 class="fade-in">Your Brand Deserves Daily Visibility.</h2>
-            <p class="fade-in">Book a Free Strategy Call — let's build your attention machine today.</p>
-            <a href="#" class="btn fade-in" id="ctaButton">Start Growing Today</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-info">
-                    <h3>Mente Digital Qro</h3>
-                    <p>Conecta. Crea. Crece.</p>
-                    <ul class="footer-links">
-                        <li><a href="#hero">Inicio</a></li>
-                        <li><a href="#about">Servicios</a></li>
-                        <li><a href="#packages">Paquetes</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#cta">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-info">
-                    <h3>Contáctanos</h3>
-                    <p><i class="fas fa-envelope"></i> info@mentedigitalqro.com</p>
-                    <p><i class="fas fa-phone"></i> +52 442 123 4567</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Querétaro, México</p>
-                </div>
-                <div class="footer-info">
-                    <h3>Síguenos</h3>
-                    <div style="margin-top: 1rem;">
-                        <a href="#" style="margin-right: 15px; font-size: 1.5rem; color: white;"><i class="fab fa-facebook"></i></a>
-                        <a href="#" style="margin-right: 15px; font-size: 1.5rem; color: white;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="margin-right: 15px; font-size: 1.5rem; color: white;"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" style="margin-right: 15px; font-size: 1.5rem; color: white;"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Mente Digital Qro. Todos los derechos reservados.</p>
-            </div>
+        <div class="footer-bottom">
+            <p>© 2025 Mente Digital Qro. Agencia de Marketing Digital en Querétaro. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <!-- Modal for Form -->
-    <div id="modal" style="display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-        <div style="background-color: white; margin: 10% auto; padding: 30px; width: 80%; max-width: 500px; border-radius: 10px; position: relative;">
-            <span id="closeModal" style="position: absolute; right: 20px; top: 10px; font-size: 1.5rem; cursor: pointer;">&times;</span>
-            <h2 style="margin-bottom: 20px; color: var(--primary-color);">Book Your Free Strategy Call</h2>
-            <form id="contactForm">
-                <div style="margin-bottom: 15px;">
-                    <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
-                    <input type="text" id="name" name="name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label for="email" style="display: block; margin-bottom: 5px;">Email:</label>
-                    <input type="email" id="email" name="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label for="phone" style="display: block; margin-bottom: 5px;">Phone:</label>
-                    <input type="tel" id="phone" name="phone" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label for="company" style="display: block; margin-bottom: 5px;">Company:</label>
-                    <input type="text" id="company" name="company" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Submit</button>
-            </form>
-            <div id="formSuccess" style="display: none; margin-top: 20px; padding: 10px; background-color: var(--success-color); color: white; border-radius: 5px; text-align: center;">
-                Thank you! We'll contact you shortly to schedule your free strategy call.
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Mobile Menu Toggle
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('show');
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                document.getElementById('navLinks').classList.remove('show');
-            });
-        });
-        
-        // Fade-in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        function checkFade() {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', checkFade);
-        window.addEventListener('load', checkFade);
-        
-        // Modal functionality
-        const modal = document.getElementById('modal');
-        const ctaButton = document.getElementById('ctaButton');
-        const closeModal = document.getElementById('closeModal');
-        const contactForm = document.getElementById('contactForm');
-        const formSuccess = document.getElementById('formSuccess');
-        
-        ctaButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            modal.style.display = 'block';
-        });
-        
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-            formSuccess.style.display = 'none';
-            contactForm.reset();
-        });
-        
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                formSuccess.style.display = 'none';
-                contactForm.reset();
-            }
-        });
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Here you would normally send the form data to your server
-            // For demo purposes, we'll just show the success message
-            contactForm.style.display = 'none';
-            formSuccess.style.display = 'block';
-            
-            // Reset and close after 3 seconds
-            setTimeout(function() {
-                modal.style.display = 'none';
-                formSuccess.style.display = 'none';
-                contactForm.style.display = 'block';
-                contactForm.reset();
-            }, 3000);
-        });
-        
-        // Counter animation for stats
-        function animateValue(obj, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                obj.innerHTML = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-        
-        // Current year in footer
-        document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} Mente Digital Qro. Todos los derechos reservados.`;
-    </script>
 </body>
 </html>
